@@ -341,13 +341,12 @@ Você não perde dados — basta upload do JSON quando o app estiver disponível
 
 ---
 
-## 🧭 Navegação
+## Continuar a leitura
 
-| | |
-|---|---|
-| ← Anterior | _(você está no índice)_ |
-| → Próximo | **[Guia passo-a-passo](GUIA-PASSO-A-PASSO.md)** — instalação, preenchimento e execução detalhados |
-| 🏠 Índice | (você está aqui) |
+| ← ANTERIOR | PRÓXIMO → |
+|:---|---:|
+| _(você está no hub)_ | **[Guia passo-a-passo](GUIA-PASSO-A-PASSO.md)** |
+| Você já está no índice principal do kit. | Instalação, preenchimento e execução detalhados, do zero ao PDF executivo em 60–90 min. |
 
 ---
 

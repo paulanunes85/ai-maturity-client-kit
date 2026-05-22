@@ -1,0 +1,45 @@
+# ============================================================================
+# AI Maturity Assessment Kit — .gitignore
+# ============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+venv/
+.venv/
+env/
+.env
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/settings.json.example
+
+# Outputs the client generates (kept clean for fresh clones)
+saida/*
+!saida/.gitkeep
+
+# Client-specific input files (do NOT commit real client data)
+respostas.json
+respostas.json.backup-*
+respostas-forms.xlsx
+respostas-survey-devs.xlsx
+respostas-survey-learning.xlsx
+implementation-guide-inputs.json
+survey-devs/respostas-devs.json
+survey-learning/respostas-learning.json
+
+# Build artifacts
+*.log
+build/
+dist/

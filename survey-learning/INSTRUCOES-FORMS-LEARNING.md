@@ -259,10 +259,11 @@ Comunique antes de lançar:
 
 ---
 
-## 🧭 Navegação
+## Continuar a leitura
 
-| | |
-|---|---|
-| ← Anterior | **[Developer Survey (anônimo)](../survey-devs/INSTRUCOES-FORMS-DEVS.md)** |
-| → Próximo | **[Wizard — Implementation Guide (Parte 4)](../wizard/README.md)** — personalizar Steering Committee, RACI, ADKAR, Quick Wins |
-| 🏠 Índice | [README](../README.md) |
+| ← ANTERIOR | PRÓXIMO → |
+|:---|---:|
+| **[Developer Survey (anônimo)](../survey-devs/INSTRUCOES-FORMS-DEVS.md)** | **[Wizard — Parte 4](../wizard/README.md)** |
+| 75 perguntas anônimas: Copilot, agentes, governança. | Personalizar Steering Committee, RACI, ADKAR, Quick Wins do PDF executivo. |
+
+↑ [Voltar ao Índice do kit](../README.md)

@@ -286,10 +286,11 @@ Toda vez que importar, a skill cria `respostas.json.backup-<timestamp>`. Guarde 
 
 ---
 
-## 🧭 Navegação
+## Continuar a leitura
 
-| | |
-|---|---|
-| ← Anterior | **[Guia passo-a-passo](../GUIA-PASSO-A-PASSO.md)** |
-| → Próximo | **[Developer Survey (anônimo)](../survey-devs/INSTRUCOES-FORMS-DEVS.md)** — ouvir os devs sobre Copilot, agentes, governança |
-| 🏠 Índice | [README](../README.md) |
+| ← ANTERIOR | PRÓXIMO → |
+|:---|---:|
+| **[Guia passo-a-passo](../GUIA-PASSO-A-PASSO.md)** | **[Developer Survey (anônimo)](../survey-devs/INSTRUCOES-FORMS-DEVS.md)** |
+| Do zero ao PDF executivo em 60–90 min. | 75 perguntas anônimas sobre Copilot, agentes, governança, MCP / A2A. |
+
+↑ [Voltar ao Índice do kit](../README.md)

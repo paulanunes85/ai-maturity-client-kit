@@ -1062,13 +1062,32 @@ Skills custom requerem **Copilot Pro/Business/Enterprise** com modo Agent. Alter
 
 ---
 
-## 🧭 Navegação
+## Travou em algum desses passos?
 
-| | |
-|---|---|
-| ← Anterior | **[🏠 Índice (README)](README.md)** |
-| → Próximo | **[Coleta via Microsoft Forms](coleta/INSTRUCOES-FORMS.md)** — 3 caminhos para coletar respostas em equipe |
-| 🔗 Relacionados | [Wizard](wizard/README.md) · [Survey-devs](survey-devs/INSTRUCOES-FORMS-DEVS.md) · [Survey-learning](survey-learning/INSTRUCOES-FORMS-LEARNING.md) |
+<details>
+<summary><strong>FAQ — situações comuns nos primeiros 15 minutos</strong></summary>
+
+| Sintoma | Causa provável | Como resolver |
+|---|---|---|
+| O comando `/calcular-scores` não aparece quando digito `/` | Copilot Chat não está em **modo Agent** | Abra o Chat → clique no dropdown ao lado do ícone do Copilot → escolha **Agent** |
+| Erro `framework_version mismatch` | Você abriu o kit em uma versão antiga do framework | Atualize `respostas.json::metadata.framework_version` para `1.0.0` |
+| `make smoke` falha com `ModuleNotFoundError` | Faltam dependências Python | Rode `make install-deps` (instala jinja2 + weasyprint + openpyxl) |
+| PDFs ficam com `GERADO EM` na data errada | Comportamento esperado | A data reflete a data de geração; não é bug |
+| `respostas-forms.xlsx` não é detectado | Arquivo está em pasta errada | Mova para a **raiz** do kit (não dentro de `coleta/`) |
+| Modo Agent diz "não tenho essa skill" | VS Code não recarregou as skills | Cmd/Ctrl+Shift+P → "Developer: Reload Window" |
+
+</details>
+
+---
+
+## Continuar a leitura
+
+| ← ANTERIOR | PRÓXIMO → |
+|:---|---:|
+| **[🏠 Índice (README)](README.md)** | **[Coleta via Microsoft Forms](coleta/INSTRUCOES-FORMS.md)** |
+| Hub principal: visão geral, 3 surveys, pré-requisitos. | 3 caminhos para coletar respostas em equipe (Forms / Excel / SharePoint). |
+
+↑ [Voltar ao Índice do kit](README.md)
 
 ---
 

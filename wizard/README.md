@@ -91,10 +91,11 @@ python3 relatorios/scripts/build_payload_and_render.py   # via CLI
 
 ---
 
-## 🧭 Navegação
+## Continuar a leitura
 
-| | |
-|---|---|
-| ← Anterior | **[Learning & Growth Survey](../survey-learning/INSTRUCOES-FORMS-LEARNING.md)** |
-| → Próximo | **[🏠 Índice (voltar ao topo)](../README.md)** — você completou o fluxo! 🎉 |
-| 🔗 Relacionado | [Guia passo-a-passo](../GUIA-PASSO-A-PASSO.md) · [Wizard standalone HTML](implementation-guide-wizard.html) |
+| ← ANTERIOR | PRÓXIMO → |
+|:---|---:|
+| **[Learning & Growth Survey](../survey-learning/INSTRUCOES-FORMS-LEARNING.md)** | **[🏠 Índice do kit](../README.md)** 🎉 |
+| 32 perguntas identificadas: plano de capacitação personalizado. | Você completou o fluxo. Volte ao hub para revisitar qualquer etapa. |
+
+↑ [Voltar ao Índice do kit](../README.md)
