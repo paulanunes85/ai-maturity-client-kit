@@ -14,6 +14,8 @@
 > [!TIP]
 > **Primeira vez aqui?** Vá direto para o [GUIA-PASSO-A-PASSO.md](GUIA-PASSO-A-PASSO.md) ou abra o Copilot Chat e digite `@ai-maturity-assistant` — ele guia você da instalação ao PDF final.
 
+🌐 **Mini-site público:** [paulanunes85.github.io/ai-maturity-client-kit](https://paulanunes85.github.io/ai-maturity-client-kit/) — apresentação visual + botão de download (ative GitHub Pages em Settings → Pages → Source: GitHub Actions)
+
 > **Para o cliente:** este pacote contém tudo que você precisa para conduzir o **AI Maturity Assessment** sem depender da plataforma web. Você responde um JSON, abre o GitHub Copilot Chat no VS Code, digita um comando, e recebe **planilha, scores, gap analysis, recomendações de estratégia e relatório executivo** em PT-BR.
 
 ## 🔄 Pipeline visual

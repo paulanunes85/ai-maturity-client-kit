@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit AI Maturity Assessment · Paula Silva</title>
+<meta name="description" content="Kit auto-serviço para conduzir o AI Maturity Assessment com GitHub Copilot. 3 surveys complementares, 5 PDFs production-quality, plano de capacitação personalizado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Logo SVG for favicon (data URI) -->
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1914 1062"><path fill="%23F25022" d="M532 131 L36 462 L13 497 L13 560 L23 582 L48 604 L521 923 L539 926 L539 699 L547 680 L314 530 L527 395 L551 371 L558 347 L558 155 L547 135 Z"/><path fill="%237FBA00" d="M551 681 L542 693 L540 700 L540 917 L546 930 L558 940 L571 943 L778 943 L788 941 L798 935 L809 910 L809 702 L807 694 L799 682 L784 674 L566 674 Z"/><path fill="%23FFB900" d="M1390 16 L1208 13 L1184 23 L1171 38 L768 1009 L768 1026 L778 1038 L957 1042 L975 1037 L995 1017 L1346 179 L1349 145 L1367 129 L1401 47 L1402 31 Z"/><path fill="%2300A4EF" d="M1369 131 L1350 149 L1349 355 L1354 369 L1385 399 L1592 528 L1373 667 L1354 688 L1349 703 L1349 907 L1361 924 L1377 926 L1871 595 L1893 563 L1894 501 L1885 477 L1863 456 L1398 142 Z"/></svg>'>
+</head>
+<body>
+
+<!-- ============================ Chrome bar -->
+<div class="chrome">
+  <div class="chrome__inner">
+    <div class="chrome__brand">
+      <svg viewBox="0 0 1914 1062" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="paulasilva">
+        <title>paulasilva</title>
+        <path fill="#F25022" d="M532 131 L36 462 L13 497 L13 560 L23 582 L48 604 L521 923 L539 926 L539 699 L547 680 L314 530 L527 395 L551 371 L558 347 L558 155 L547 135 Z"/>
+        <path fill="#7FBA00" d="M551 681 L542 693 L540 700 L540 917 L546 930 L558 940 L571 943 L778 943 L788 941 L798 935 L809 910 L809 702 L807 694 L799 682 L784 674 L566 674 Z"/>
+        <path fill="#FFB900" d="M1390 16 L1208 13 L1184 23 L1171 38 L768 1009 L768 1026 L778 1038 L957 1042 L975 1037 L995 1017 L1346 179 L1349 145 L1367 129 L1401 47 L1402 31 Z"/>
+        <path fill="#00A4EF" d="M1369 131 L1350 149 L1349 355 L1354 369 L1385 399 L1592 528 L1373 667 L1354 688 L1349 703 L1349 907 L1361 924 L1377 926 L1871 595 L1893 563 L1894 501 L1885 477 L1863 456 L1398 142 Z"/>
+      </svg>
+      <div class="chrome__brand-text">
+        Paula Silva<br>Software Global Black Belt
+      </div>
+    </div>
+    <nav class="chrome__nav">
+      <a href="#pipeline">Pipeline</a>
+      <a href="#surveys">3 Surveys</a>
+      <a href="#quickstart">Quick start</a>
+      <a href="#skills">Skills</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download">Download</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============================ Hero -->
+<section class="hero">
+  <div class="hero__inner">
+    <div>
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-dot"></span>
+        Kit auto-serviço · PT-BR
+      </div>
+      <h1 class="hero__title">
+        AI Maturity Assessment com <span class="accent">GitHub Copilot</span>
+      </h1>
+      <p class="hero__lede">
+        Conduza o assessment de maturidade IA da sua organização sem depender da plataforma web.
+        3 surveys complementares, pipeline orquestrado por skills custom, 5 PDFs executivos production-quality
+        e plano de capacitação com nomes e emails dos inscritos.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary" href="#download">
+          ⬇ Baixar o kit (.zip)
+        </a>
+        <a class="btn btn--secondary" href="#quickstart">
+          ▶ Quick start em 3 passos
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero__card">
+      <div class="hero__card-title">O que você recebe</div>
+      <div class="hero__card-rows">
+        <div class="hero__card-row">
+          <div class="hero__card-icon hero__card-icon--blue">📄</div>
+          <div><strong>5 PDFs executivos</strong><br><span style="color:var(--ink-3);font-size:12px">Score + 3 roadmaps + Implementation Guide</span></div>
+          <span class="hero__card-num">~2 MB</span>
+        </div>
+        <div class="hero__card-row">
+          <div class="hero__card-icon hero__card-icon--green">📊</div>
+          <div><strong>XLSX auditável</strong><br><span style="color:var(--ink-3);font-size:12px">Fórmulas SUMPRODUCT calculam ao vivo</span></div>
+          <span class="hero__card-num">~80 KB</span>
+        </div>
+        <div class="hero__card-row">
+          <div class="hero__card-icon hero__card-icon--yellow">🎓</div>
+          <div><strong>Plano de capacitação</strong><br><span style="color:var(--ink-3);font-size:12px">Champions, cohorts, workshops com inscritos</span></div>
+          <span class="hero__card-num">.md</span>
+        </div>
+        <div class="hero__card-row">
+          <div class="hero__card-icon hero__card-icon--red">🧙</div>
+          <div><strong>Wizard customizável</strong><br><span style="color:var(--ink-3);font-size:12px">RACI, ADKAR, Quick Wins via HTML / JSON</span></div>
+          <span class="hero__card-num">9 inputs</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================ Pipeline -->
+<section class="pipeline" id="pipeline">
+  <div class="container">
+    <div class="section__eyebrow">Como funciona</div>
+    <h2 class="section__title">Pipeline em uma linha</h2>
+    <p class="section__lede">
+      Você preenche um JSON (ou Excel do Microsoft Forms). O agente concierge invoca as skills em ordem.
+      Em ~5 minutos você tem os 5 PDFs production-quality prontos para apresentar.
+    </p>
+    <div class="pipeline__chain">
+      <div class="pipe-step pipe-step--in">
+        <div class="pipe-step__num">INPUT</div>
+        <div class="pipe-step__name">respostas.json</div>
+        <div class="pipe-step__hint">ou .xlsx do Forms</div>
+      </div>
+      <div class="pipe-step pipe-step--core">
+        <div class="pipe-step__num">1</div>
+        <div class="pipe-step__name">/calcular-scores</div>
+        <div class="pipe-step__hint">SUMPRODUCT 3 camadas</div>
+      </div>
+      <div class="pipe-step pipe-step--core">
+        <div class="pipe-step__num">2</div>
+        <div class="pipe-step__name">/gap-analysis</div>
+        <div class="pipe-step__hint">P0 / P1 / P2 / P3</div>
+      </div>
+      <div class="pipe-step pipe-step--core">
+        <div class="pipe-step__num">3</div>
+        <div class="pipe-step__name">/recomendar-estrategias</div>
+        <div class="pipe-step__hint">S1 - S7 + tecnologias</div>
+      </div>
+      <div class="pipe-step pipe-step--core">
+        <div class="pipe-step__num">4</div>
+        <div class="pipe-step__name">/wizard-implementacao</div>
+        <div class="pipe-step__hint">9 inputs Parte 4</div>
+      </div>
+      <div class="pipe-step pipe-step--core">
+        <div class="pipe-step__num">5</div>
+        <div class="pipe-step__name">/gerar-relatorio</div>
+        <div class="pipe-step__hint">Jinja2 + WeasyPrint</div>
+      </div>
+      <div class="pipe-step pipe-step--out">
+        <div class="pipe-step__num">OUTPUT</div>
+        <div class="pipe-step__name">5 PDFs · XLSX</div>
+        <div class="pipe-step__hint">production-quality</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 3 Surveys -->
+<section id="surveys">
+  <div class="container">
+    <div class="section__eyebrow">Escolha o escopo</div>
+    <h2 class="section__title">3 surveys complementares</h2>
+    <p class="section__lede">
+      Rode 1, 2 ou os 3 baseado no objetivo. Cada survey informa o próximo,
+      e o agente concierge cruza os resultados automaticamente.
+    </p>
+    <div class="cards">
+
+      <article class="card card--a">
+        <div class="card__badge"><span class="card__badge-dot"></span>🅰️ ASSESSMENT</div>
+        <h3 class="card__title">AI Maturity Assessment</h3>
+        <div class="card__subtitle">Organizacional · leadership-driven · Likert L0 a L4</div>
+        <div class="card__meta">
+          <div><strong>158</strong>perguntas</div>
+          <div><strong>60-90 min</strong>coletar</div>
+          <div><strong>5 PDFs</strong>output</div>
+        </div>
+        <ul class="card__list">
+          <li>3 pilares · 28 capabilities · 7 estratégias</li>
+          <li>Algoritmo SUMPRODUCT auditável</li>
+          <li>Microsoft Forms para coleta multi-respondente</li>
+          <li>5 PDFs executivos para board / liderança</li>
+        </ul>
+      </article>
+
+      <article class="card card--b">
+        <div class="card__badge"><span class="card__badge-dot"></span>🅱️ SURVEY-DEVS</div>
+        <h3 class="card__title">Developer Survey</h3>
+        <div class="card__subtitle">Anônimo · comportamental · 7 dimensões D2-D8</div>
+        <div class="card__meta">
+          <div><strong>75</strong>perguntas</div>
+          <div><strong>22-28 min</strong>por dev</div>
+          <div><strong>5+</strong>respondentes</div>
+        </div>
+        <ul class="card__list">
+          <li>Copilot · modos Ask / Edit / Agent / Coding Agent</li>
+          <li>Foundry · MCP · A2A · agentes IA</li>
+          <li>Governança · GHAS · red-lines</li>
+          <li>Rubrica determinística L0 a L4</li>
+        </ul>
+      </article>
+
+      <article class="card card--c">
+        <div class="card__badge"><span class="card__badge-dot"></span>🅲 SURVEY-LEARNING</div>
+        <h3 class="card__title">Learning & Growth Survey</h3>
+        <div class="card__subtitle">Identificado · capacitação · nome + email obrigatórios</div>
+        <div class="card__meta">
+          <div><strong>32</strong>perguntas</div>
+          <div><strong>5-8 min</strong>por dev</div>
+          <div><strong>3+</strong>respondentes</div>
+        </div>
+        <ul class="card__list">
+          <li>Top 10 tópicos demandados com inscritos</li>
+          <li>Cohorts por dimensão D2-D8</li>
+          <li>Champions Network em 3 tiers</li>
+          <li>Calendário 90 dias de workshops</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Quick Start -->
+<section id="quickstart" style="background: var(--paper); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+  <div class="container">
+    <div class="section__eyebrow">Em 3 passos</div>
+    <h2 class="section__title">Quick start</h2>
+    <p class="section__lede">
+      Não exige plataforma web nem instalação complexa. Funciona direto no VS Code com GitHub Copilot Chat em modo Agent.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">1</div>
+        <h3 class="step__title">Baixar e abrir</h3>
+        <p class="step__body">Clone ou baixe o ZIP, abra no VS Code, valide pré-requisitos com smoke test.</p>
+        <code class="step__cmd">git clone github.com/paulanunes85/ai-maturity-client-kit
+cd ai-maturity-client-kit
+make smoke</code>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <h3 class="step__title">Preencher respostas</h3>
+        <p class="step__body">Edite <code>respostas.json</code> manualmente ou importe Excel do Microsoft Forms (multi-respondente).</p>
+        <code class="step__cmd">cp respostas.json.example respostas.json
+# edite levels (0-4) por questão
+# ou: cole respostas-forms.xlsx na raiz</code>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <h3 class="step__title">Rodar o pipeline</h3>
+        <p class="step__body">Copilot Chat em modo Agent. Use o concierge ou o orquestrador direto.</p>
+        <code class="step__cmd">@ai-maturity-assistant
+# ou:
+/pipeline-completo</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Skills -->
+<section id="skills">
+  <div class="container">
+    <div class="section__eyebrow">12 skills custom</div>
+    <h2 class="section__title">Comandos do Copilot Chat</h2>
+    <p class="section__lede">
+      Cada skill executa uma etapa do pipeline. O agente concierge (<code>@ai-maturity-assistant</code>)
+      detecta o estado do workspace e invoca a próxima skill na ordem certa.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-pill"><div><div class="skill-pill__cmd">@ai-maturity-assistant</div><div class="skill-pill__desc">Concierge que conduz o cliente</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/pipeline-completo</div><div class="skill-pill__desc">Orquestra do JSON aos 5 PDFs</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/ai-maturity-reports</div><div class="skill-pill__desc">Wrapper de alto nível</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/importar-respostas-excel</div><div class="skill-pill__desc">Forms / xlsx → JSON</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/preencher-planilha</div><div class="skill-pill__desc">Excel auditável</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/calcular-scores</div><div class="skill-pill__desc">SUMPRODUCT 3 camadas</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/gap-analysis</div><div class="skill-pill__desc">Prioridades P0 a P3</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/recomendar-estrategias</div><div class="skill-pill__desc">Mapeia para S1-S7</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/wizard-implementacao</div><div class="skill-pill__desc">9 inputs Parte 4 PDF</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/gerar-relatorio</div><div class="skill-pill__desc">5 PDFs WeasyPrint</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/importar-survey-devs</div><div class="skill-pill__desc">Survey anônimo</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/insights-developer-survey</div><div class="skill-pill__desc">Maturidade L0-L4 devs</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/importar-survey-learning</div><div class="skill-pill__desc">Survey identificado</div></div></div>
+      <div class="skill-pill"><div><div class="skill-pill__cmd">/plano-capacitacao</div><div class="skill-pill__desc">Roadmap com inscritos</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ -->
+<section id="faq" style="background: var(--paper); border-top: 1px solid var(--rule);">
+  <div class="container" style="max-width: 880px;">
+    <div class="section__eyebrow">Travou em algum passo?</div>
+    <h2 class="section__title">FAQ</h2>
+    <p class="section__lede">Dúvidas mais comuns nos primeiros 15 minutos com o kit.</p>
+    <div class="faq">
+
+      <details class="faq__item">
+        <summary>Qual survey devo rodar primeiro?</summary>
+        <p>Para consultoria séria, rode os 3 nessa ordem: <strong>Developer Survey</strong> (anônimo) → <strong>Learning Survey</strong> (identificado) → <strong>Assessment principal</strong> (liderança avalia informada). Para baseline rápido apenas do board, rode só o Assessment principal. O agente <code>@ai-maturity-assistant</code> te guia na escolha.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Os comandos <code>/calcular-scores</code>, <code>/gap-analysis</code> não aparecem ao digitar <code>/</code></summary>
+        <p>Copilot Chat precisa estar em <strong>modo Agent</strong>. Clique no dropdown ao lado do ícone do Copilot e escolha <strong>Agent</strong>. Se ainda não aparecer, recarregue a janela do VS Code (<code>Cmd/Ctrl+Shift+P</code> → "Developer: Reload Window").</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Copilot Free funciona ou preciso de Pro / Business / Enterprise?</summary>
+        <p>Skills custom funcionam no Free com limites de mensagens. Para o fluxo completo (158 perguntas + 5 PDFs + cross-survey) recomendamos <strong>Copilot Pro, Business ou Enterprise</strong>. Confirme com sua org se há restrições de skills custom em planos enterprise.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Tem dados de exemplo para testar sem preencher tudo?</summary>
+        <p>Sim. O kit vem com <code>respostas.json.example</code> (Cliente Exemplo S.A., 46 respostas mockadas) e respondentes mock para os 2 surveys. Rode <code>cp respostas.json.example respostas.json</code> e depois <code>/pipeline-completo</code> para ver o output completo em ~3 minutos.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Como agrego respostas de múltiplos respondentes do Forms?</summary>
+        <p>A skill <code>/importar-respostas-excel</code> faz <strong>média automática</strong> por questão quando o Excel tem múltiplas linhas. Mesmo comportamento da plataforma web. Mínimo recomendado: 3 respondentes para o assessment principal, 5 para o Developer Survey.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Preciso instalar dependências Python?</summary>
+        <p>Sim, apenas 3: <code>jinja2</code>, <code>weasyprint</code> e <code>openpyxl</code>. Rode <code>make install-deps</code> ou <code>pip install jinja2 weasyprint openpyxl</code>. No macOS o WeasyPrint precisa de <code>brew install pango</code>; no Linux/WSL, do pacote <code>libpango-1.0-0</code>.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Posso customizar o branding dos PDFs?</summary>
+        <p>O kit usa a identidade <strong>paulasilva-ms</strong> (paleta Microsoft 4 cores). Para customizar: edite <code>relatorios/scripts/branding.py</code> com suas constantes (cor primária, autor, contato, tagline) e re-renderize. Os 5 templates Jinja2 em <code>relatorios/templates/</code> consomem essas variáveis automaticamente.</p>
+      </details>
+
+      <details class="faq__item">
+        <summary>Como funciona a integração entre os 3 surveys?</summary>
+        <p>Cada survey output alimenta o próximo: o <strong>Learning Survey</strong> gera um plano que o <strong>wizard auto-fill (modo D)</strong> usa para popular 6 dos 9 inputs do Implementation Guide. O <strong>Developer Survey</strong> calcula maturidade real por dimensão, que pode ser cruzada com a maturidade declarada da liderança no PDF de Score Justification.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Download -->
+<section class="download" id="download">
+  <div class="container">
+    <div class="download__inner">
+      <div>
+        <div class="section__eyebrow">Pronto para usar</div>
+        <h2 class="section__title">Baixe o kit agora</h2>
+        <p class="section__lede">
+          Repositório público no GitHub com instalação em &lt; 2 minutos. Sem registro, sem custo,
+          sem dependência de plataforma SaaS. Validado por smoke test automatizado em cada commit.
+        </p>
+        <div class="download__cta">
+          <a class="btn btn--primary" href="https://github.com/paulanunes85/ai-maturity-client-kit/archive/refs/heads/main.zip">
+            ⬇ Baixar ZIP (main)
+          </a>
+          <a class="btn btn--secondary" href="https://github.com/paulanunes85/ai-maturity-client-kit" style="margin-left: 10px;">
+            ↗ Ver no GitHub
+          </a>
+        </div>
+        <p class="download__hint">
+          ou clone com <code style="background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:4px;color:#9adfff">git clone https://github.com/paulanunes85/ai-maturity-client-kit.git</code>
+        </p>
+      </div>
+
+      <div class="download__panel">
+        <div class="download__panel-title">Conteúdo do ZIP</div>
+        <ul>
+          <li>📋 Framework completo<code>158 perguntas</code></li>
+          <li>📝 3 surveys (Forms + JSON)<code>75 + 32 q</code></li>
+          <li>🎯 12 skills Copilot Chat<code>.github/skills/</code></li>
+          <li>🤖 Agente concierge<code>.agent.md</code></li>
+          <li>📄 Templates Jinja2<code>5 PDFs</code></li>
+          <li>🎨 Branding paulasilva-ms<code>4 cores MS</code></li>
+          <li>🧪 Dados de exemplo<code>Cliente Exemplo S.A.</code></li>
+          <li>📘 Documentação PT-BR<code>~3000 linhas</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__sig">
+      <svg viewBox="0 0 1914 1062" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#F25022" d="M532 131 L36 462 L13 497 L13 560 L23 582 L48 604 L521 923 L539 926 L539 699 L547 680 L314 530 L527 395 L551 371 L558 347 L558 155 L547 135 Z"/>
+        <path fill="#7FBA00" d="M551 681 L542 693 L540 700 L540 917 L546 930 L558 940 L571 943 L778 943 L788 941 L798 935 L809 910 L809 702 L807 694 L799 682 L784 674 L566 674 Z"/>
+        <path fill="#FFB900" d="M1390 16 L1208 13 L1184 23 L1171 38 L768 1009 L768 1026 L778 1038 L957 1042 L975 1037 L995 1017 L1346 179 L1349 145 L1367 129 L1401 47 L1402 31 Z"/>
+        <path fill="#00A4EF" d="M1369 131 L1350 149 L1349 355 L1354 369 L1385 399 L1592 528 L1373 667 L1354 688 L1349 703 L1349 907 L1361 924 L1377 926 L1871 595 L1893 563 L1894 501 L1885 477 L1863 456 L1398 142 Z"/>
+      </svg>
+      <div class="footer__sig-text">
+        <div class="footer__sig-name">Paula Silva</div>
+        <div class="footer__sig-role">Software Global Black Belt</div>
+      </div>
+    </div>
+    <div class="footer__contact">
+      <a href="mailto:paulasilva@microsoft.com">paulasilva@microsoft.com</a><br>
+      <span style="font-size:11px">Building the future of software development with AI and Agentic DevOps</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
