@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Wizard de Guia de Implementação · AI Maturity Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../referencia/branding/tokens-paulasilva-ms.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --color-primary: var(--c-blue-500, #00A4EF);
+    --color-primary-hover: var(--c-blue-700, #0076AC);
+    --color-primary-light: var(--c-blue-50, #E5F6FD);
+  }
+  body {
+    background: #f8fafc;
+    color: #1e293b;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  textarea { font-family: inherit; }
+
+  /* paulasilva-ms chrome bar */
+  .deck-brand {
+    position: fixed; top: 14px; right: 18px; z-index: 50;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    padding: 6px 12px;
+    border: 1px solid var(--rule, #E5E5E0);
+    border-radius: 999px;
+  }
+  .deck-brand__text {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3, #737373);
+    white-space: nowrap;
+  }
+
+</style>
+</head>
+<body class="min-h-screen">
+<!-- paulasilva-ms chrome bar -->
+<div class="deck-brand">
+  <svg viewBox="0 0 1914 1062" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="paulasilva" style="width:18px;height:auto;flex-shrink:0;">
+    <title>paulasilva</title>
+    <path fill="#F25022" d="M532 131 L36 462 L13 497 L13 560 L23 582 L48 604 L521 923 L539 926 L539 699 L547 680 L314 530 L527 395 L551 371 L558 347 L558 155 L547 135 Z"/>
+    <path fill="#7FBA00" d="M551 681 L542 693 L540 700 L540 917 L546 930 L558 940 L571 943 L778 943 L788 941 L798 935 L809 910 L809 702 L807 694 L799 682 L784 674 L566 674 Z"/>
+    <path fill="#FFB900" d="M1390 16 L1208 13 L1184 23 L1171 38 L768 1009 L768 1026 L778 1038 L957 1042 L975 1037 L995 1017 L1346 179 L1349 145 L1367 129 L1401 47 L1402 31 Z"/>
+    <path fill="#00A4EF" d="M1369 131 L1350 149 L1349 355 L1354 369 L1385 399 L1592 528 L1373 667 L1354 688 L1349 703 L1349 907 L1361 924 L1377 926 L1871 595 L1893 563 L1894 501 L1885 477 L1863 456 L1398 142 Z"/>
+  </svg>
+  <span class="deck-brand__text">Paula Silva | Software Global Black Belt</span>
+</div>
+
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div>
+      <h1 class="text-lg font-bold text-gray-900">Wizard de Guia de Implementação</h1>
+      <p class="text-xs text-gray-500 mt-0.5">
+        9 inputs alimentam a <span class="font-mono">Parte 4 do Roadmap (PDF)</span> · espelha o wizard da plataforma
+      </p>
+    </div>
+    <div class="flex items-center gap-3 text-sm">
+      <div class="text-right">
+        <div class="text-xs text-gray-500">Completude</div>
+        <div class="font-semibold text-[var(--color-primary)]"><span id="pct">0</span>%</div>
+      </div>
+      <button onclick="downloadJSON()" class="px-4 py-2 bg-[var(--color-primary)] text-white rounded-md text-sm font-medium hover:bg-[var(--color-primary-hover)]">
+        💾 Baixar JSON
+      </button>
+    </div>
+  </div>
+  <div class="h-1 bg-gray-200">
+    <div id="progress-bar" class="h-full bg-[var(--color-primary)] transition-all duration-300" style="width: 0%"></div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-8">
+
+  <!-- Stepper navigation -->
+  <nav class="mb-6 overflow-x-auto">
+    <ol id="stepper" class="flex items-center gap-2 text-xs whitespace-nowrap">
+      <!-- populated by JS -->
+    </ol>
+  </nav>
+
+  <!-- Step content -->
+  <article class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+    <header>
+      <div class="text-xs uppercase tracking-wide text-gray-500 mb-1">
+        Passo <span id="step-num">1</span> de 9
+      </div>
+      <h2 id="step-title" class="text-xl font-bold text-gray-900">—</h2>
+      <p id="step-helper" class="text-sm text-gray-600 mt-1">—</p>
+    </header>
+
+    <textarea id="step-input"
+      class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+      placeholder="Preencha aqui..."></textarea>
+
+    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+      <div class="text-xs text-gray-500">
+        <span id="char-count">0</span> caracteres
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btn-prev" onclick="prevStep()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-40">
+          ← Anterior
+        </button>
+        <button id="btn-next" onclick="nextStep()" class="px-4 py-2 bg-[var(--color-primary)] text-white rounded-md text-sm font-medium hover:bg-[var(--color-primary-hover)]">
+          Próximo →
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <!-- Persistence info -->
+  <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-900">
+    <div class="font-semibold mb-1">⚠️ Onde os dados ficam salvos</div>
+    <p class="text-amber-800 leading-relaxed">
+      As respostas são salvas <strong>localmente no seu navegador</strong> (localStorage) — não vão para nenhum servidor.
+      Para usar no kit, clique em <strong>💾 Baixar JSON</strong> e mova o arquivo
+      <span class="font-mono text-xs bg-amber-100 px-1 rounded">implementation-guide-inputs.json</span>
+      para a raiz do <span class="font-mono text-xs bg-amber-100 px-1 rounded">kit-cliente/</span>.
+    </p>
+  </div>
+
+  <!-- All steps preview -->
+  <details class="mt-4 bg-white rounded-xl border border-gray-200">
+    <summary class="cursor-pointer px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50">
+      📋 Ver todas as 9 respostas (preview)
+    </summary>
+    <div id="all-preview" class="px-5 py-4 border-t border-gray-100 space-y-3 text-sm"></div>
+  </details>
+
+  <!-- Reset -->
+  <div class="mt-4 text-center">
+    <button onclick="resetAll()" class="text-xs text-gray-500 hover:text-red-600 underline">
+      Limpar tudo (apaga localStorage)
+    </button>
+  </div>
+
+</main>
+
+<footer class="max-w-4xl mx-auto px-6 py-6 text-center text-xs text-gray-500">
+  Wizard standalone · espelha <code>app/frontend/src/components/dashboard/ImplementationGuideWizard.tsx</code> da plataforma ·
+  Output formato igual à API <code>/api/wizard/implementation-guide-inputs</code>
+</footer>
+
+<script>
+const STEPS = [
+  {
+    key: "steering_committee",
+    title: "Comitê Executivo Diretivo",
+    helper: "Sponsor, líder do programa, líder financeiro, líder de segurança, change champion. Um por linha.",
+    placeholder: "Maria Santos — CTO (Sponsor)\nJames Carter — VP de Engenharia\nPriya Iyer — CISO\nDavid Lin — CFO (Aprovador de Investimento)\nSofia Mendes — Head of Product",
+    rows: 6,
+  },
+  {
+    key: "technology_product_owner",
+    title: "Technology Product Owner (TPO)",
+    helper: "Nome, função, responsabilidades, autoridade de decisão.",
+    placeholder: "Programa Manager: Carlos Rivera\n\nMembros do escritório:\n• Anna Becker — Lead Architect\n• Tom Yamada — Change Manager\n• Lisa Park — PMO Lead\n\nAutoridade: aprovação de hires (até 8 FTE), bloqueio de roadmap, escalação para Steering.",
+    rows: 6,
+  },
+  {
+    key: "raci_matrix",
+    title: "Matriz RACI",
+    helper: "Atividade → Responsible / Accountable / Consulted / Informed. Tabela markdown ou texto livre.",
+    placeholder: "| Atividade | R | A | C | I |\n|---|---|---|---|---|\n| Aprovação de iniciativa por pillar | Pillar Lead | TPO Director | Steering | Toda Engenharia |\n| Sign-off de Effort Tier | TPO Director | CFO + CTO | Steering | Pillar Leads |\n| Aprovação de hire | Pillar Lead | VP Eng | HR Partner | TPO |\n| Atualização trimestral de roadmap | TPO Director | CTO | Steering | Toda Eng |\n| Escalação de risco | TPO Director | Steering | Pillar Leads | Working Groups |",
+    rows: 8,
+  },
+  {
+    key: "communication_plan",
+    title: "Plano de Comunicação",
+    helper: "Audiência, canal, frequência, owner, mensagens-chave.",
+    placeholder: "| Audiência | Canal | Frequência | Owner |\n|---|---|---|---|\n| Toda Engenharia | Town Hall + newsletter | Trimestral + Mensal | Change Manager |\n| Working Groups dos Pillars | Slack + stand-up semanal | Semanal | Pillar Leads |\n| Steering Executivo | Reunião mensal | Mensal | TPO Director |\n| Champions Network | Canal Slack + cohort | Contínuo + Mensal | DevEx Lead |\n| Stakeholders externos | Business Review | Trimestral | CTO |",
+    rows: 7,
+  },
+  {
+    key: "training_plan",
+    title: "Plano de Treinamento",
+    helper: "Cohort, módulos, horas, competências-alvo, critérios de conclusão.",
+    placeholder: "| Audiência | Formato | Cadência |\n|---|---|---|\n| Todos Devs | Workshop AI-assisted coding (4h hands-on) | Cohorts mensais |\n| Champions | Train-the-trainer + community calls | Quinzenal |\n| Eng Managers | Briefing de liderança + playbook de adoção | Trimestral |\n| SREs | SRE bootcamp + chaos engineering cert | Onboarding H1 + refresher trimestral |",
+    rows: 6,
+  },
+  {
+    key: "adkar_notes",
+    title: "Plano de Mudança ADKAR",
+    helper: "Awareness, Desire, Knowledge, Ability, Reinforcement — intervenções por estágio.",
+    placeholder: "**Awareness:** Town Hall trimestral + emails personalizados de liderança explicando o porquê da transformação\n\n**Desire:** Showcases de Champions Network (3-5 demos por trimestre) + reconhecimento público de adoção\n\n**Knowledge:** Workshop hands-on de 4h + biblioteca de cases internos no Confluence\n\n**Ability:** Pair programming com Champions, office hours semanais, environment de prática (sandbox)\n\n**Reinforcement:** Métricas DORA expostas em dashboard público, OKRs por squad com adoção, retros de roadblocks",
+    rows: 8,
+  },
+  {
+    key: "quick_wins_w1_4",
+    title: "Quick Wins — Semanas 1-4",
+    helper: "Iniciativas pequenas que constroem momentum no primeiro mês.",
+    placeholder: "1. Habilitar GitHub Copilot Enterprise para 2 squads piloto (W1)\n2. Setup de dashboard DORA básico no Grafana (W2)\n3. Workshop introdutório de 2h (40+ devs) (W3)\n4. Primeira biblioteca de prompts compartilhada (W4)",
+    rows: 5,
+  },
+  {
+    key: "quick_wins_w5_8",
+    title: "Quick Wins — Semanas 5-8",
+    helper: "Segunda onda de melhorias visíveis.",
+    placeholder: "5. Expandir Copilot para 50% dos devs (W5-6)\n6. Habilitar GHAS em todos os repos (W6)\n7. Primeiro pilot de Code Review IA (W7)\n8. Métricas DORA exibidas no all-hands (W8)",
+    rows: 5,
+  },
+  {
+    key: "quick_wins_w9_12",
+    title: "Quick Wins — Semanas 9-12",
+    helper: "Solidificando a base antes de escalar para H2.",
+    placeholder: "9. Expansão para 80% dos devs (W9-10)\n10. SBOM gerado para 100% dos serviços críticos (W10)\n11. Champions Network formalizado (12+ pessoas) (W11)\n12. Retro completa + plano H2 publicado (W12)",
+    rows: 5,
+  },
+];
+
+const STORAGE_KEY = "ai-maturity-implementation-guide-inputs-v1";
+
+let stepIdx = 0;
+let inputs = {};
+
+// Load from localStorage
+function loadInputs() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) inputs = JSON.parse(raw);
+  } catch (e) {
+    inputs = {};
+  }
+}
+
+function saveInputs() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(inputs));
+  } catch (e) {
+    console.error("localStorage save failed:", e);
+  }
+}
+
+function renderStep() {
+  const s = STEPS[stepIdx];
+  document.getElementById("step-num").textContent = stepIdx + 1;
+  document.getElementById("step-title").textContent = s.title;
+  document.getElementById("step-helper").textContent = s.helper;
+  const ta = document.getElementById("step-input");
+  ta.value = inputs[s.key] || "";
+  ta.placeholder = s.placeholder;
+  ta.rows = s.rows;
+  document.getElementById("char-count").textContent = ta.value.length;
+
+  // Buttons
+  document.getElementById("btn-prev").disabled = stepIdx === 0;
+  document.getElementById("btn-next").textContent = stepIdx === STEPS.length - 1 ? "Salvar e revisar ✓" : "Próximo →";
+
+  renderStepper();
+  updateProgress();
+}
+
+function renderStepper() {
+  const ol = document.getElementById("stepper");
+  ol.innerHTML = STEPS.map((s, i) => {
+    const filled = inputs[s.key] && inputs[s.key].trim().length > 0;
+    const active = i === stepIdx;
+    let cls = "px-2 py-1 rounded font-medium border ";
+    if (active) cls += "bg-[var(--color-primary)] text-white border-[var(--color-primary)]";
+    else if (filled) cls += "bg-emerald-50 text-emerald-700 border-emerald-200";
+    else cls += "bg-white text-gray-500 border-gray-200";
+    const check = filled && !active ? " ✓" : "";
+    return `<li><button onclick="goToStep(${i})" class="${cls}">${i + 1}. ${s.title}${check}</button></li>`;
+  }).join('<li class="text-gray-300">→</li>');
+}
+
+function updateProgress() {
+  const filled = STEPS.filter(s => inputs[s.key] && inputs[s.key].trim().length > 0).length;
+  const pct = Math.round((filled / STEPS.length) * 100);
+  document.getElementById("pct").textContent = pct;
+  document.getElementById("progress-bar").style.width = pct + "%";
+}
+
+function syncInput() {
+  const s = STEPS[stepIdx];
+  const ta = document.getElementById("step-input");
+  inputs[s.key] = ta.value;
+  document.getElementById("char-count").textContent = ta.value.length;
+  saveInputs();
+  updateProgress();
+  renderStepper();
+}
+
+function nextStep() {
+  syncInput();
+  if (stepIdx < STEPS.length - 1) {
+    stepIdx++;
+    renderStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // last step → open preview
+    renderAllPreview();
+    document.querySelector("details").open = true;
+    document.querySelector("details").scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function prevStep() {
+  syncInput();
+  if (stepIdx > 0) {
+    stepIdx--;
+    renderStep();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+function goToStep(i) {
+  syncInput();
+  stepIdx = i;
+  renderStep();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderAllPreview() {
+  const div = document.getElementById("all-preview");
+  div.innerHTML = STEPS.map(s => {
+    const v = inputs[s.key] || "";
+    const filled = v.trim().length > 0;
+    const status = filled
+      ? `<span class="text-emerald-600 text-xs">✓ ${v.length} caracteres</span>`
+      : `<span class="text-amber-600 text-xs">⚠ vazio</span>`;
+    return `
+      <div class="border-l-2 ${filled ? 'border-emerald-300' : 'border-amber-300'} pl-3">
+        <div class="font-semibold text-gray-800">${s.title} ${status}</div>
+        <pre class="mt-1 text-xs text-gray-600 whitespace-pre-wrap">${v ? escapeHTML(v.substring(0, 200)) + (v.length > 200 ? '…' : '') : '(não preenchido)'}</pre>
+      </div>
+    `;
+  }).join("");
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function downloadJSON() {
+  syncInput();
+  // Match the schema expected by render_reports.py / sample_payload.json::implementation_guide_inputs
+  const payload = {
+    metadata: {
+      generated_at: new Date().toISOString(),
+      generator: "implementation-guide-wizard.html v1.0",
+      completion_pct: Math.round((STEPS.filter(s => inputs[s.key] && inputs[s.key].trim().length > 0).length / STEPS.length) * 100),
+    },
+    implementation_guide_inputs: {
+      // Schema mirrors sample_payload.json::implementation_guide_inputs
+      executive_steering_committee: inputs.steering_committee || "",
+      tpo: inputs.technology_product_owner || "",
+      raci_matrix: inputs.raci_matrix || "",
+      communication_plan: inputs.communication_plan || "",
+      training_plan: inputs.training_plan || "",
+      adkar_notes: inputs.adkar_notes || "",
+      quick_wins_w1_4: inputs.quick_wins_w1_4 || "",
+      quick_wins_w5_8: inputs.quick_wins_w5_8 || "",
+      quick_wins_w9_12: inputs.quick_wins_w9_12 || "",
+    },
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "implementation-guide-inputs.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function resetAll() {
+  if (!confirm("Apagar todos os 9 inputs deste wizard? Esta ação não pode ser desfeita.")) return;
+  inputs = {};
+  localStorage.removeItem(STORAGE_KEY);
+  stepIdx = 0;
+  renderStep();
+}
+
+// Initialize
+loadInputs();
+renderStep();
+document.getElementById("step-input").addEventListener("input", syncInput);
+</script>
+
+</body>
+</html>

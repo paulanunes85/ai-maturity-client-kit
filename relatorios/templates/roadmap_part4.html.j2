@@ -1,0 +1,585 @@
+{# =============================================================================
+   Template: Roadmap Part 4 — Implementation Guide (FR-REPORT-006)
+   Layout  : A4 portrait, ~14-20 pages
+   Sections: 1 Exec Summary, 2 Governance, 3 Implementation Phases,
+             4 Resource Plan, 5 Procurement Plan, 6 Risk Mgmt,
+             7 Change Mgmt, 8 Success Metrics, 9 Quick Wins, 10 Appendices
+   See SDD §6.2.3 for full section spec.
+   ★ Wizard inputs via implementation_guide_inputs (FR-REPORT-011);
+     placeholders shown when fields are empty.
+   ============================================================================= #}
+{% from "_components.html.j2" import
+   cover_block,
+   priority_badge,
+   pe_indicator,
+   gap_cell,
+   effort_pill,
+   horizon_pill,
+   effort_tier_legend,
+   wizard_placeholder
+%}
+{% set wiz = implementation_guide_inputs %}
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ t('report.implementation_guide.title') }} — {{ organization.name }}</title>
+  <link rel="stylesheet" href="_print.css">
+</head>
+<body>
+
+  {{ cover_block(
+       organization,
+       assessment,
+       branding,
+       t('report.implementation_guide.title'),
+       t('report.implementation_guide.subtitle')
+  ) }}
+
+  {# ─── TOC ──────────────────────────────────────────────────── #}
+  <section class="toc">
+    <h1>{{ t('section.toc') }}</h1>
+    <ul class="toc__list">
+      <li><a href="#sec-1">1. {{ t('section.executive_summary') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-2">2. {{ t('section.governance_structure') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-3">3. {{ t('section.implementation_phases') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-4">4. {{ t('section.resource_plan') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-5">5. {{ t('section.technology_procurement') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-6">6. {{ t('section.risk_management') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-7">7. {{ t('section.change_management') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-8">8. {{ t('section.success_metrics_reporting') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-9">9. {{ t('section.quick_wins') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-10">10. {{ t('section.appendices') }}</a><span class="toc__page"></span></li>
+    </ul>
+  </section>
+
+  {# ─── §1 EXECUTIVE SUMMARY ─────────────────────────────────── #}
+  <section id="sec-1" class="section">
+    <h1>1. {{ t('section.executive_summary') }}</h1>
+    <p class="lead">{{ t('impl_guide.exec_summary.intro', org=organization.name) }}</p>
+
+    <h2>1.1 {{ t('section.transformation_overview') }}</h2>
+    <p>{{ t('impl_guide.transformation_overview', total_caps=(capabilities | length), pillars_count=(scores.pillars | length)) }}</p>
+
+    <table class="kv-table">
+      <tr><th>{{ t('table.current_overall') }}</th><td><strong>L{{ '%.2f' | format(scores.overall.weighted_avg) }}</strong> ({{ scores.overall.level_label }})</td></tr>
+      <tr><th>{{ t('table.target_overall') }}</th><td><strong>L{{ '%.1f' | format(scores.overall.target) }}</strong></td></tr>
+      <tr><th>{{ t('table.gap_to_close') }}</th><td><strong>+{{ '%.2f' | format(scores.overall.gap) }}</strong></td></tr>
+      <tr><th>{{ t('table.timeline') }}</th><td>{{ t('label.duration_36mo') }} (H1 + H2 + H3)</td></tr>
+      <tr><th>{{ t('table.high_priority_gaps') }}</th><td>{{ capabilities | selectattr('gap_priority', 'equalto', 'HIGH') | list | length }}</td></tr>
+    </table>
+
+    <h2>1.2 {{ t('section.effort_summary_by_pillar') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.pillar') }}</th>
+          <th class="num">{{ t('table.current') }}</th>
+          <th class="num">{{ t('table.target') }}</th>
+          <th>{{ t('table.effort_tier') }}</th>
+          <th>{{ t('table.focus') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pillar in scores.pillars %}
+        <tr>
+          <td><strong>{{ pillar.id }}: {{ pillar.name }}</strong></td>
+          <td class="num">L{{ '%.2f' | format(pillar.weighted_avg) }}</td>
+          <td class="num">L{{ '%.1f' | format(pillar.target) }}</td>
+          <td>{{ effort_pill(technology_resources_per_pillar[pillar.id].total_effort_tier or 'XL') }}</td>
+          <td>{{ technology_resources_per_pillar[pillar.id].focus_summary or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {{ effort_tier_legend() }}
+  </section>
+
+  {# ─── §2 GOVERNANCE STRUCTURE ──────────────────────────────── #}
+  <section id="sec-2" class="section">
+    <h1>2. {{ t('section.governance_structure') }}</h1>
+    <p class="lead">{{ t('impl_guide.governance.intro') }}</p>
+
+    <h2>2.1 {{ t('section.executive_steering_committee') }}</h2>
+    <p>{{ t('governance.steering.purpose') }}</p>
+    {% if wiz.get('executive_steering_committee') %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.name') }}</th>
+          <th>{{ t('table.role') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for member in wiz['executive_steering_committee'] %}
+        <tr>
+          <td>{{ member.name }}</td>
+          <td><strong>{{ member.role }}</strong></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.steering_committee')) }}</p>
+    {% endif %}
+    <p class="text-muted"><strong>{{ t('governance.cadence') }}:</strong> {{ t('cadence.monthly') }}</p>
+
+    <h2>2.2 {{ t('section.tpo') }}</h2>
+    <p>{{ t('governance.tpo.purpose') }}</p>
+    {% if wiz.get('tpo') and wiz['tpo'].get('program_manager') %}
+    <table class="kv-table">
+      <tr><th>{{ t('label.program_manager') }}</th><td><strong>{{ wiz['tpo']['program_manager'] }}</strong></td></tr>
+      {% if wiz['tpo'].get('members') %}
+      <tr><th>{{ t('label.members') }}</th><td>{{ wiz['tpo']['members'] | join(', ') }}</td></tr>
+      {% endif %}
+    </table>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.tpo')) }}</p>
+    {% endif %}
+    <p class="text-muted"><strong>{{ t('governance.cadence') }}:</strong> {{ t('cadence.weekly') }}</p>
+
+    <h2>2.3 {{ t('section.pillar_working_groups') }}</h2>
+    {% for pillar in scores.pillars %}
+    <h3>{{ pillar.id }}: {{ pillar.name }}</h3>
+    <p class="text-muted">{{ t('governance.working_group.purpose', pillar_name=pillar.name) }}</p>
+    {% endfor %}
+    <p class="text-muted"><strong>{{ t('governance.cadence') }}:</strong> {{ t('cadence.weekly') }}</p>
+
+    <h2>2.4 {{ t('section.raci_matrix') }}</h2>
+    {% if wiz.get('raci_matrix') %}
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.activity') }}</th>
+          <th>R</th>
+          <th>A</th>
+          <th>C</th>
+          <th>I</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in wiz['raci_matrix'] %}
+        <tr>
+          <td><strong>{{ row.activity }}</strong></td>
+          <td>{{ row.r }}</td>
+          <td>{{ row.a }}</td>
+          <td>{{ row.c }}</td>
+          <td>{{ row.i }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="text-faint">{{ t('raci.legend') }}</p>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.raci_matrix')) }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §3 IMPLEMENTATION PHASES ─────────────────────────────── #}
+  <section id="sec-3" class="section">
+    <h1>3. {{ t('section.implementation_phases') }}</h1>
+
+    <h2>3.1 {{ t('section.phase_0') }}</h2>
+    <p class="lead">{{ t('phase_0.intro') }}</p>
+    <h3>{{ t('section.objectives') }}</h3>
+    <ul>
+      <li>{{ t('phase_0.objective_1') }}</li>
+      <li>{{ t('phase_0.objective_2') }}</li>
+      <li>{{ t('phase_0.objective_3') }}</li>
+      <li>{{ t('phase_0.objective_4') }}</li>
+    </ul>
+    <h3>{{ t('section.success_criteria') }}</h3>
+    <ul class="checklist">
+      <li>{{ t('phase_0.success_1') }}</li>
+      <li>{{ t('phase_0.success_2') }}</li>
+      <li>{{ t('phase_0.success_3') }}</li>
+    </ul>
+
+    {% for h in horizons %}
+    <h2>3.{{ loop.index + 1 }} {{ t('horizon.' ~ (h.id | lower) ~ '.full_label') }}</h2>
+    {% if h.narrative %}<p class="lead">{{ h.narrative }}</p>{% endif %}
+
+    <h3>{{ t('section.objectives_by_pillar') }}</h3>
+    <div class="horizon-card horizon-card--{{ h.id | lower }}">
+      <div class="horizon-card__header">
+        <h4>{{ h.id }}: {{ h.name }}</h4>
+        <div class="horizon-card__meta">
+          <span>{{ h.duration_label }}</span>
+          <span>{{ t('label.target_maturity') }}: <strong>L{{ '%.1f' | format(h.target_overall_maturity) }}</strong></span>
+        </div>
+      </div>
+      <div class="horizon-card__pillars">
+        {% for pillar in scores.pillars %}
+        <div class="horizon-card__pillar">
+          <h4>{{ pillar.id }}: {{ pillar.name }}</h4>
+          <ul class="checklist">
+            {% for cap in capabilities | selectattr('pillar_id', 'equalto', pillar.id) %}
+            {% if h.id == 'H1' and cap.h1_initiatives %}
+            {% for init in cap.h1_initiatives[:2] %}<li>{{ init }}</li>{% endfor %}
+            {% endif %}
+            {% endfor %}
+            {% if h.key_initiatives and h.id != 'H1' %}
+            {% for init in h.key_initiatives[:3] %}
+            {% if init['items'] %}{% for item in init['items'][:1] %}<li>{{ item }}</li>{% endfor %}{% endif %}
+            {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+
+  {# ─── §4 RESOURCE PLAN ────────────────────────────────────── #}
+  <section id="sec-4" class="section">
+    <h1>4. {{ t('section.resource_plan') }}</h1>
+
+    <h2>4.1 {{ t('section.team_structure') }}</h2>
+    <h3>{{ t('section.core_transformation_team') }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.role') }}</th>
+          <th class="num">{{ t('table.ftes') }}</th>
+          <th>{{ t('table.responsibility') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>{{ t('role.program_director') }}</strong></td><td class="num">1</td><td>{{ t('role.program_director.scope') }}</td></tr>
+        <tr><td><strong>{{ t('role.lead_architect') }}</strong></td><td class="num">1</td><td>{{ t('role.lead_architect.scope') }}</td></tr>
+        <tr><td><strong>{{ t('role.change_manager') }}</strong></td><td class="num">1</td><td>{{ t('role.change_manager.scope') }}</td></tr>
+        <tr><td><strong>{{ t('role.pmo_analyst') }}</strong></td><td class="num">2</td><td>{{ t('role.pmo_analyst.scope') }}</td></tr>
+      </tbody>
+    </table>
+
+    {% for pillar in scores.pillars %}
+    <h3>{{ pillar.id }}: {{ pillar.name }} {{ t('label.team') }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.role') }}</th>
+          <th class="num">{{ t('table.ftes') }}</th>
+          <th>{{ t('table.horizon') }}</th>
+          <th>{{ t('table.focus') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for role in technology_resources_per_pillar[pillar.id].team_skills %}
+        <tr>
+          <td><strong>{{ role.role }}</strong></td>
+          <td class="num">{{ role.ftes }}</td>
+          <td>{{ horizon_pill(role.horizon) }}</td>
+          <td>{{ role.focus }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endfor %}
+
+    <h2>4.2 {{ t('section.hiring_timeline') }}</h2>
+    <p class="text-muted">{{ t('hiring.intro') }}</p>
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.role') }}</th>
+          <th>{{ t('table.start_month') }}</th>
+          <th>{{ t('table.source') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>{{ t('role.program_director') }}</td><td>{{ t('label.month') }} 1</td><td>{{ t('source.internal_or_hire') }}</td></tr>
+        <tr><td>{{ t('role.lead_architect') }}</td><td>{{ t('label.month') }} 1</td><td>{{ t('source.internal') }}</td></tr>
+        <tr><td>{{ t('role.platform_engineering_lead') }}</td><td>{{ t('label.month') }} 2</td><td>{{ t('source.hire') }}</td></tr>
+        <tr><td>{{ t('role.platform_engineers') }}</td><td>{{ t('label.month') }} 3-6</td><td>{{ t('source.hire_or_contract') }}</td></tr>
+        <tr><td>{{ t('role.dev_experience_engineers') }}</td><td>{{ t('label.month') }} 4-8</td><td>{{ t('source.hire_or_contract') }}</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  {# ─── §5 TECHNOLOGY PROCUREMENT PLAN ──────────────────────── #}
+  <section id="sec-5" class="section">
+    <h1>5. {{ t('section.technology_procurement') }}</h1>
+    <p class="text-muted">{{ t('procurement.intro') }}</p>
+
+    {% for h in horizons[:2] %}
+    <h2>5.{{ loop.index }} {{ t('procurement.h_label', horizon=h.id, duration=h.duration_label) }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.technology') }}</th>
+          <th>{{ t('table.pillar') }}</th>
+          <th>{{ t('table.effort') }}</th>
+          <th>{{ t('table.purpose') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pillar in scores.pillars %}
+        {% for tech in technology_resources_per_pillar[pillar.id].technology_investments if tech.horizon == h.id %}
+        <tr>
+          <td><strong>{{ tech.technology }}</strong></td>
+          <td>{{ pillar.id }}</td>
+          <td>{{ effort_pill(tech.effort_tier) }}</td>
+          <td>{{ tech.purpose }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endfor %}
+
+    <h2>5.3 {{ t('section.existing_tech_leverage') }}</h2>
+    <p>{{ t('procurement.leverage_intro') }}</p>
+    {% if organization.current_devops_tools %}
+    <p><strong>{{ t('label.current_tools') }}:</strong> {{ organization.current_devops_tools }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §6 RISK MANAGEMENT ────────────────────────────────── #}
+  <section id="sec-6" class="section">
+    <h1>6. {{ t('section.risk_management') }}</h1>
+
+    <h2>6.1 {{ t('section.risk_register') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.id') }}</th>
+          <th>{{ t('table.risk') }}</th>
+          <th>{{ t('table.impact') }}</th>
+          <th>{{ t('table.probability') }}</th>
+          <th>{{ t('table.mitigation') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for risk in risks_per_pillar.cross_cutting %}
+        <tr>
+          <td class="mono">R{{ loop.index }}</td>
+          <td><strong>{{ risk.risk }}</strong></td>
+          <td>{{ priority_badge(risk.impact | lower) }}</td>
+          <td>{{ priority_badge(risk.probability | lower) }}</td>
+          <td>{{ risk.mitigation }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  {# ─── §7 CHANGE MANAGEMENT ──────────────────────────────── #}
+  <section id="sec-7" class="section">
+    <h1>7. {{ t('section.change_management') }}</h1>
+
+    <h2>7.1 {{ t('section.adkar') }}</h2>
+    <p class="text-muted">{{ t('adkar.intro') }}</p>
+    {% if wiz.get('adkar_notes') %}
+    <p>{{ wiz['adkar_notes'] }}</p>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.adkar')) }}</p>
+    {% endif %}
+
+    <h2>7.2 {{ t('section.communication_plan') }}</h2>
+    {% if wiz.get('communication_plan') %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.audience') }}</th>
+          <th>{{ t('table.channel') }}</th>
+          <th>{{ t('table.frequency') }}</th>
+          <th>{{ t('table.owner') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in wiz['communication_plan'] %}
+        <tr>
+          <td><strong>{{ c.audience }}</strong></td>
+          <td>{{ c.channel }}</td>
+          <td>{{ c.frequency }}</td>
+          <td>{{ c.owner }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.communication_plan')) }}</p>
+    {% endif %}
+
+    <h2>7.3 {{ t('section.training_plan') }}</h2>
+    {% if wiz.get('training_plan') %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.audience') }}</th>
+          <th>{{ t('table.format') }}</th>
+          <th>{{ t('table.cadence') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tp in wiz['training_plan'] %}
+        <tr>
+          <td><strong>{{ tp.audience }}</strong></td>
+          <td>{{ tp.format }}</td>
+          <td>{{ tp.cadence }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.training_plan')) }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §8 SUCCESS METRICS & REPORTING ───────────────────── #}
+  <section id="sec-8" class="section">
+    <h1>8. {{ t('section.success_metrics_reporting') }}</h1>
+
+    <h2>8.1 {{ t('section.transformation_kpis') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.kpi') }}</th>
+          <th class="num">{{ t('table.current') }}</th>
+          <th class="num">{{ t('table.h1_target') }}</th>
+          <th class="num">{{ t('table.h2_target') }}</th>
+          <th class="num">{{ t('table.h3_target') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>{{ t('kpi.overall_maturity') }}</strong></td>
+          <td class="num">L{{ '%.2f' | format(scores.overall.weighted_avg) }}</td>
+          <td class="num">L2.5</td>
+          <td class="num">L3.5</td>
+          <td class="num"><strong>L4.0</strong></td>
+        </tr>
+        <tr>
+          <td><strong>{{ t('kpi.pe_readiness') }}</strong></td>
+          <td class="num">{{ '%.2f' | format(scores.pe_readiness.weighted_score) }}</td>
+          <td class="num">2.0</td>
+          <td class="num">3.0</td>
+          <td class="num"><strong>3.5+</strong></td>
+        </tr>
+        <tr>
+          <td><strong>{{ t('kpi.high_priority_gaps_closed') }}</strong></td>
+          <td class="num">0%</td>
+          <td class="num">30%</td>
+          <td class="num">70%</td>
+          <td class="num"><strong>100%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>8.2 {{ t('section.reporting_cadence') }}</h2>
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.report_type') }}</th>
+          <th>{{ t('table.audience') }}</th>
+          <th>{{ t('table.cadence') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>{{ t('report_type.steering_review') }}</td><td>{{ t('audience.steering') }}</td><td>{{ t('cadence.monthly') }}</td></tr>
+        <tr><td>{{ t('report_type.tpo_status') }}</td><td>{{ t('audience.tpo') }}</td><td>{{ t('cadence.weekly') }}</td></tr>
+        <tr><td>{{ t('report_type.working_group_standup') }}</td><td>{{ t('audience.working_group') }}</td><td>{{ t('cadence.weekly') }}</td></tr>
+        <tr><td>{{ t('report_type.quarterly_business_review') }}</td><td>{{ t('audience.executive') }}</td><td>{{ t('cadence.quarterly') }}</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  {# ─── §9 QUICK WINS (FIRST 90 DAYS) ─────────────────────── #}
+  <section id="sec-9" class="section">
+    <h1>9. {{ t('section.quick_wins') }}</h1>
+    <p class="lead">{{ t('quick_wins.intro') }}</p>
+
+    <h2>9.1 {{ t('section.weeks_1_4') }}</h2>
+    {% if wiz.get('quick_wins_w1_4') %}
+    <ol class="next-steps">
+      {% for w in wiz['quick_wins_w1_4'] %}<li>{{ w }}</li>{% endfor %}
+    </ol>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.quick_wins_w1_4')) }}</p>
+    <ul class="checklist">
+      <li>{{ t('quick_wins.default.w1_4.1') }}</li>
+      <li>{{ t('quick_wins.default.w1_4.2') }}</li>
+      <li>{{ t('quick_wins.default.w1_4.3') }}</li>
+    </ul>
+    {% endif %}
+
+    <h2>9.2 {{ t('section.weeks_5_8') }}</h2>
+    {% if wiz.get('quick_wins_w5_8') %}
+    <ol class="next-steps">
+      {% for w in wiz['quick_wins_w5_8'] %}<li>{{ w }}</li>{% endfor %}
+    </ol>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.quick_wins_w5_8')) }}</p>
+    <ul class="checklist">
+      <li>{{ t('quick_wins.default.w5_8.1') }}</li>
+      <li>{{ t('quick_wins.default.w5_8.2') }}</li>
+      <li>{{ t('quick_wins.default.w5_8.3') }}</li>
+    </ul>
+    {% endif %}
+
+    <h2>9.3 {{ t('section.weeks_9_12') }}</h2>
+    {% if wiz.get('quick_wins_w9_12') %}
+    <ol class="next-steps">
+      {% for w in wiz['quick_wins_w9_12'] %}<li>{{ w }}</li>{% endfor %}
+    </ol>
+    {% else %}
+    <p>{{ wizard_placeholder(t('wizard.field.quick_wins_w9_12')) }}</p>
+    <ul class="checklist">
+      <li>{{ t('quick_wins.default.w9_12.1') }}</li>
+      <li>{{ t('quick_wins.default.w9_12.2') }}</li>
+      <li>{{ t('quick_wins.default.w9_12.3') }}</li>
+    </ul>
+    {% endif %}
+  </section>
+
+  {# ─── §10 APPENDICES ──────────────────────────────────── #}
+  <section id="sec-10" class="section">
+    <h1>10. {{ t('section.appendices') }}</h1>
+
+    <h2>{{ t('appendix.A.title') }}</h2>
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.code') }}</th>
+          <th>{{ t('table.capability') }}</th>
+          <th class="num">{{ t('table.current') }}</th>
+          <th class="num">{{ t('table.target') }}</th>
+          <th class="num">{{ t('table.gap') }}</th>
+          <th>{{ t('table.priority') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cap in capabilities %}
+        <tr>
+          <td class="mono">{{ cap.code }}</td>
+          <td>{{ pe_indicator(cap.is_pe_indicator) }}{{ cap.name }}</td>
+          <td class="num">L{{ '%.1f' | format(cap.current_score) }}</td>
+          <td class="num">L{{ '%.1f' | format(cap.target_score) }}</td>
+          <td class="num">{{ gap_cell(cap.gap, cap.gap_priority) }}</td>
+          <td>{{ priority_badge(cap.gap_priority) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>{{ t('appendix.B.title') }}</h2>
+    <table class="kv-table">
+      <tr><th>{{ t('label.industry') }}</th><td>{{ organization.industry }}</td></tr>
+      <tr><th>{{ t('label.developers') }}</th><td>{{ organization.number_of_developers }}</td></tr>
+      <tr><th>{{ t('label.applications') }}</th><td>{{ organization.number_of_applications }}</td></tr>
+      <tr><th>{{ t('label.cloud') }}</th><td>{{ organization.primary_cloud_provider }}</td></tr>
+      <tr><th>{{ t('label.devops_tools') }}</th><td>{{ organization.current_devops_tools }}</td></tr>
+    </table>
+
+    <h2>{{ t('appendix.C.title') }}</h2>
+    <p>{{ t('appendix.C.intro') }}</p>
+    <table class="kv-table">
+      <tr><th>{{ t('label.organization_contact_role') }}</th><td>{{ organization.primary_contact_role }}</td></tr>
+      <tr><th>{{ t('label.platform_attribution') }}</th><td>{{ branding.platform_name }}</td></tr>
+    </table>
+  </section>
+
+</body>
+</html>

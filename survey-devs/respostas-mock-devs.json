@@ -1,0 +1,1540 @@
+{
+  "metadata": {
+    "source": "template-export-forms-devs.xlsx (5 respondentes mockados)",
+    "imported_at": "2026-05-08T12:00:00Z",
+    "total_respondents": 5,
+    "total_questions": 75
+  },
+  "respondents": [
+    {
+      "respondent_id": 1,
+      "profile_label": "Senior Backend (avançado em IA)",
+      "responses": {
+        "S1-Q1": {
+          "type": "choice",
+          "value": "Architect"
+        },
+        "S1-Q2": {
+          "type": "choice",
+          "value": "< 2 anos"
+        },
+        "S1-Q3": {
+          "type": "choice",
+          "value": "Nunca usei"
+        },
+        "S1-Q4": {
+          "type": "multi",
+          "value": "Go; Java / Kotlin; SQL (foco principal); C# / .NET"
+        },
+        "S1-Q5": {
+          "type": "choice",
+          "value": "4-6h"
+        },
+        "S1-Q6": {
+          "type": "choice",
+          "value": "Sou solo"
+        },
+        "S1-Q7": {
+          "type": "choice",
+          "value": "Remoto 100%"
+        },
+        "S2-Q1": {
+          "type": "choice",
+          "value": "Sim — Copilot Pro (individual)"
+        },
+        "S2-Q2": {
+          "type": "choice",
+          "value": "Diariamente (várias horas)"
+        },
+        "S2-Q3": {
+          "type": "multi",
+          "value": "Ask (responder perguntas); Edit (edição multi-arquivo no IDE)"
+        },
+        "S2-Q4": {
+          "type": "choice",
+          "value": "Edit"
+        },
+        "S2-Q5": {
+          "type": "multi",
+          "value": "Copilot Coding Agent (tarefas autônomas); Inline code completion; Copilot Spaces (contexto compartilhado: repos + docs + custom instructions); Pull Request review (Copilot review)"
+        },
+        "S2-Q6": {
+          "type": "multi",
+          "value": "CLI (gh copilot); GitHub Mobile; Visual Studio; Neovim"
+        },
+        "S2-Q7": {
+          "type": "choice",
+          "value": "+10-20%"
+        },
+        "S2-Q8": {
+          "type": "multi",
+          "value": "Escrever testes; Documentação"
+        },
+        "S2-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Senior Backend (avançado em IA)]"
+        },
+        "S3-Q1": {
+          "type": "multi",
+          "value": "GitHub Copilot Spaces; Azure OpenAI Service (direto via API); Microsoft 365 Copilot"
+        },
+        "S3-Q2": {
+          "type": "multi",
+          "value": "Feature de produto em produção; PoC / experimentação; Foundry Agent Service para agentes autônomos"
+        },
+        "S3-Q3": {
+          "type": "choice",
+          "value": "Uso ativamente em produção"
+        },
+        "S3-Q4": {
+          "type": "choice",
+          "value": "Uso Spaces criados por outros"
+        },
+        "S3-Q5": {
+          "type": "choice",
+          "value": "Conheço mas não uso"
+        },
+        "S3-Q6": {
+          "type": "choice",
+          "value": "Configurei algum MCP server custom"
+        },
+        "S3-Q7": {
+          "type": "choice",
+          "value": "Uso recorrente"
+        },
+        "S4-Q1": {
+          "type": "choice",
+          "value": "Às vezes"
+        },
+        "S4-Q2": {
+          "type": "choice",
+          "value": "Já testei em alguns projetos"
+        },
+        "S4-Q3": {
+          "type": "multi",
+          "value": "Antes de começar (planejar arquitetura); Quando trava (debugging); Para code review do meu próprio PR; Após implementar (review/refactor)"
+        },
+        "S4-Q4": {
+          "type": "choice",
+          "value": "Às vezes (depende da tarefa)"
+        },
+        "S4-Q5": {
+          "type": "choice",
+          "value": "Toda semana"
+        },
+        "S4-Q6": {
+          "type": "choice",
+          "value": "IA gera e o time revisa"
+        },
+        "S4-Q7": {
+          "type": "choice",
+          "value": "Pergunto ao Copilot Chat / Claude / outro AI"
+        },
+        "S4-Q8": {
+          "type": "choice",
+          "value": "Sempre — primeira coisa que faço"
+        },
+        "S4-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Senior Backend (avançado em IA)]"
+        },
+        "S5-Q1": {
+          "type": "choice",
+          "value": "Sim — vagamente"
+        },
+        "S5-Q2": {
+          "type": "choice",
+          "value": "Sim — uso conscientemente"
+        },
+        "S5-Q3": {
+          "type": "choice",
+          "value": "Já criei"
+        },
+        "S5-Q4": {
+          "type": "choice",
+          "value": "Conheço e uso"
+        },
+        "S5-Q5": {
+          "type": "choice",
+          "value": "Sim — uma ou duas"
+        },
+        "S5-Q6": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q7": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q8": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q9": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q10": {
+          "type": "choice",
+          "value": "Sempre — tenho test suite para meus agents"
+        },
+        "S5-Q11": {
+          "type": "multi",
+          "value": "Custom agents (.agent.md); Custom skills (SKILL.md)"
+        },
+        "S6-Q1": {
+          "type": "multi",
+          "value": "Custom instructions em Copilot Spaces; .github/copilot-instructions.md; .github/instructions/*.instructions.md"
+        },
+        "S6-Q2": {
+          "type": "choice",
+          "value": "Eu mantenho sozinho"
+        },
+        "S6-Q3": {
+          "type": "choice",
+          "value": "Trimestralmente"
+        },
+        "S6-Q4": {
+          "type": "multi",
+          "value": "Stack / ferramentas; Forbidden patterns (o que NÃO fazer)"
+        },
+        "S6-Q5": {
+          "type": "choice",
+          "value": "Sim — repo dedicado"
+        },
+        "S6-Q6": {
+          "type": "choice",
+          "value": "Já testei"
+        },
+        "S7-Q1": {
+          "type": "multi",
+          "value": "Vídeos do YouTube; Champion no time; Documentação oficial; Auto-aprendizado (tentativa e erro)"
+        },
+        "S7-Q2": {
+          "type": "choice",
+          "value": "Sim — eu sou"
+        },
+        "S7-Q3": {
+          "type": "choice",
+          "value": "Sim — ativo (>5 mensagens/semana)"
+        },
+        "S7-Q4": {
+          "type": "multi",
+          "value": "Métricas de adoção do Copilot (active users); SPACE framework; DORA metrics (lead time, deployment freq, MTTR, change failure)"
+        },
+        "S7-Q5": {
+          "type": "choice",
+          "value": "Acerta na 1ª tentativa"
+        },
+        "S7-Q6": {
+          "type": "choice",
+          "value": "Para mudanças triviais (sim)"
+        },
+        "S7-Q7": {
+          "type": "choice",
+          "value": "Diariamente"
+        },
+        "S7-Q8": {
+          "type": "choice",
+          "value": "Mais ou menos igual"
+        },
+        "S7-Q9": {
+          "type": "choice",
+          "value": "Às vezes — pessoalmente"
+        },
+        "S8-Q1": {
+          "type": "choice",
+          "value": "Sim — mas pouco clara"
+        },
+        "S8-Q2": {
+          "type": "choice",
+          "value": "Tenho ideia geral"
+        },
+        "S8-Q3": {
+          "type": "multi",
+          "value": "Código de IP estratégico; Secrets / API keys / tokens"
+        },
+        "S8-Q4": {
+          "type": "multi",
+          "value": "SBOM (Software Bill of Materials)"
+        },
+        "S8-Q5": {
+          "type": "choice",
+          "value": "Sim — opcional"
+        },
+        "S8-Q6": {
+          "type": "choice",
+          "value": "Sim — manual quando solicitado"
+        },
+        "S8-Q7": {
+          "type": "choice",
+          "value": "Review humano obrigatório (sem scanner extra)"
+        },
+        "S8-Q8": {
+          "type": "choice",
+          "value": "Sempre — escopo + red-lines documentados"
+        },
+        "S8-Q9": {
+          "type": "choice",
+          "value": "Sim — JIT obrigatório para agents"
+        },
+        "S8-Q10": {
+          "type": "choice",
+          "value": "Sim — alerta mas não bloqueia"
+        },
+        "S8-Q11": {
+          "type": "choice",
+          "value": "Sim — logs ativos e revisados"
+        },
+        "S8-Q12": {
+          "type": "choice",
+          "value": "Sim — treinamento obrigatório anual"
+        },
+        "S8-Q13": {
+          "type": "choice",
+          "value": "Diariamente"
+        },
+        "S9-Q1": {
+          "type": "text",
+          "value": "[resposta livre do Senior Backend (avançado em IA)]"
+        },
+        "S9-Q2": {
+          "type": "text",
+          "value": "[resposta livre do Senior Backend (avançado em IA)]"
+        },
+        "S9-Q3": {
+          "type": "text",
+          "value": "[resposta livre do Senior Backend (avançado em IA)]"
+        },
+        "S9-Q4": {
+          "type": "choice",
+          "value": "Sim — quero ver"
+        }
+      }
+    },
+    {
+      "respondent_id": 2,
+      "profile_label": "Mid Frontend (intermediário)",
+      "responses": {
+        "S1-Q1": {
+          "type": "choice",
+          "value": "Outro"
+        },
+        "S1-Q2": {
+          "type": "choice",
+          "value": "2-5 anos"
+        },
+        "S1-Q3": {
+          "type": "choice",
+          "value": "1-2 anos"
+        },
+        "S1-Q4": {
+          "type": "multi",
+          "value": "Python; C++; SQL (foco principal); Ruby"
+        },
+        "S1-Q5": {
+          "type": "choice",
+          "value": "> 8h"
+        },
+        "S1-Q6": {
+          "type": "choice",
+          "value": "5-9 pessoas"
+        },
+        "S1-Q7": {
+          "type": "choice",
+          "value": "Remoto 100%"
+        },
+        "S2-Q1": {
+          "type": "choice",
+          "value": "Tenho licença mas não uso"
+        },
+        "S2-Q2": {
+          "type": "choice",
+          "value": "Diariamente (várias horas)"
+        },
+        "S2-Q3": {
+          "type": "multi",
+          "value": "Plan / Vision; Agent (autônomo no IDE, executa tasks); Não uso o Chat — só completion inline; Ask (responder perguntas)"
+        },
+        "S2-Q4": {
+          "type": "choice",
+          "value": "Agent (no IDE)"
+        },
+        "S2-Q5": {
+          "type": "multi",
+          "value": "Pull Request descriptions automáticas; Slash commands no Chat (/explain, /fix, /tests); Inline code completion"
+        },
+        "S2-Q6": {
+          "type": "multi",
+          "value": "Xcode; JetBrains (IntelliJ, PyCharm, etc.); CLI (gh copilot); VS Code"
+        },
+        "S2-Q7": {
+          "type": "choice",
+          "value": "Não sei medir"
+        },
+        "S2-Q8": {
+          "type": "multi",
+          "value": "Debugging; Regex; Aprender API/lib nova; Escrever testes"
+        },
+        "S2-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Mid Frontend (intermediário)]"
+        },
+        "S3-Q1": {
+          "type": "multi",
+          "value": "Azure OpenAI Service (direto via API); GitHub Advanced Security (GHAS); Visual Studio com Copilot avançado"
+        },
+        "S3-Q2": {
+          "type": "multi",
+          "value": "Fine-tuning; Foundry Agent Service para agentes autônomos"
+        },
+        "S3-Q3": {
+          "type": "choice",
+          "value": "Uso ativamente em produção"
+        },
+        "S3-Q4": {
+          "type": "choice",
+          "value": "Uso e crio Spaces para meu time"
+        },
+        "S3-Q5": {
+          "type": "choice",
+          "value": "Conheço mas não uso"
+        },
+        "S3-Q6": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S3-Q7": {
+          "type": "choice",
+          "value": "Uso recorrente"
+        },
+        "S4-Q1": {
+          "type": "choice",
+          "value": "Sempre que possível"
+        },
+        "S4-Q2": {
+          "type": "choice",
+          "value": "Já testei em alguns projetos"
+        },
+        "S4-Q3": {
+          "type": "multi",
+          "value": "Antes de começar (planejar arquitetura); Para code review do meu próprio PR; Quando trava (debugging); Para escrever docs"
+        },
+        "S4-Q4": {
+          "type": "choice",
+          "value": "Às vezes (depende da tarefa)"
+        },
+        "S4-Q5": {
+          "type": "choice",
+          "value": "Algumas vezes por mês"
+        },
+        "S4-Q6": {
+          "type": "choice",
+          "value": "Documentação está abandonada"
+        },
+        "S4-Q7": {
+          "type": "choice",
+          "value": "Depende do bug"
+        },
+        "S4-Q8": {
+          "type": "choice",
+          "value": "Frequentemente"
+        },
+        "S4-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Mid Frontend (intermediário)]"
+        },
+        "S5-Q1": {
+          "type": "choice",
+          "value": "Não sei a diferença"
+        },
+        "S5-Q2": {
+          "type": "choice",
+          "value": "Não sei a diferença"
+        },
+        "S5-Q3": {
+          "type": "choice",
+          "value": "Não sabia que era possível"
+        },
+        "S5-Q4": {
+          "type": "choice",
+          "value": "Conheço e uso"
+        },
+        "S5-Q5": {
+          "type": "choice",
+          "value": "Sim — uma ou duas"
+        },
+        "S5-Q6": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q7": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q8": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q9": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q10": {
+          "type": "choice",
+          "value": "Às vezes — só sanity check"
+        },
+        "S5-Q11": {
+          "type": "multi",
+          "value": "Instructions files (copilot-instructions.md / AGENTS.md / CLAUDE.md); Custom MCP server; Custom prompts (.prompt.md)"
+        },
+        "S6-Q1": {
+          "type": "multi",
+          "value": ".github/instructions/*.instructions.md; .github/copilot-instructions.md"
+        },
+        "S6-Q2": {
+          "type": "choice",
+          "value": "Eu mantenho sozinho"
+        },
+        "S6-Q3": {
+          "type": "choice",
+          "value": "Toda semana"
+        },
+        "S6-Q4": {
+          "type": "multi",
+          "value": "Forbidden patterns (o que NÃO fazer); Examples (good vs bad code); Domain knowledge (regras de negócio); Code style / convenções do projeto"
+        },
+        "S6-Q5": {
+          "type": "choice",
+          "value": "Sim — Copilot Space compartilhado"
+        },
+        "S6-Q6": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S7-Q1": {
+          "type": "multi",
+          "value": "Auto-aprendizado (tentativa e erro); Workshop interno da empresa; Comunidades / Discord / Slack; Champion no time"
+        },
+        "S7-Q2": {
+          "type": "choice",
+          "value": "Não, mas precisava ter"
+        },
+        "S7-Q3": {
+          "type": "choice",
+          "value": "Sim — ativo (>5 mensagens/semana)"
+        },
+        "S7-Q4": {
+          "type": "multi",
+          "value": "DX index (developer experience); SPACE framework; Métricas de adoção do Copilot (active users); DORA metrics (lead time, deployment freq, MTTR, change failure)"
+        },
+        "S7-Q5": {
+          "type": "choice",
+          "value": "2-3 iterações"
+        },
+        "S7-Q6": {
+          "type": "choice",
+          "value": "Quase sempre"
+        },
+        "S7-Q7": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S7-Q8": {
+          "type": "choice",
+          "value": "Aprendendo MENOS (dependência)"
+        },
+        "S7-Q9": {
+          "type": "choice",
+          "value": "Nunca"
+        },
+        "S8-Q1": {
+          "type": "choice",
+          "value": "Sim — mas pouco clara"
+        },
+        "S8-Q2": {
+          "type": "choice",
+          "value": "Sei claramente o que pode e o que NÃO pode"
+        },
+        "S8-Q3": {
+          "type": "multi",
+          "value": "Nenhuma restrição (não temos política); Dados financeiros"
+        },
+        "S8-Q4": {
+          "type": "multi",
+          "value": "Microsoft Defender for Cloud; Nenhuma; Dependabot / dependency review"
+        },
+        "S8-Q5": {
+          "type": "choice",
+          "value": "Sim — gate obrigatório no PR"
+        },
+        "S8-Q6": {
+          "type": "choice",
+          "value": "Sim — automatizado"
+        },
+        "S8-Q7": {
+          "type": "choice",
+          "value": "Sim — review obrigatório por outro humano + scanner"
+        },
+        "S8-Q8": {
+          "type": "choice",
+          "value": "Raramente / nunca"
+        },
+        "S8-Q9": {
+          "type": "choice",
+          "value": "Não temos JIT"
+        },
+        "S8-Q10": {
+          "type": "choice",
+          "value": "Sim — bloqueia ativamente"
+        },
+        "S8-Q11": {
+          "type": "choice",
+          "value": "Logs ativos mas não revisados"
+        },
+        "S8-Q12": {
+          "type": "choice",
+          "value": "Sim — uma vez (no onboarding)"
+        },
+        "S8-Q13": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S9-Q1": {
+          "type": "text",
+          "value": "[resposta livre do Mid Frontend (intermediário)]"
+        },
+        "S9-Q2": {
+          "type": "text",
+          "value": "[resposta livre do Mid Frontend (intermediário)]"
+        },
+        "S9-Q3": {
+          "type": "text",
+          "value": "[resposta livre do Mid Frontend (intermediário)]"
+        },
+        "S9-Q4": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    },
+    {
+      "respondent_id": 3,
+      "profile_label": "Junior Full-Stack (iniciante em IA)",
+      "responses": {
+        "S1-Q1": {
+          "type": "choice",
+          "value": "Full-Stack"
+        },
+        "S1-Q2": {
+          "type": "choice",
+          "value": "11-15 anos"
+        },
+        "S1-Q3": {
+          "type": "choice",
+          "value": "< 3 meses"
+        },
+        "S1-Q4": {
+          "type": "multi",
+          "value": "Ruby; Java / Kotlin; Python"
+        },
+        "S1-Q5": {
+          "type": "choice",
+          "value": "6-8h"
+        },
+        "S1-Q6": {
+          "type": "choice",
+          "value": "> 15 pessoas"
+        },
+        "S1-Q7": {
+          "type": "choice",
+          "value": "Remoto 100%"
+        },
+        "S2-Q1": {
+          "type": "choice",
+          "value": "Sim — Copilot Enterprise"
+        },
+        "S2-Q2": {
+          "type": "choice",
+          "value": "Nunca"
+        },
+        "S2-Q3": {
+          "type": "multi",
+          "value": "Ask (responder perguntas); Edit (edição multi-arquivo no IDE)"
+        },
+        "S2-Q4": {
+          "type": "choice",
+          "value": "Edit"
+        },
+        "S2-Q5": {
+          "type": "multi",
+          "value": "Slash commands no Chat (/explain, /fix, /tests); Copilot CLI (gh copilot); Pull Request review (Copilot review)"
+        },
+        "S2-Q6": {
+          "type": "multi",
+          "value": "VS Code; JetBrains (IntelliJ, PyCharm, etc.); Neovim"
+        },
+        "S2-Q7": {
+          "type": "choice",
+          "value": "Negativo (atrapalha)"
+        },
+        "S2-Q8": {
+          "type": "multi",
+          "value": "Debugging; SQL / queries complexas; Onboarding em projeto novo"
+        },
+        "S2-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Junior Full-Stack (iniciante em IA)]"
+        },
+        "S3-Q1": {
+          "type": "multi",
+          "value": "Nenhuma das acima; GitHub Advanced Security (GHAS); GitHub Models (playground multi-LLM)"
+        },
+        "S3-Q2": {
+          "type": "multi",
+          "value": "Foundry Agent Service para agentes autônomos; Embeddings / RAG"
+        },
+        "S3-Q3": {
+          "type": "choice",
+          "value": "Já testei mas não uso recorrente"
+        },
+        "S3-Q4": {
+          "type": "choice",
+          "value": "Uso e crio Spaces para meu time"
+        },
+        "S3-Q5": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S3-Q6": {
+          "type": "choice",
+          "value": "Uso servidores MCP no meu workflow"
+        },
+        "S3-Q7": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S4-Q1": {
+          "type": "choice",
+          "value": "Às vezes"
+        },
+        "S4-Q2": {
+          "type": "choice",
+          "value": "Uso ativamente (com Spec Kit ou similar)"
+        },
+        "S4-Q3": {
+          "type": "multi",
+          "value": "Para escrever testes; Quando trava (debugging)"
+        },
+        "S4-Q4": {
+          "type": "choice",
+          "value": "Às vezes (depende da tarefa)"
+        },
+        "S4-Q5": {
+          "type": "choice",
+          "value": "Toda semana"
+        },
+        "S4-Q6": {
+          "type": "choice",
+          "value": "IA gera e o time revisa"
+        },
+        "S4-Q7": {
+          "type": "choice",
+          "value": "Procuro nos logs / debugger"
+        },
+        "S4-Q8": {
+          "type": "choice",
+          "value": "Sempre — primeira coisa que faço"
+        },
+        "S4-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Junior Full-Stack (iniciante em IA)]"
+        },
+        "S5-Q1": {
+          "type": "choice",
+          "value": "Sim — explico claramente"
+        },
+        "S5-Q2": {
+          "type": "choice",
+          "value": "Não sei a diferença"
+        },
+        "S5-Q3": {
+          "type": "choice",
+          "value": "Já usei mas não criei"
+        },
+        "S5-Q4": {
+          "type": "choice",
+          "value": "Conheço mas não uso"
+        },
+        "S5-Q5": {
+          "type": "choice",
+          "value": "Sim — várias"
+        },
+        "S5-Q6": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q7": {
+          "type": "choice",
+          "value": "Uso"
+        },
+        "S5-Q8": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q9": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q10": {
+          "type": "choice",
+          "value": "Sempre — tenho test suite para meus agents"
+        },
+        "S5-Q11": {
+          "type": "multi",
+          "value": "Custom prompts (.prompt.md); Custom MCP server; Instructions files (copilot-instructions.md / AGENTS.md / CLAUDE.md); Custom agents (.agent.md)"
+        },
+        "S6-Q1": {
+          "type": "multi",
+          "value": ".github/instructions/*.instructions.md; Custom instructions em Copilot Spaces; AGENTS.md"
+        },
+        "S6-Q2": {
+          "type": "choice",
+          "value": "1-2 pessoas dedicadas"
+        },
+        "S6-Q3": {
+          "type": "choice",
+          "value": "Trimestralmente"
+        },
+        "S6-Q4": {
+          "type": "multi",
+          "value": "Stack / ferramentas; Estrutura de pastas / arquitetura; Comandos comuns (test, build, deploy)"
+        },
+        "S6-Q5": {
+          "type": "choice",
+          "value": "Sim — wiki/Confluence"
+        },
+        "S6-Q6": {
+          "type": "choice",
+          "value": "Já testei"
+        },
+        "S7-Q1": {
+          "type": "multi",
+          "value": "Workshop interno da empresa; Auto-aprendizado (tentativa e erro); Vídeos do YouTube"
+        },
+        "S7-Q2": {
+          "type": "choice",
+          "value": "Sim — eu sou"
+        },
+        "S7-Q3": {
+          "type": "choice",
+          "value": "Sim — ativo (>5 mensagens/semana)"
+        },
+        "S7-Q4": {
+          "type": "multi",
+          "value": "DX index (developer experience); Self-report periódico (survey); SPACE framework; DORA metrics (lead time, deployment freq, MTTR, change failure)"
+        },
+        "S7-Q5": {
+          "type": "choice",
+          "value": "4-6 iterações"
+        },
+        "S7-Q6": {
+          "type": "choice",
+          "value": "Nunca — sempre reviso"
+        },
+        "S7-Q7": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S7-Q8": {
+          "type": "choice",
+          "value": "Mais ou menos igual"
+        },
+        "S7-Q9": {
+          "type": "choice",
+          "value": "Raramente"
+        },
+        "S8-Q1": {
+          "type": "choice",
+          "value": "Sim — mas pouco clara"
+        },
+        "S8-Q2": {
+          "type": "choice",
+          "value": "Não sei"
+        },
+        "S8-Q3": {
+          "type": "multi",
+          "value": "Nenhuma restrição (não temos política); Código de IP estratégico; PII / dados pessoais de clientes; Dados de saúde"
+        },
+        "S8-Q4": {
+          "type": "multi",
+          "value": "SBOM (Software Bill of Materials); CodeQL scanning; Snyk / SonarQube / outro SAST; Secret scanning"
+        },
+        "S8-Q5": {
+          "type": "choice",
+          "value": "Sim — gate obrigatório no PR"
+        },
+        "S8-Q6": {
+          "type": "choice",
+          "value": "Sim — automatizado"
+        },
+        "S8-Q7": {
+          "type": "choice",
+          "value": "Review humano obrigatório (sem scanner extra)"
+        },
+        "S8-Q8": {
+          "type": "choice",
+          "value": "Às vezes"
+        },
+        "S8-Q9": {
+          "type": "choice",
+          "value": "Não temos JIT"
+        },
+        "S8-Q10": {
+          "type": "choice",
+          "value": "Sim — alerta mas não bloqueia"
+        },
+        "S8-Q11": {
+          "type": "choice",
+          "value": "Não temos"
+        },
+        "S8-Q12": {
+          "type": "choice",
+          "value": "Sim — uma vez (no onboarding)"
+        },
+        "S8-Q13": {
+          "type": "choice",
+          "value": "Mensalmente"
+        },
+        "S9-Q1": {
+          "type": "text",
+          "value": "[resposta livre do Junior Full-Stack (iniciante em IA)]"
+        },
+        "S9-Q2": {
+          "type": "text",
+          "value": "[resposta livre do Junior Full-Stack (iniciante em IA)]"
+        },
+        "S9-Q3": {
+          "type": "text",
+          "value": "[resposta livre do Junior Full-Stack (iniciante em IA)]"
+        },
+        "S9-Q4": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    },
+    {
+      "respondent_id": 4,
+      "profile_label": "SRE Sênior (foco infra)",
+      "responses": {
+        "S1-Q1": {
+          "type": "choice",
+          "value": "Full-Stack"
+        },
+        "S1-Q2": {
+          "type": "choice",
+          "value": "< 2 anos"
+        },
+        "S1-Q3": {
+          "type": "choice",
+          "value": "Nunca usei"
+        },
+        "S1-Q4": {
+          "type": "multi",
+          "value": "C++; Go; TypeScript / JavaScript; Swift"
+        },
+        "S1-Q5": {
+          "type": "choice",
+          "value": "2-4h"
+        },
+        "S1-Q6": {
+          "type": "choice",
+          "value": "Sou solo"
+        },
+        "S1-Q7": {
+          "type": "choice",
+          "value": "Híbrido (1-2 dias presencial)"
+        },
+        "S2-Q1": {
+          "type": "choice",
+          "value": "Sim — Copilot Business"
+        },
+        "S2-Q2": {
+          "type": "choice",
+          "value": "Semanal"
+        },
+        "S2-Q3": {
+          "type": "multi",
+          "value": "Plan / Vision; Não uso o Chat — só completion inline; Copilot Coding Agent (autônomo no GitHub.com — assigna issue, abre PR sozinho)"
+        },
+        "S2-Q4": {
+          "type": "choice",
+          "value": "Ask"
+        },
+        "S2-Q5": {
+          "type": "multi",
+          "value": "Chat (perguntas no IDE); Pull Request descriptions automáticas"
+        },
+        "S2-Q6": {
+          "type": "multi",
+          "value": "VS Code; GitHub.com (web); Xcode; GitHub Mobile"
+        },
+        "S2-Q7": {
+          "type": "choice",
+          "value": "Neutro (sem ganho)"
+        },
+        "S2-Q8": {
+          "type": "multi",
+          "value": "Escrever testes; Boilerplate / código repetitivo; Debugging"
+        },
+        "S2-Q9": {
+          "type": "text",
+          "value": "[resposta livre do SRE Sênior (foco infra)]"
+        },
+        "S3-Q1": {
+          "type": "multi",
+          "value": "Microsoft Foundry (ex-Azure AI Foundry); GitHub Copilot Coding Agent (autônomo); Microsoft 365 Copilot"
+        },
+        "S3-Q2": {
+          "type": "multi",
+          "value": "Foundry Agent Service para agentes autônomos; Fine-tuning; PoC / experimentação; Embeddings / RAG"
+        },
+        "S3-Q3": {
+          "type": "choice",
+          "value": "Já testei mas não uso recorrente"
+        },
+        "S3-Q4": {
+          "type": "choice",
+          "value": "Uso e crio Spaces para meu time"
+        },
+        "S3-Q5": {
+          "type": "choice",
+          "value": "Uso"
+        },
+        "S3-Q6": {
+          "type": "choice",
+          "value": "Uso servidores MCP no meu workflow"
+        },
+        "S3-Q7": {
+          "type": "choice",
+          "value": "Uso recorrente"
+        },
+        "S4-Q1": {
+          "type": "choice",
+          "value": "Frequentemente"
+        },
+        "S4-Q2": {
+          "type": "choice",
+          "value": "Uso ativamente (com Spec Kit ou similar)"
+        },
+        "S4-Q3": {
+          "type": "multi",
+          "value": "Para escrever docs; Após implementar (review/refactor)"
+        },
+        "S4-Q4": {
+          "type": "choice",
+          "value": "Às vezes (depende da tarefa)"
+        },
+        "S4-Q5": {
+          "type": "choice",
+          "value": "Toda semana"
+        },
+        "S4-Q6": {
+          "type": "choice",
+          "value": "Devs escrevem manualmente, IA ajuda às vezes"
+        },
+        "S4-Q7": {
+          "type": "choice",
+          "value": "Pergunto ao Copilot Chat / Claude / outro AI"
+        },
+        "S4-Q8": {
+          "type": "choice",
+          "value": "Sempre — primeira coisa que faço"
+        },
+        "S4-Q9": {
+          "type": "text",
+          "value": "[resposta livre do SRE Sênior (foco infra)]"
+        },
+        "S5-Q1": {
+          "type": "choice",
+          "value": "Sim — vagamente"
+        },
+        "S5-Q2": {
+          "type": "choice",
+          "value": "Sim — uso conscientemente"
+        },
+        "S5-Q3": {
+          "type": "choice",
+          "value": "Já usei mas não criei"
+        },
+        "S5-Q4": {
+          "type": "choice",
+          "value": "Conheço e uso"
+        },
+        "S5-Q5": {
+          "type": "choice",
+          "value": "Sim — várias"
+        },
+        "S5-Q6": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q7": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q8": {
+          "type": "choice",
+          "value": "Conheço o conceito"
+        },
+        "S5-Q9": {
+          "type": "choice",
+          "value": "Sim — adoto explicitamente"
+        },
+        "S5-Q10": {
+          "type": "choice",
+          "value": "Sempre — tenho test suite para meus agents"
+        },
+        "S5-Q11": {
+          "type": "multi",
+          "value": "Spaces compartilhados; Custom skills (SKILL.md)"
+        },
+        "S6-Q1": {
+          "type": "multi",
+          "value": "AGENTS.md; .github/copilot-instructions.md"
+        },
+        "S6-Q2": {
+          "type": "choice",
+          "value": "1-2 pessoas dedicadas"
+        },
+        "S6-Q3": {
+          "type": "choice",
+          "value": "Mensalmente"
+        },
+        "S6-Q4": {
+          "type": "multi",
+          "value": "Comandos comuns (test, build, deploy); Estrutura de pastas / arquitetura; Examples (good vs bad code); Stack / ferramentas"
+        },
+        "S6-Q5": {
+          "type": "choice",
+          "value": "Sim — Copilot Space compartilhado"
+        },
+        "S6-Q6": {
+          "type": "choice",
+          "value": "Uso ativamente"
+        },
+        "S7-Q1": {
+          "type": "multi",
+          "value": "Documentação oficial; Curso online (Coursera, Udemy, MS Learn); Comunidades / Discord / Slack"
+        },
+        "S7-Q2": {
+          "type": "choice",
+          "value": "Sim — eu sou"
+        },
+        "S7-Q3": {
+          "type": "choice",
+          "value": "Sim — ativo (>5 mensagens/semana)"
+        },
+        "S7-Q4": {
+          "type": "multi",
+          "value": "Métricas de adoção do Copilot (active users); SPACE framework; Self-report periódico (survey); DX index (developer experience)"
+        },
+        "S7-Q5": {
+          "type": "choice",
+          "value": "Acerta na 1ª tentativa"
+        },
+        "S7-Q6": {
+          "type": "choice",
+          "value": "Para mudanças triviais (sim)"
+        },
+        "S7-Q7": {
+          "type": "choice",
+          "value": "Diariamente"
+        },
+        "S7-Q8": {
+          "type": "choice",
+          "value": "Um pouco mais"
+        },
+        "S7-Q9": {
+          "type": "choice",
+          "value": "Frequentemente — em canal compartilhado"
+        },
+        "S8-Q1": {
+          "type": "choice",
+          "value": "Política informal (sem documento)"
+        },
+        "S8-Q2": {
+          "type": "choice",
+          "value": "Tenho ideia geral"
+        },
+        "S8-Q3": {
+          "type": "multi",
+          "value": "Dados de saúde"
+        },
+        "S8-Q4": {
+          "type": "multi",
+          "value": "Dependabot / dependency review; Microsoft Defender for DevOps; GitHub Advanced Security (GHAS)"
+        },
+        "S8-Q5": {
+          "type": "choice",
+          "value": "Sim — opcional"
+        },
+        "S8-Q6": {
+          "type": "choice",
+          "value": "Sim — manual quando solicitado"
+        },
+        "S8-Q7": {
+          "type": "choice",
+          "value": "Sim — review obrigatório por outro humano + scanner"
+        },
+        "S8-Q8": {
+          "type": "choice",
+          "value": "Às vezes"
+        },
+        "S8-Q9": {
+          "type": "choice",
+          "value": "Sim — opcional"
+        },
+        "S8-Q10": {
+          "type": "choice",
+          "value": "Sim — alerta mas não bloqueia"
+        },
+        "S8-Q11": {
+          "type": "choice",
+          "value": "Logs ativos mas não revisados"
+        },
+        "S8-Q12": {
+          "type": "choice",
+          "value": "Sim — uma vez (no onboarding)"
+        },
+        "S8-Q13": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S9-Q1": {
+          "type": "text",
+          "value": "[resposta livre do SRE Sênior (foco infra)]"
+        },
+        "S9-Q2": {
+          "type": "text",
+          "value": "[resposta livre do SRE Sênior (foco infra)]"
+        },
+        "S9-Q3": {
+          "type": "text",
+          "value": "[resposta livre do SRE Sênior (foco infra)]"
+        },
+        "S9-Q4": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    },
+    {
+      "respondent_id": 5,
+      "profile_label": "Tech Lead (forte governança)",
+      "responses": {
+        "S1-Q1": {
+          "type": "choice",
+          "value": "Data Engineer / ML Engineer"
+        },
+        "S1-Q2": {
+          "type": "choice",
+          "value": "< 2 anos"
+        },
+        "S1-Q3": {
+          "type": "choice",
+          "value": "Nunca usei"
+        },
+        "S1-Q4": {
+          "type": "multi",
+          "value": "SQL (foco principal); C++; C# / .NET"
+        },
+        "S1-Q5": {
+          "type": "choice",
+          "value": "4-6h"
+        },
+        "S1-Q6": {
+          "type": "choice",
+          "value": "5-9 pessoas"
+        },
+        "S1-Q7": {
+          "type": "choice",
+          "value": "Híbrido (1-2 dias presencial)"
+        },
+        "S2-Q1": {
+          "type": "choice",
+          "value": "Sim — Copilot Pro (individual)"
+        },
+        "S2-Q2": {
+          "type": "choice",
+          "value": "Semanal"
+        },
+        "S2-Q3": {
+          "type": "multi",
+          "value": "Agent (autônomo no IDE, executa tasks)"
+        },
+        "S2-Q4": {
+          "type": "choice",
+          "value": "Edit"
+        },
+        "S2-Q5": {
+          "type": "multi",
+          "value": "Copilot Coding Agent (tarefas autônomas); Copilot CLI (gh copilot); Documentation generation"
+        },
+        "S2-Q6": {
+          "type": "multi",
+          "value": "GitHub Codespaces; CLI (gh copilot); GitHub.com (web)"
+        },
+        "S2-Q7": {
+          "type": "choice",
+          "value": "Neutro (sem ganho)"
+        },
+        "S2-Q8": {
+          "type": "multi",
+          "value": "SQL / queries complexas; Escrever testes; Refactoring; Debugging"
+        },
+        "S2-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Tech Lead (forte governança)]"
+        },
+        "S3-Q1": {
+          "type": "multi",
+          "value": "Visual Studio com Copilot avançado; GitHub Actions com Copilot integration; GitHub Copilot Coding Agent (autônomo)"
+        },
+        "S3-Q2": {
+          "type": "multi",
+          "value": "Foundry Agent Service para agentes autônomos; Fine-tuning"
+        },
+        "S3-Q3": {
+          "type": "choice",
+          "value": "Já testei mas não uso recorrente"
+        },
+        "S3-Q4": {
+          "type": "choice",
+          "value": "Uso e crio Spaces para meu time"
+        },
+        "S3-Q5": {
+          "type": "choice",
+          "value": "Uso"
+        },
+        "S3-Q6": {
+          "type": "choice",
+          "value": "Uso servidores MCP no meu workflow"
+        },
+        "S3-Q7": {
+          "type": "choice",
+          "value": "Uso recorrente"
+        },
+        "S4-Q1": {
+          "type": "choice",
+          "value": "Sempre que possível"
+        },
+        "S4-Q2": {
+          "type": "choice",
+          "value": "Uso ativamente (com Spec Kit ou similar)"
+        },
+        "S4-Q3": {
+          "type": "multi",
+          "value": "Para escrever testes; Antes de começar (planejar arquitetura); Quando trava (debugging)"
+        },
+        "S4-Q4": {
+          "type": "choice",
+          "value": "Às vezes (depende da tarefa)"
+        },
+        "S4-Q5": {
+          "type": "choice",
+          "value": "Toda semana"
+        },
+        "S4-Q6": {
+          "type": "choice",
+          "value": "Devs escrevem manualmente, IA ajuda às vezes"
+        },
+        "S4-Q7": {
+          "type": "choice",
+          "value": "Procuro nos logs / debugger"
+        },
+        "S4-Q8": {
+          "type": "choice",
+          "value": "Frequentemente"
+        },
+        "S4-Q9": {
+          "type": "text",
+          "value": "[resposta livre do Tech Lead (forte governança)]"
+        },
+        "S5-Q1": {
+          "type": "choice",
+          "value": "Sim — explico claramente"
+        },
+        "S5-Q2": {
+          "type": "choice",
+          "value": "Sim — uso conscientemente"
+        },
+        "S5-Q3": {
+          "type": "choice",
+          "value": "Já criei"
+        },
+        "S5-Q4": {
+          "type": "choice",
+          "value": "Conheço e uso"
+        },
+        "S5-Q5": {
+          "type": "choice",
+          "value": "Sim — uma ou duas"
+        },
+        "S5-Q6": {
+          "type": "choice",
+          "value": "Uso (ex.: Foundry A2A Tool)"
+        },
+        "S5-Q7": {
+          "type": "choice",
+          "value": "Uso"
+        },
+        "S5-Q8": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q9": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S5-Q10": {
+          "type": "choice",
+          "value": "Frequentemente — manual mas sistemático"
+        },
+        "S5-Q11": {
+          "type": "multi",
+          "value": "Instructions files (copilot-instructions.md / AGENTS.md / CLAUDE.md); Custom skills (SKILL.md)"
+        },
+        "S6-Q1": {
+          "type": "multi",
+          "value": "CLAUDE.md (raiz do projeto); .github/instructions/*.instructions.md"
+        },
+        "S6-Q2": {
+          "type": "choice",
+          "value": "1-2 pessoas dedicadas"
+        },
+        "S6-Q3": {
+          "type": "choice",
+          "value": "Trimestralmente"
+        },
+        "S6-Q4": {
+          "type": "multi",
+          "value": "Estrutura de pastas / arquitetura; Comandos comuns (test, build, deploy); Forbidden patterns (o que NÃO fazer); Examples (good vs bad code)"
+        },
+        "S6-Q5": {
+          "type": "choice",
+          "value": "Sim — wiki/Confluence"
+        },
+        "S6-Q6": {
+          "type": "choice",
+          "value": "Não conheço"
+        },
+        "S7-Q1": {
+          "type": "multi",
+          "value": "Comunidades / Discord / Slack; Workshop interno da empresa; Champion no time"
+        },
+        "S7-Q2": {
+          "type": "choice",
+          "value": "Sim — outra pessoa"
+        },
+        "S7-Q3": {
+          "type": "choice",
+          "value": "Sim — pouco ativo"
+        },
+        "S7-Q4": {
+          "type": "multi",
+          "value": "DX index (developer experience); SPACE framework; Métricas de adoção do Copilot (active users)"
+        },
+        "S7-Q5": {
+          "type": "choice",
+          "value": "Acerta na 1ª tentativa"
+        },
+        "S7-Q6": {
+          "type": "choice",
+          "value": "Para mudanças triviais (sim)"
+        },
+        "S7-Q7": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S7-Q8": {
+          "type": "choice",
+          "value": "Aprendendo MUITO MAIS (IA acelera)"
+        },
+        "S7-Q9": {
+          "type": "choice",
+          "value": "Às vezes — pessoalmente"
+        },
+        "S8-Q1": {
+          "type": "choice",
+          "value": "Sim — política formal e clara"
+        },
+        "S8-Q2": {
+          "type": "choice",
+          "value": "Tenho ideia geral"
+        },
+        "S8-Q3": {
+          "type": "multi",
+          "value": "Código de IP estratégico; Dados de saúde; PII / dados pessoais de clientes"
+        },
+        "S8-Q4": {
+          "type": "multi",
+          "value": "Secret scanning; Dependabot / dependency review"
+        },
+        "S8-Q5": {
+          "type": "choice",
+          "value": "Sim — opcional"
+        },
+        "S8-Q6": {
+          "type": "choice",
+          "value": "Sim — automatizado"
+        },
+        "S8-Q7": {
+          "type": "choice",
+          "value": "Sim — review obrigatório por outro humano + scanner"
+        },
+        "S8-Q8": {
+          "type": "choice",
+          "value": "Sempre — escopo + red-lines documentados"
+        },
+        "S8-Q9": {
+          "type": "choice",
+          "value": "Sim — opcional"
+        },
+        "S8-Q10": {
+          "type": "choice",
+          "value": "Sim — alerta mas não bloqueia"
+        },
+        "S8-Q11": {
+          "type": "choice",
+          "value": "Logs ativos mas não revisados"
+        },
+        "S8-Q12": {
+          "type": "choice",
+          "value": "Sim — uma vez (no onboarding)"
+        },
+        "S8-Q13": {
+          "type": "choice",
+          "value": "Semanalmente"
+        },
+        "S9-Q1": {
+          "type": "text",
+          "value": "[resposta livre do Tech Lead (forte governança)]"
+        },
+        "S9-Q2": {
+          "type": "text",
+          "value": "[resposta livre do Tech Lead (forte governança)]"
+        },
+        "S9-Q3": {
+          "type": "text",
+          "value": "[resposta livre do Tech Lead (forte governança)]"
+        },
+        "S9-Q4": {
+          "type": "choice",
+          "value": "Sim — quero ver"
+        }
+      }
+    }
+  ]
+}

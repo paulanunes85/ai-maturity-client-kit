@@ -1,0 +1,348 @@
+{# =============================================================================
+   Template: Score Justification PDF (FR-REPORT-002)
+   Layout  : A4 portrait, ~10-15 pages
+   Sections: 1 Executive Overview, 2 Methodology, 3-5 Per-pillar detailed
+             scores, 6 Overall Calculation, 7 Evidence Sources, 8 Conclusion
+   See SDD §6.2.1 for full section spec.
+   ============================================================================= #}
+{% from "_components.html.j2" import
+   cover_block,
+   overall_score_band,
+   score_card,
+   priority_badge,
+   pe_indicator,
+   audience_badge,
+   gap_cell
+%}
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ t('report.score_justification.title') }} — {{ organization.name }}</title>
+  <link rel="stylesheet" href="_print.css">
+</head>
+<body>
+
+  {# ─── COVER ──────────────────────────────────────────────────── #}
+  {{ cover_block(
+       organization,
+       assessment,
+       branding,
+       t('report.score_justification.title'),
+       t('report.score_justification.subtitle')
+  ) }}
+
+  {# ─── TABLE OF CONTENTS ─────────────────────────────────────── #}
+  <section class="toc">
+    <h1>{{ t('section.toc') }}</h1>
+    <ul class="toc__list">
+      <li><a href="#sec-1">1. {{ t('section.executive_overview') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-1-1">1.1 {{ t('section.purpose') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-1-2">1.2 {{ t('section.summary_of_scores') }}</a><span class="toc__page"></span></li>
+
+      <li><a href="#sec-2">2. {{ t('section.scoring_methodology') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-1">2.1 {{ t('section.maturity_levels') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-2">2.2 {{ t('section.scoring_guidelines') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-3">2.3 {{ t('section.weighted_avg_formula') }}</a><span class="toc__page"></span></li>
+
+      {% for pillar in scores.pillars %}
+      <li><a href="#sec-pillar-{{ pillar.id | lower }}">{{ loop.index + 2 }}. {{ pillar.id }}: {{ pillar.name }} — {{ t('section.detailed_scores') }}</a><span class="toc__page"></span></li>
+      {% endfor %}
+
+      <li><a href="#sec-6">6. {{ t('section.overall_maturity_calc') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-7">7. {{ t('section.key_evidence_sources') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-8">8. {{ t('section.conclusion') }}</a><span class="toc__page"></span></li>
+    </ul>
+  </section>
+
+  {# ─── §1 EXECUTIVE OVERVIEW ─────────────────────────────────── #}
+  <section id="sec-1" class="section">
+    <h1>1. {{ t('section.executive_overview') }}</h1>
+    <p class="lead">
+      {{ t('overview.intro', org=organization.name) }}
+    </p>
+
+    <h2 id="sec-1-1">1.1 {{ t('section.purpose') }}</h2>
+    <ul>
+      <li>{{ t('overview.purpose.1') }}</li>
+      <li>{{ t('overview.purpose.2') }}</li>
+      <li>{{ t('overview.purpose.3') }}</li>
+      <li>{{ t('overview.purpose.4') }}</li>
+      <li>{{ t('overview.purpose.5') }}</li>
+    </ul>
+
+    <h2 id="sec-1-2">1.2 {{ t('section.summary_of_scores') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.pillar') }}</th>
+          <th class="num">{{ t('table.weighted_avg') }}</th>
+          <th>{{ t('table.maturity_level') }}</th>
+          <th class="num">{{ t('table.target') }}</th>
+          <th class="num">{{ t('table.gap') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pillar in scores.pillars %}
+        <tr>
+          <td><strong>{{ pillar.id }}: {{ pillar.name }}</strong></td>
+          <td class="num">{{ '%.2f' | format(pillar.weighted_avg) }}</td>
+          <td>{{ pillar.level_label }}</td>
+          <td class="num">L{{ '%.1f' | format(pillar.target) }}</td>
+          <td class="num">{{ gap_cell(pillar.gap, 'high' if pillar.gap > 2.5 else 'medium' if pillar.gap > 1.5 else 'low') }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="tr--summary">
+          <td><strong>{{ t('label.overall') | upper }}</strong></td>
+          <td class="num">{{ '%.2f' | format(scores.overall.weighted_avg) }}</td>
+          <td>{{ scores.overall.level_label }}</td>
+          <td class="num">L{{ '%.1f' | format(scores.overall.target) }}</td>
+          <td class="num">{{ gap_cell(scores.overall.gap, 'high' if scores.overall.gap > 2.5 else 'medium') }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {{ overall_score_band(scores.overall.weighted_avg, scores.overall.target) }}
+  </section>
+
+  {# ─── §2 SCORING METHODOLOGY ────────────────────────────────── #}
+  <section id="sec-2" class="section">
+    <h1>2. {{ t('section.scoring_methodology') }}</h1>
+
+    <h2 id="sec-2-1">2.1 {{ t('section.maturity_levels') }}</h2>
+    <p>{{ t('methodology.levels.intro') }}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.level') }}</th>
+          <th>{{ t('table.name') }}</th>
+          <th>{{ t('table.description') }}</th>
+          <th>{{ t('table.evidence_required') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lvl in ['L0', 'L1', 'L2', 'L3', 'L4'] %}
+        <tr>
+          <td><strong>{{ lvl }}</strong></td>
+          <td>{{ t('level.' ~ lvl ~ '.name') }}</td>
+          <td>{{ t('level.' ~ lvl ~ '.description') }}</td>
+          <td>{{ t('level.' ~ lvl ~ '.evidence') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2 id="sec-2-2">2.2 {{ t('section.scoring_guidelines') }}</h2>
+    <p>{{ t('methodology.guidelines.intro') }}</p>
+    <ul>
+      <li>{{ t('methodology.guidelines.1') }}</li>
+      <li>{{ t('methodology.guidelines.2') }}</li>
+      <li>{{ t('methodology.guidelines.3') }}</li>
+      <li>{{ t('methodology.guidelines.4') }}</li>
+      <li>{{ t('methodology.guidelines.5') }}</li>
+    </ul>
+
+    <h2 id="sec-2-3">2.3 {{ t('section.weighted_avg_formula') }}</h2>
+    <p>{{ t('methodology.formula.intro') }}</p>
+    <div class="formula-box">
+      <span class="formula-box__line"><strong>{{ t('formula.pillar_score') }}</strong> = Σ(capability_score × weight) / Σ(weights)</span>
+      <span class="formula-box__line"><strong>{{ t('formula.overall_score') }}</strong> = average(pillar_scores)</span>
+    </div>
+  </section>
+
+  {# ─── §3-§5 PER-PILLAR DETAILED SCORES ─────────────────────── #}
+  {% for pillar in scores.pillars %}
+  {% set sec_num = loop.index + 2 %}
+  <section id="sec-pillar-{{ pillar.id | lower }}" class="section">
+    <h1>{{ sec_num }}. {{ pillar.id }}: {{ pillar.name }} — {{ t('section.detailed_scores') }}</h1>
+
+    {{ score_card(pillar) }}
+
+    <h2>{{ sec_num }}.1 {{ t('section.pillar_summary') }}</h2>
+    <table class="kv-table">
+      <tr><th>{{ t('summary.total_capabilities') }}</th><td>{{ pillar.capabilities_count }}</td></tr>
+      <tr><th>{{ t('summary.sum_of_weights') }}</th><td>{{ '%.2f' | format(pillar.weights_sum) }}</td></tr>
+      <tr><th>{{ t('summary.weighted_sum_scores') }}</th><td>{{ pillar.weighted_sum_calc }}</td></tr>
+      <tr><th>{{ t('summary.weighted_average') }}</th><td><strong>{{ '%.2f' | format(pillar.weighted_avg) }} (= weighted sum / {{ '%.2f' | format(pillar.weights_sum) }})</strong></td></tr>
+      <tr><th>{{ t('summary.maturity_level') }}</th><td><strong>{{ pillar.level_label }}</strong></td></tr>
+    </table>
+
+    <h2>{{ sec_num }}.2 {{ t('section.capability_by_capability') }}</h2>
+    {% for cap in capabilities if cap.pillar_id == pillar.id %}
+    <div class="cap-detail">
+      <div class="cap-detail__header">
+        <h3 class="cap-detail__title">
+          {{ pe_indicator(cap.is_pe_indicator) }}{{ cap.code }} {{ cap.name }}
+          {{ audience_badge(cap.audience) }}
+        </h3>
+      </div>
+
+      <dl class="cap-detail__attrs">
+        <div>
+          <dt>{{ t('attr.score') }}</dt>
+          <dd>{{ cap.current_level_label }}</dd>
+        </div>
+        <div>
+          <dt>{{ t('attr.weight') }}</dt>
+          <dd>{{ cap.weight }} ({{ t('weight.high' if cap.weight == 3 else 'weight.medium') }})</dd>
+        </div>
+        <div>
+          <dt>{{ t('attr.pe_indicator') }}</dt>
+          <dd>{{ t('label.yes') if cap.is_pe_indicator else t('label.no') }}</dd>
+        </div>
+      </dl>
+
+      {% if cap.evidence_collected %}
+      <h4>{{ t('section.evidence_collected') }}</h4>
+      <ul>
+        {% for ev in cap.evidence_collected %}
+        <li>{{ ev }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-faint" style="font-size: 9pt; margin: 2mm 0;">{{ t('evidence.none_text_captured') }}</p>
+      {% endif %}
+
+      <h4>{{ t('section.scoring_rationale') }}</h4>
+      <p class="cap-detail__rationale">{{ cap.scoring_rationale }}</p>
+    </div>
+    {% endfor %}
+
+    <h2>{{ sec_num }}.3 {{ t('section.calculation_summary') }}</h2>
+    <div class="formula-box">
+      <span class="formula-box__line">{{ t('formula.pillar_score') }} = {{ pillar.weighted_sum_calc }} / {{ '%.2f' | format(pillar.weights_sum) }}</span>
+      <span class="formula-box__line">= <strong>{{ '%.2f' | format(pillar.weighted_avg) }}</strong> → {{ pillar.level_label }}</span>
+    </div>
+  </section>
+  {% endfor %}
+
+  {# ─── §6 OVERALL MATURITY CALCULATION ──────────────────────── #}
+  <section id="sec-6" class="section">
+    <h1>6. {{ t('section.overall_maturity_calc') }}</h1>
+
+    <h2>6.1 {{ t('section.pillar_score_summary') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.pillar') }}</th>
+          <th class="num">{{ t('table.weighted_avg') }}</th>
+          <th>{{ t('table.maturity_level') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pillar in scores.pillars %}
+        <tr>
+          <td><strong>{{ pillar.id }}: {{ pillar.name }}</strong></td>
+          <td class="num">{{ '%.2f' | format(pillar.weighted_avg) }}</td>
+          <td>{{ pillar.level_label }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>6.2 {{ t('section.overall_score_calc') }}</h2>
+    <div class="formula-box">
+      <span class="formula-box__line">{{ t('formula.overall_score') }} = ({% for p in scores.pillars %}{{ '%.2f' | format(p.weighted_avg) }}{{ ' + ' if not loop.last }}{% endfor %}) / {{ scores.pillars | length }}</span>
+      <span class="formula-box__line">= <strong>{{ '%.2f' | format(scores.overall.weighted_avg) }}</strong> → {{ scores.overall.level_label }}</span>
+    </div>
+
+    <h2>6.3 {{ t('section.pe_readiness_score') }}</h2>
+    {# Compute the recommended-path block. Prefer the structured agentic_platform_engineering data,
+       fall back to the legacy three_horizons_verdict for backward compatibility. #}
+    {% set ape = scores.pe_readiness.get('agentic_platform_engineering') if scores.pe_readiness.get is defined else (scores.pe_readiness['agentic_platform_engineering'] if 'agentic_platform_engineering' in scores.pe_readiness else None) %}
+    {% set pe_level_class = (scores.pe_readiness.level | lower | replace(' ', '-')) if scores.pe_readiness.level else 'unknown' %}
+    {% set path_class = (ape.recommended_path | replace('_', '-')) if ape and ape.recommended_path else pe_level_class %}
+    <div class="pe-readiness">
+      <div class="pe-readiness__header">
+        <div>
+          <div class="pe-readiness__score">{{ '%.2f' | format(scores.pe_readiness.weighted_score or 0) }}</div>
+          <div class="text-muted">{{ t('pe.weighted_score_label') }}</div>
+        </div>
+        <div>
+          <span class="pe-readiness__verdict-pill pe-readiness__verdict-pill--{{ pe_level_class }}">
+            {{ scores.pe_readiness.level or t('pe.level.unknown') }}
+          </span>
+        </div>
+      </div>
+
+      <div class="ape-recommendation">
+        <div class="ape-recommendation__label">{{ t('ape.destination_label') }}</div>
+        <div class="ape-recommendation__path-row">
+          <span class="ape-recommendation__path-label">{{ t('ape.recommended_path_label') }}:</span>
+          <span class="ape-path-pill ape-path-pill--{{ path_class }}">
+            {%- if ape and ape.recommended_path_label -%}
+              {{ ape.recommended_path_label }}
+            {%- elif ape and ape.recommended_path -%}
+              {{ t('ape.path.' ~ ape.recommended_path) }}
+            {%- elif scores.pe_readiness.three_horizons_verdict -%}
+              {{ scores.pe_readiness.three_horizons_verdict }}
+            {%- else -%}
+              {{ t('ape.path.build_foundation_first') }}
+            {%- endif -%}
+          </span>
+        </div>
+        {% if ape and ape.rationale %}
+        <p class="ape-recommendation__rationale">{{ ape.rationale }}</p>
+        {% endif %}
+      </div>
+
+      <table class="compact pe-rubric">
+        <thead>
+          <tr>
+            <th class="num">{{ t('table.score_range') }}</th>
+            <th>{{ t('table.pe_level') }}</th>
+            <th>{{ t('table.recommended_path') }}</th>
+            <th>{{ t('table.interpretation') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">&lt; 1.0</td><td><strong>NOT READY</strong></td><td>{{ t('ape.path.build_foundation_first') }}</td><td>{{ t('pe.interp.not_ready') }}</td></tr>
+          <tr><td class="num">1.0 – 1.9</td><td><strong>LOW</strong></td><td>{{ t('ape.path.build_foundation_first') }}</td><td>{{ t('pe.interp.low') }}</td></tr>
+          <tr><td class="num">2.0 – 2.9</td><td><strong>MEDIUM</strong></td><td>{{ t('ape.path.open_horizons') }}<br><span class="text-faint">/ {{ t('ape.path.three_horizons') }}</span></td><td>{{ t('pe.interp.medium') }}</td></tr>
+          <tr><td class="num">≥ 3.0</td><td><strong>HIGH</strong></td><td>{{ t('ape.path.either') }}</td><td>{{ t('pe.interp.high') }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ape-explainer no-break">
+      <h4>{{ t('ape.explainer.title') }}</h4>
+      <p>{{ t('ape.explainer.intro') }}</p>
+      <ul>
+        <li><strong>{{ t('ape.path.three_horizons') }}.</strong> {{ t('ape.path.three_horizons.description') }}</li>
+        <li><strong>{{ t('ape.path.open_horizons') }}.</strong> {{ t('ape.path.open_horizons.description') }}</li>
+      </ul>
+      <p class="text-muted"><em>{{ t('ape.note.same_destination') }} {{ t('ape.note.h_phasing') }}</em></p>
+    </div>
+  </section>
+
+  {# ─── §7 KEY EVIDENCE SOURCES ──────────────────────────────── #}
+  <section id="sec-7" class="section">
+    <h1>7. {{ t('section.key_evidence_sources') }}</h1>
+    <p class="lead">{{ t('evidence_sources.intro') }}</p>
+
+    {% if key_evidence_sources %}
+      {% for category, sources in key_evidence_sources.items() %}
+      <h3>{{ t('evidence_category.' ~ category) }}</h3>
+      <ul>
+        {% for src in sources %}
+        <li>{{ src }}</li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted">{{ t('evidence_sources.empty') }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §8 CONCLUSION ────────────────────────────────────────── #}
+  <section id="sec-8" class="section">
+    <h1>8. {{ t('section.conclusion') }}</h1>
+    <p>{{ t('conclusion.p1', org=organization.name, score=('%.2f' | format(scores.overall.weighted_avg)), level=scores.overall.level_label) }}</p>
+    <p>{{ t('conclusion.p2',
+            high_gaps=(capabilities | selectattr('gap_priority', 'equalto', 'HIGH') | list | length),
+            pillars_summary=(scores.pillars | map(attribute='id') | join(', '))) }}</p>
+    <p>{{ t('conclusion.p3') }}</p>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,2130 @@
+{
+  "version": "1.0.0",
+  "level_names": {
+    "L0": "Inicial",
+    "L1": "Em Desenvolvimento",
+    "L2": "Definido",
+    "L3": "Gerenciado",
+    "L4": "Otimizando"
+  },
+  "strategies": [
+    {
+      "id": "S1",
+      "name": "GitHub Migration",
+      "description": "Consolidate source control and collaboration on GitHub Enterprise."
+    },
+    {
+      "id": "S2",
+      "name": "Foundry + SRE",
+      "description": "Establish platform engineering and SRE practices with Azure Foundry."
+    },
+    {
+      "id": "S3",
+      "name": "App Modernization",
+      "description": "Modernize legacy applications to cloud-native architectures."
+    },
+    {
+      "id": "S4",
+      "name": "AI Applications",
+      "description": "Build AI-powered application features using Azure AI services."
+    },
+    {
+      "id": "S5",
+      "name": "GitHub Copilot Acceleration",
+      "description": "Accelerate developer productivity with GitHub Copilot and AI-assisted workflows."
+    },
+    {
+      "id": "S6",
+      "name": "Agentic Activation",
+      "description": "Enable autonomous AI agent capabilities in applications and workflows."
+    },
+    {
+      "id": "S7",
+      "name": "Security & Governance",
+      "description": "Strengthen security posture and governance across the development lifecycle."
+    }
+  ],
+  "technologies_per_strategy": {
+    "S1": [
+      {
+        "name": "GitHub Enterprise Cloud",
+        "purpose": "Unified source control and collaboration"
+      },
+      {
+        "name": "GitHub Actions",
+        "purpose": "CI/CD automation across repositories"
+      },
+      {
+        "name": "GitHub Advanced Security",
+        "purpose": "Code scanning and secret detection"
+      }
+    ],
+    "S2": [
+      {
+        "name": "Microsoft Foundry",
+        "purpose": "AI model management and deployment"
+      },
+      {
+        "name": "Azure Monitor",
+        "purpose": "End-to-end observability and alerting"
+      },
+      {
+        "name": "Grafana",
+        "purpose": "Operational dashboards and SLO tracking"
+      }
+    ],
+    "S3": [
+      {
+        "name": "Azure Container Apps",
+        "purpose": "Managed container hosting for modernized workloads"
+      },
+      {
+        "name": "Kubernetes",
+        "purpose": "Container orchestration for complex deployments"
+      },
+      {
+        "name": "Terraform",
+        "purpose": "Infrastructure as Code provisioning"
+      }
+    ],
+    "S4": [
+      {
+        "name": "Azure AI Services",
+        "purpose": "Pre-built AI models and cognitive services"
+      },
+      {
+        "name": "Azure OpenAI",
+        "purpose": "Large language model integration"
+      },
+      {
+        "name": "Prompt Flow",
+        "purpose": "AI workflow orchestration and testing"
+      }
+    ],
+    "S5": [
+      {
+        "name": "GitHub Copilot Enterprise",
+        "purpose": "AI-assisted coding across development teams"
+      },
+      {
+        "name": "GitHub Copilot Workspace",
+        "purpose": "AI-driven task planning and implementation"
+      }
+    ],
+    "S6": [
+      {
+        "name": "Semantic Kernel",
+        "purpose": "AI agent orchestration framework"
+      },
+      {
+        "name": "AutoGen",
+        "purpose": "Multi-agent conversation framework"
+      },
+      {
+        "name": "LangChain",
+        "purpose": "LLM application development framework"
+      }
+    ],
+    "S7": [
+      {
+        "name": "GitHub Advanced Security",
+        "purpose": "Supply chain and code security"
+      },
+      {
+        "name": "Microsoft Defender",
+        "purpose": "Cloud workload protection"
+      },
+      {
+        "name": "SBOM tools",
+        "purpose": "Software Bill of Materials generation and audit"
+      }
+    ]
+  },
+  "pillars": [
+    {
+      "id": "P1",
+      "name": "Developer Productivity",
+      "name_pt_br": "Produtividade do Desenvolvedor",
+      "weight": 1.0,
+      "capabilities": [
+        {
+          "id": "P1-C1",
+          "name": "AI Coding Assistants",
+          "name_pt_br": "Assistentes de Codificação IA",
+          "weight": 1.2,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C1-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "% developers using AI completion"
+            },
+            {
+              "id": "P1-C1-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "% PRs with AI review"
+            },
+            {
+              "id": "P1-C1-Q3",
+              "weight": 0.8,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "Productivity measurement maturity"
+            },
+            {
+              "id": "P1-C1-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "qa-test",
+                "data-ai"
+              ],
+              "kpi": "% test coverage from AI generation"
+            },
+            {
+              "id": "P1-C1-Q5",
+              "weight": 1.1,
+              "pe": false,
+              "audience": [
+                "developer",
+                "security",
+                "product-owner",
+                "qa-test"
+              ],
+              "kpi": "AI code governance maturity"
+            }
+          ]
+        },
+        {
+          "id": "P1-C2",
+          "name": "Developer Experience Platform",
+          "name_pt_br": "Plataforma de Experiência do Desenvolvedor",
+          "weight": 1.0,
+          "strategies": [
+            "S2",
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C2-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "architect"
+              ],
+              "kpi": "Developer portal adoption %"
+            },
+            {
+              "id": "P1-C2-Q2",
+              "weight": 0.9,
+              "pe": true,
+              "audience": [
+                "developer",
+                "platform-engineer"
+              ],
+              "kpi": "Environment setup time (minutes)"
+            },
+            {
+              "id": "P1-C2-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "architect",
+                "data-ai"
+              ],
+              "kpi": "Self-service catalog coverage"
+            },
+            {
+              "id": "P1-C2-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "architect"
+              ],
+              "kpi": "% services from templates"
+            },
+            {
+              "id": "P1-C2-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "architect"
+              ],
+              "kpi": "Portal MAU (monthly active users)"
+            },
+            {
+              "id": "P1-C2-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "security",
+                "architect"
+              ],
+              "kpi": "services on paved road"
+            }
+          ]
+        },
+        {
+          "id": "P1-C3",
+          "name": "Knowledge Management",
+          "name_pt_br": "Gestão do Conhecimento",
+          "weight": 0.8,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C3-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "Knowledge retrieval success rate %"
+            },
+            {
+              "id": "P1-C3-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "% repos indexed"
+            },
+            {
+              "id": "P1-C3-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader",
+                "data-ai"
+              ],
+              "kpi": "queries per developer/month"
+            },
+            {
+              "id": "P1-C3-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader",
+                "data-ai"
+              ],
+              "kpi": "% critical services with runbook"
+            },
+            {
+              "id": "P1-C3-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader",
+                "architect"
+              ],
+              "kpi": "% services with ADRs"
+            },
+            {
+              "id": "P1-C3-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "completions per quarter"
+            }
+          ]
+        },
+        {
+          "id": "P1-C4",
+          "name": "Code Review Automation",
+          "name_pt_br": "Automação de Revisão de Código",
+          "weight": 1.1,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C4-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "% PRs AI-reviewed"
+            },
+            {
+              "id": "P1-C4-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "lint violations per kLOC"
+            },
+            {
+              "id": "P1-C4-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "critical findings per PR"
+            },
+            {
+              "id": "P1-C4-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "% PRs meeting review rule"
+            },
+            {
+              "id": "P1-C4-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "median PR cycle time"
+            },
+            {
+              "id": "P1-C4-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "data-ai"
+              ],
+              "kpi": "median PR size (LoC)"
+            },
+            {
+              "id": "P1-C4-Q7",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer"
+              ],
+              "kpi": "review load balance index"
+            }
+          ]
+        },
+        {
+          "id": "P1-C5",
+          "name": "Developer Onboarding & Training",
+          "name_pt_br": "Onboarding e Treinamento de Desenvolvedores",
+          "weight": 0.9,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C5-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "time-to-first-commit (hours)"
+            },
+            {
+              "id": "P1-C5-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "% new hires completing onboarding"
+            },
+            {
+              "id": "P1-C5-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "mentor:mentee ratio"
+            },
+            {
+              "id": "P1-C5-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "katas completed per hire"
+            },
+            {
+              "id": "P1-C5-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader",
+                "qa-test"
+              ],
+              "kpi": "new hires who shadowed on-call"
+            },
+            {
+              "id": "P1-C5-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "NPS from new hires"
+            },
+            {
+              "id": "P1-C5-Q7",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "median ramp-time to first deploy"
+            }
+          ]
+        },
+        {
+          "id": "P1-C6",
+          "name": "Inner Source & Collaboration",
+          "name_pt_br": "Inner Source e Colaboração",
+          "weight": 0.9,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C6-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "% repos open to all devs"
+            },
+            {
+              "id": "P1-C6-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "% repos with CONTRIBUTING"
+            },
+            {
+              "id": "P1-C6-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "cross-team PRs per month"
+            },
+            {
+              "id": "P1-C6-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "GFI issues closed per month"
+            },
+            {
+              "id": "P1-C6-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader",
+                "architect"
+              ],
+              "kpi": "reviews per quarter"
+            },
+            {
+              "id": "P1-C6-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "engineering-leader"
+              ],
+              "kpi": "CoP active members"
+            }
+          ]
+        },
+        {
+          "id": "P1-C7",
+          "name": "Documentation Automation",
+          "name_pt_br": "Automação de Documentação",
+          "weight": 0.8,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C7-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "architect"
+              ],
+              "kpi": "% services with docs in repo"
+            },
+            {
+              "id": "P1-C7-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "architect"
+              ],
+              "kpi": "% APIs with generated docs"
+            },
+            {
+              "id": "P1-C7-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "% PRs with AI doc suggestions"
+            },
+            {
+              "id": "P1-C7-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "broken-link count"
+            },
+            {
+              "id": "P1-C7-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "architect"
+              ],
+              "kpi": "top unanswered queries"
+            }
+          ]
+        },
+        {
+          "id": "P1-C8",
+          "name": "Developer Productivity Measurement",
+          "name_pt_br": "Medição de Produtividade do Desenvolvedor",
+          "weight": 1.0,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C8-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "deploys/day, lead time, CFR, MTTR"
+            },
+            {
+              "id": "P1-C8-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "DX survey NPS"
+            },
+            {
+              "id": "P1-C8-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer",
+                "qa-test"
+              ],
+              "kpi": "p95 CI duration"
+            },
+            {
+              "id": "P1-C8-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "SPACE dimensions tracked"
+            },
+            {
+              "id": "P1-C8-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% teams viewing dashboard monthly"
+            },
+            {
+              "id": "P1-C8-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% teams hitting DX OKRs"
+            }
+          ]
+        },
+        {
+          "id": "P1-C9",
+          "name": "Environment & Workspace Automation",
+          "name_pt_br": "Automação de Ambientes e Espaços de Trabalho",
+          "weight": 0.9,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P1-C9-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer"
+              ],
+              "kpi": "% repos with devcontainer"
+            },
+            {
+              "id": "P1-C9-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer"
+              ],
+              "kpi": "% devs using cloud workspace"
+            },
+            {
+              "id": "P1-C9-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer"
+              ],
+              "kpi": "tools pinned per repo"
+            },
+            {
+              "id": "P1-C9-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "qa-test"
+              ],
+              "kpi": "time to get fresh test data"
+            },
+            {
+              "id": "P1-C9-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "developer",
+                "platform-engineer",
+                "architect"
+              ],
+              "kpi": "% workspaces healthy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "DevOps Lifecycle",
+      "name_pt_br": "Ciclo de Vida DevOps",
+      "weight": 1.0,
+      "capabilities": [
+        {
+          "id": "P2-C1",
+          "name": "CI/CD Pipeline Intelligence",
+          "name_pt_br": "Inteligência de Pipeline CI/CD",
+          "weight": 1.2,
+          "strategies": [
+            "S2",
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P2-C1-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "Deployment frequency per week"
+            },
+            {
+              "id": "P2-C1-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security",
+                "data-ai"
+              ],
+              "kpi": "% pipelines as code"
+            },
+            {
+              "id": "P2-C1-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "% cache hit ratio"
+            },
+            {
+              "id": "P2-C1-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "branches >7 days old"
+            },
+            {
+              "id": "P2-C1-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "deploys per day"
+            },
+            {
+              "id": "P2-C1-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "flags used per release"
+            }
+          ]
+        },
+        {
+          "id": "P2-C2",
+          "name": "Infrastructure as Code",
+          "name_pt_br": "Infraestrutura como Código",
+          "weight": 1.1,
+          "strategies": [
+            "S2",
+            "S3"
+          ],
+          "questions": [
+            {
+              "id": "P2-C2-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security",
+                "qa-test"
+              ],
+              "kpi": "% infrastructure as code"
+            },
+            {
+              "id": "P2-C2-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% infra as code"
+            },
+            {
+              "id": "P2-C2-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "architect"
+              ],
+              "kpi": "% resources via modules"
+            },
+            {
+              "id": "P2-C2-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% envs drift-detected"
+            },
+            {
+              "id": "P2-C2-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security",
+                "qa-test"
+              ],
+              "kpi": "policies enforced in PR"
+            },
+            {
+              "id": "P2-C2-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "qa-test"
+              ],
+              "kpi": "PR envs spun up"
+            }
+          ]
+        },
+        {
+          "id": "P2-C3",
+          "name": "Observability and Monitoring",
+          "name_pt_br": "Observabilidade e Monitoramento",
+          "weight": 1.0,
+          "strategies": [
+            "S2"
+          ],
+          "questions": [
+            {
+              "id": "P2-C3-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "MTTR in minutes"
+            },
+            {
+              "id": "P2-C3-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% services emitting structured logs"
+            },
+            {
+              "id": "P2-C3-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% services instrumented"
+            },
+            {
+              "id": "P2-C3-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "product-owner"
+              ],
+              "kpi": "% services with SLOs"
+            },
+            {
+              "id": "P2-C3-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "journeys monitored"
+            },
+            {
+              "id": "P2-C3-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "data-ai"
+              ],
+              "kpi": "alerts auto-triaged"
+            }
+          ]
+        },
+        {
+          "id": "P2-C4",
+          "name": "Security Integration (DevSecOps)",
+          "name_pt_br": "Integração de Segurança (DevSecOps)",
+          "weight": 1.2,
+          "strategies": [
+            "S7"
+          ],
+          "questions": [
+            {
+              "id": "P2-C4-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops",
+                "product-owner"
+              ],
+              "kpi": "% vulnerabilities caught pre-prod"
+            },
+            {
+              "id": "P2-C4-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "% repos with SAST"
+            },
+            {
+              "id": "P2-C4-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "% repos with SCA"
+            },
+            {
+              "id": "P2-C4-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "secrets blocked per month"
+            },
+            {
+              "id": "P2-C4-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops",
+                "qa-test"
+              ],
+              "kpi": "% APIs DAST-tested"
+            },
+            {
+              "id": "P2-C4-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "champions per 20 devs"
+            }
+          ]
+        },
+        {
+          "id": "P2-C5",
+          "name": "Release & Deployment Strategies",
+          "name_pt_br": "Estratégias de Release e Implantação",
+          "weight": 1.1,
+          "strategies": [
+            "S1"
+          ],
+          "questions": [
+            {
+              "id": "P2-C5-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% services with canary"
+            },
+            {
+              "id": "P2-C5-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "median rollback time"
+            },
+            {
+              "id": "P2-C5-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect"
+              ],
+              "kpi": "flags in active use"
+            },
+            {
+              "id": "P2-C5-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "security"
+              ],
+              "kpi": "% releases using ChatOps"
+            },
+            {
+              "id": "P2-C5-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "regions rolled out per release"
+            },
+            {
+              "id": "P2-C5-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% releases meeting SLO"
+            }
+          ]
+        },
+        {
+          "id": "P2-C6",
+          "name": "Testing Automation",
+          "name_pt_br": "Automação de Testes",
+          "weight": 1.1,
+          "strategies": [
+            "S5"
+          ],
+          "questions": [
+            {
+              "id": "P2-C6-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops",
+                "data-ai"
+              ],
+              "kpi": "% repos >80% coverage"
+            },
+            {
+              "id": "P2-C6-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops"
+              ],
+              "kpi": "integration tests in CI"
+            },
+            {
+              "id": "P2-C6-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops"
+              ],
+              "kpi": "critical journeys automated"
+            },
+            {
+              "id": "P2-C6-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops"
+              ],
+              "kpi": "% service pairs with contract tests"
+            },
+            {
+              "id": "P2-C6-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops",
+                "data-ai"
+              ],
+              "kpi": "% tests AI-generated"
+            },
+            {
+              "id": "P2-C6-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops"
+              ],
+              "kpi": "flaky test rate"
+            },
+            {
+              "id": "P2-C6-Q7",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "qa-test",
+                "developer",
+                "devops"
+              ],
+              "kpi": "mutation score of critical modules"
+            }
+          ]
+        },
+        {
+          "id": "P2-C7",
+          "name": "Incident Management & SRE",
+          "name_pt_br": "Gestão de Incidentes e SRE",
+          "weight": 1.1,
+          "strategies": [
+            "S2"
+          ],
+          "questions": [
+            {
+              "id": "P2-C7-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% services with on-call"
+            },
+            {
+              "id": "P2-C7-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% incidents with postmortem"
+            },
+            {
+              "id": "P2-C7-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "security",
+                "product-owner"
+              ],
+              "kpi": "% services using error budgets"
+            },
+            {
+              "id": "P2-C7-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "gamedays per quarter"
+            },
+            {
+              "id": "P2-C7-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% major incidents with IC"
+            },
+            {
+              "id": "P2-C7-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "engineering-leader",
+                "data-ai"
+              ],
+              "kpi": "% teams with SRE partner"
+            },
+            {
+              "id": "P2-C7-Q7",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops"
+              ],
+              "kpi": "% incidents with runbook run"
+            }
+          ]
+        },
+        {
+          "id": "P2-C8",
+          "name": "Artifact & Package Management",
+          "name_pt_br": "Gestão de Artefatos e Pacotes",
+          "weight": 0.9,
+          "strategies": [
+            "S7"
+          ],
+          "questions": [
+            {
+              "id": "P2-C8-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "% packages via registry"
+            },
+            {
+              "id": "P2-C8-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "% builds with SBOM"
+            },
+            {
+              "id": "P2-C8-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% artifacts signed"
+            },
+            {
+              "id": "P2-C8-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% artifacts scanned"
+            },
+            {
+              "id": "P2-C8-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "artifacts promoted via policy"
+            }
+          ]
+        },
+        {
+          "id": "P2-C9",
+          "name": "Change Management & GitOps",
+          "name_pt_br": "Gestão de Mudanças e GitOps",
+          "weight": 1.0,
+          "strategies": [
+            "S1"
+          ],
+          "questions": [
+            {
+              "id": "P2-C9-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "% clusters on GitOps"
+            },
+            {
+              "id": "P2-C9-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% changes ticketed automatically"
+            },
+            {
+              "id": "P2-C9-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "% approvals in PR"
+            },
+            {
+              "id": "P2-C9-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer"
+              ],
+              "kpi": "% envs promoted via PR"
+            },
+            {
+              "id": "P2-C9-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "controls automated"
+            }
+          ]
+        },
+        {
+          "id": "P2-C10",
+          "name": "Dependency & Supply Chain Security",
+          "name_pt_br": "Segurança de Dependências e Cadeia de Suprimentos",
+          "weight": 1.1,
+          "strategies": [
+            "S7"
+          ],
+          "questions": [
+            {
+              "id": "P2-C10-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "% repos auto-updated"
+            },
+            {
+              "id": "P2-C10-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "% deps from allow-listed source"
+            },
+            {
+              "id": "P2-C10-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "SLSA level reached"
+            },
+            {
+              "id": "P2-C10-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "median time to patch critical"
+            },
+            {
+              "id": "P2-C10-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "devops"
+              ],
+              "kpi": "critical vendors reviewed/year"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Application Platform",
+      "name_pt_br": "Plataforma de Aplicações",
+      "weight": 1.0,
+      "capabilities": [
+        {
+          "id": "P3-C1",
+          "name": "Cloud-Native Architecture",
+          "name_pt_br": "Arquitetura Cloud-Native",
+          "weight": 1.1,
+          "strategies": [
+            "S3"
+          ],
+          "questions": [
+            {
+              "id": "P3-C1-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "% workloads containerized"
+            },
+            {
+              "id": "P3-C1-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% workloads containerized"
+            },
+            {
+              "id": "P3-C1-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% services on mesh"
+            },
+            {
+              "id": "P3-C1-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% flows async"
+            },
+            {
+              "id": "P3-C1-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% managed vs self-hosted"
+            }
+          ]
+        },
+        {
+          "id": "P3-C2",
+          "name": "API Management",
+          "name_pt_br": "Gestão de APIs",
+          "weight": 0.9,
+          "strategies": [
+            "S3",
+            "S4"
+          ],
+          "questions": [
+            {
+              "id": "P3-C2-Q1",
+              "weight": 1.0,
+              "pe": true,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "developer",
+                "engineering-leader",
+                "security"
+              ],
+              "kpi": "% APIs with OpenAPI spec"
+            },
+            {
+              "id": "P3-C2-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "developer"
+              ],
+              "kpi": "% APIs behind gateway"
+            },
+            {
+              "id": "P3-C2-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "developer",
+                "qa-test"
+              ],
+              "kpi": "% APIs with spec"
+            },
+            {
+              "id": "P3-C2-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "developer",
+                "security"
+              ],
+              "kpi": "deprecated APIs retired on time"
+            },
+            {
+              "id": "P3-C2-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "developer"
+              ],
+              "kpi": "time-to-first-call"
+            }
+          ]
+        },
+        {
+          "id": "P3-C3",
+          "name": "AI Application Development",
+          "name_pt_br": "Desenvolvimento de Aplicações IA",
+          "weight": 1.0,
+          "strategies": [
+            "S4",
+            "S6"
+          ],
+          "questions": [
+            {
+              "id": "P3-C3-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "developer",
+                "architect"
+              ],
+              "kpi": "# AI features in production"
+            },
+            {
+              "id": "P3-C3-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "developer",
+                "architect"
+              ],
+              "kpi": "% AI apps on framework"
+            },
+            {
+              "id": "P3-C3-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "developer",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "evals per release"
+            },
+            {
+              "id": "P3-C3-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "developer",
+                "architect"
+              ],
+              "kpi": "RAG apps in prod"
+            },
+            {
+              "id": "P3-C3-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "developer",
+                "architect",
+                "security"
+              ],
+              "kpi": "% AI apps with guardrails"
+            }
+          ]
+        },
+        {
+          "id": "P3-C4",
+          "name": "Data Platform & Lakehouse",
+          "name_pt_br": "Plataforma de Dados e Lakehouse",
+          "weight": 1.0,
+          "strategies": [
+            "S4"
+          ],
+          "questions": [
+            {
+              "id": "P3-C4-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect"
+              ],
+              "kpi": "% data in platform"
+            },
+            {
+              "id": "P3-C4-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "% pipelines with contracts"
+            },
+            {
+              "id": "P3-C4-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "% datasets cataloged"
+            },
+            {
+              "id": "P3-C4-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect"
+              ],
+              "kpi": "% decisions using data"
+            },
+            {
+              "id": "P3-C4-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect"
+              ],
+              "kpi": "% use-cases real-time"
+            }
+          ]
+        },
+        {
+          "id": "P3-C5",
+          "name": "Agentic Applications",
+          "name_pt_br": "Aplicações Agênticas",
+          "weight": 1.0,
+          "strategies": [
+            "S6"
+          ],
+          "questions": [
+            {
+              "id": "P3-C5-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "agents in production"
+            },
+            {
+              "id": "P3-C5-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "% agents on framework"
+            },
+            {
+              "id": "P3-C5-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "eval scenarios per agent"
+            },
+            {
+              "id": "P3-C5-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "tools available to agents"
+            },
+            {
+              "id": "P3-C5-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% agents with HITL"
+            },
+            {
+              "id": "P3-C5-Q6",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "data-ai",
+                "architect",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "p95 agent step latency"
+            }
+          ]
+        },
+        {
+          "id": "P3-C6",
+          "name": "Identity & Access Management",
+          "name_pt_br": "Gestão de Identidades e Acessos",
+          "weight": 1.1,
+          "strategies": [
+            "S7"
+          ],
+          "questions": [
+            {
+              "id": "P3-C6-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "platform-engineer"
+              ],
+              "kpi": "% apps behind SSO"
+            },
+            {
+              "id": "P3-C6-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "platform-engineer"
+              ],
+              "kpi": "% workloads using WI"
+            },
+            {
+              "id": "P3-C6-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "platform-engineer"
+              ],
+              "kpi": "% access through JIT"
+            },
+            {
+              "id": "P3-C6-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "platform-engineer"
+              ],
+              "kpi": "% sessions policy-evaluated"
+            },
+            {
+              "id": "P3-C6-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "security",
+                "platform-engineer"
+              ],
+              "kpi": "access reviews per year"
+            }
+          ]
+        },
+        {
+          "id": "P3-C7",
+          "name": "Multi-Cloud & Portability",
+          "name_pt_br": "Multi-Cloud e Portabilidade",
+          "weight": 0.8,
+          "strategies": [
+            "S3"
+          ],
+          "questions": [
+            {
+              "id": "P3-C7-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% workloads portable"
+            },
+            {
+              "id": "P3-C7-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "product-owner"
+              ],
+              "kpi": "% data on portable engines"
+            },
+            {
+              "id": "P3-C7-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "security"
+              ],
+              "kpi": "% services multi-region"
+            },
+            {
+              "id": "P3-C7-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer"
+              ],
+              "kpi": "% modules cloud-agnostic"
+            },
+            {
+              "id": "P3-C7-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "architect",
+                "platform-engineer",
+                "qa-test"
+              ],
+              "kpi": "DR drills per year"
+            }
+          ]
+        },
+        {
+          "id": "P3-C8",
+          "name": "Performance & Scalability",
+          "name_pt_br": "Desempenho e Escalabilidade",
+          "weight": 1.0,
+          "strategies": [
+            "S2"
+          ],
+          "questions": [
+            {
+              "id": "P3-C8-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect",
+                "product-owner"
+              ],
+              "kpi": "% services with perf budget"
+            },
+            {
+              "id": "P3-C8-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect",
+                "qa-test"
+              ],
+              "kpi": "% services load-tested"
+            },
+            {
+              "id": "P3-C8-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect",
+                "product-owner"
+              ],
+              "kpi": "% services autoscaled"
+            },
+            {
+              "id": "P3-C8-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect"
+              ],
+              "kpi": "% services continuously profiled"
+            },
+            {
+              "id": "P3-C8-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "devops",
+                "architect"
+              ],
+              "kpi": "capacity reviews per year"
+            }
+          ]
+        },
+        {
+          "id": "P3-C9",
+          "name": "FinOps & Cost Optimization",
+          "name_pt_br": "FinOps e Otimização de Custos",
+          "weight": 0.9,
+          "strategies": [
+            "S2"
+          ],
+          "questions": [
+            {
+              "id": "P3-C9-Q1",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "product-owner",
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% cost tagged to team"
+            },
+            {
+              "id": "P3-C9-Q2",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "product-owner",
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% eligible spend committed"
+            },
+            {
+              "id": "P3-C9-Q3",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "product-owner",
+                "engineering-leader",
+                "platform-engineer",
+                "data-ai"
+              ],
+              "kpi": "$/month saved by cleanup"
+            },
+            {
+              "id": "P3-C9-Q4",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "product-owner",
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% rightsizing applied"
+            },
+            {
+              "id": "P3-C9-Q5",
+              "weight": 1.0,
+              "pe": false,
+              "audience": [
+                "product-owner",
+                "engineering-leader",
+                "platform-engineer"
+              ],
+              "kpi": "% products with $/user"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

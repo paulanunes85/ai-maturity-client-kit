@@ -1,0 +1,415 @@
+{
+  "metadata": {
+    "computed_at": "2026-05-08T16:20:08Z",
+    "respondent": "Maria Tech Leader (exemplo)",
+    "framework_version": "1.0.0"
+  },
+  "overall": {
+    "score": 1.987,
+    "label": "L2 — Definido",
+    "pe_score": 2.599,
+    "pe_label": "L3 — Gerenciado"
+  },
+  "threshold": {
+    "status": "OK",
+    "answered": 46,
+    "applicable": 158
+  },
+  "pillars": [
+    {
+      "id": "P1",
+      "name_pt_br": "Produtividade do Desenvolvedor",
+      "score": 2.693,
+      "label": "L3 — Gerenciado",
+      "answered": 13,
+      "applicable": 53
+    },
+    {
+      "id": "P2",
+      "name_pt_br": "Ciclo de Vida DevOps",
+      "score": 1.519,
+      "label": "L2 — Definido",
+      "answered": 18,
+      "applicable": 59
+    },
+    {
+      "id": "P3",
+      "name_pt_br": "Plataforma de Aplicações",
+      "score": 1.917,
+      "label": "L2 — Definido",
+      "answered": 15,
+      "applicable": 46
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "P1-C1",
+      "name_pt_br": "Assistentes de Codificação IA",
+      "pillar_id": "P1",
+      "weight": 1.2,
+      "score": 3.041,
+      "label": "L3 — Gerenciado",
+      "answered": 5,
+      "applicable": 5,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C2",
+      "name_pt_br": "Plataforma de Experiência do Desenvolvedor",
+      "pillar_id": "P1",
+      "weight": 1.0,
+      "score": 2.487,
+      "label": "L2 — Definido",
+      "answered": 4,
+      "applicable": 6,
+      "strategies": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C3",
+      "name_pt_br": "Gestão do Conhecimento",
+      "pillar_id": "P1",
+      "weight": 0.8,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 6,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C4",
+      "name_pt_br": "Automação de Revisão de Código",
+      "pillar_id": "P1",
+      "weight": 1.1,
+      "score": 2.5,
+      "label": "L3 — Gerenciado",
+      "answered": 4,
+      "applicable": 7,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C5",
+      "name_pt_br": "Onboarding e Treinamento de Desenvolvedores",
+      "pillar_id": "P1",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 7,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C6",
+      "name_pt_br": "Inner Source e Colaboração",
+      "pillar_id": "P1",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 6,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C7",
+      "name_pt_br": "Automação de Documentação",
+      "pillar_id": "P1",
+      "weight": 0.8,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C8",
+      "name_pt_br": "Medição de Produtividade do Desenvolvedor",
+      "pillar_id": "P1",
+      "weight": 1.0,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 6,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P1-C9",
+      "name_pt_br": "Automação de Ambientes e Espaços de Trabalho",
+      "pillar_id": "P1",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P2-C1",
+      "name_pt_br": "Inteligência de Pipeline CI/CD",
+      "pillar_id": "P2",
+      "weight": 1.2,
+      "score": 2.333,
+      "label": "L2 — Definido",
+      "answered": 6,
+      "applicable": 6,
+      "strategies": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "id": "P2-C2",
+      "name_pt_br": "Infraestrutura como Código",
+      "pillar_id": "P2",
+      "weight": 1.1,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 6,
+      "strategies": [
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "id": "P2-C3",
+      "name_pt_br": "Observabilidade e Monitoramento",
+      "pillar_id": "P2",
+      "weight": 1.0,
+      "score": 2.4,
+      "label": "L2 — Definido",
+      "answered": 5,
+      "applicable": 6,
+      "strategies": [
+        "S2"
+      ]
+    },
+    {
+      "id": "P2-C4",
+      "name_pt_br": "Integração de Segurança (DevSecOps)",
+      "pillar_id": "P2",
+      "weight": 1.2,
+      "score": 0.75,
+      "label": "L1 — Em Desenvolvimento",
+      "answered": 4,
+      "applicable": 6,
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "id": "P2-C5",
+      "name_pt_br": "Estratégias de Release e Implantação",
+      "pillar_id": "P2",
+      "weight": 1.1,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 6,
+      "strategies": [
+        "S1"
+      ]
+    },
+    {
+      "id": "P2-C6",
+      "name_pt_br": "Automação de Testes",
+      "pillar_id": "P2",
+      "weight": 1.1,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 7,
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "id": "P2-C7",
+      "name_pt_br": "Gestão de Incidentes e SRE",
+      "pillar_id": "P2",
+      "weight": 1.1,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 7,
+      "strategies": [
+        "S2"
+      ]
+    },
+    {
+      "id": "P2-C8",
+      "name_pt_br": "Gestão de Artefatos e Pacotes",
+      "pillar_id": "P2",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "id": "P2-C9",
+      "name_pt_br": "Gestão de Mudanças e GitOps",
+      "pillar_id": "P2",
+      "weight": 1.0,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S1"
+      ]
+    },
+    {
+      "id": "P2-C10",
+      "name_pt_br": "Segurança de Dependências e Cadeia de Suprimentos",
+      "pillar_id": "P2",
+      "weight": 1.1,
+      "score": 0.667,
+      "label": "L1 — Em Desenvolvimento",
+      "answered": 3,
+      "applicable": 5,
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "id": "P3-C1",
+      "name_pt_br": "Arquitetura Cloud-Native",
+      "pillar_id": "P3",
+      "weight": 1.1,
+      "score": 2.6,
+      "label": "L3 — Gerenciado",
+      "answered": 5,
+      "applicable": 5,
+      "strategies": [
+        "S3"
+      ]
+    },
+    {
+      "id": "P3-C2",
+      "name_pt_br": "Gestão de APIs",
+      "pillar_id": "P3",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "id": "P3-C3",
+      "name_pt_br": "Desenvolvimento de Aplicações IA",
+      "pillar_id": "P3",
+      "weight": 1.0,
+      "score": 2.25,
+      "label": "L2 — Definido",
+      "answered": 4,
+      "applicable": 5,
+      "strategies": [
+        "S4",
+        "S6"
+      ]
+    },
+    {
+      "id": "P3-C4",
+      "name_pt_br": "Plataforma de Dados e Lakehouse",
+      "pillar_id": "P3",
+      "weight": 1.0,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S4"
+      ]
+    },
+    {
+      "id": "P3-C5",
+      "name_pt_br": "Aplicações Agênticas",
+      "pillar_id": "P3",
+      "weight": 1.0,
+      "score": 0.833,
+      "label": "L1 — Em Desenvolvimento",
+      "answered": 6,
+      "applicable": 6,
+      "strategies": [
+        "S6"
+      ]
+    },
+    {
+      "id": "P3-C6",
+      "name_pt_br": "Gestão de Identidades e Acessos",
+      "pillar_id": "P3",
+      "weight": 1.1,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "id": "P3-C7",
+      "name_pt_br": "Multi-Cloud e Portabilidade",
+      "pillar_id": "P3",
+      "weight": 0.8,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S3"
+      ]
+    },
+    {
+      "id": "P3-C8",
+      "name_pt_br": "Desempenho e Escalabilidade",
+      "pillar_id": "P3",
+      "weight": 1.0,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S2"
+      ]
+    },
+    {
+      "id": "P3-C9",
+      "name_pt_br": "FinOps e Otimização de Custos",
+      "pillar_id": "P3",
+      "weight": 0.9,
+      "score": null,
+      "label": "Sem resposta",
+      "answered": 0,
+      "applicable": 5,
+      "strategies": [
+        "S2"
+      ]
+    }
+  ]
+}

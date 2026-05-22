@@ -1,0 +1,1402 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Calculadora de Pontuação · AI Maturity Assessment · paulasilva-ms</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="branding/tokens-paulasilva-ms.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* paulasilva-ms identity, MS 4-color palette mapped to L0-L4 */
+  :root {
+    --color-primary: var(--c-blue-500, #00A4EF);
+    --color-primary-hover: var(--c-blue-700, #0076AC);
+    --color-l0: var(--c-red-500, #F25022);    --color-l0-bg: var(--c-red-50, #FFF0EB);
+    --color-l1: var(--c-yellow-500, #FFB900); --color-l1-bg: var(--c-yellow-50, #FFF7E0);
+    --color-l2: var(--c-blue-500, #00A4EF);   --color-l2-bg: var(--c-blue-50, #E5F6FD);
+    --color-l3: var(--c-green-500, #7FBA00);  --color-l3-bg: var(--c-green-50, #F1F8E3);
+    --color-l4: #6B46C1;                      --color-l4-bg: #F3F0FF;
+  }
+  body {
+    background: var(--bg, #F7F7F5);
+    color: var(--ink, #1A1A1A);
+    font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+  }
+  /* Chrome bar */
+  .deck-brand {
+    position: fixed; top: 14px; right: 18px; z-index: 50;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    padding: 6px 12px;
+    border: 1px solid var(--rule, #E5E5E0);
+    border-radius: 999px;
+  }
+  .deck-brand__text {
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3, #737373);
+    white-space: nowrap;
+  }
+  .lvl-btn[data-selected="true"][data-level="0"] { background: var(--color-l0-bg); border-color: var(--color-l0); }
+  .lvl-btn[data-selected="true"][data-level="0"] span:first-child { color: var(--color-l0); }
+  .lvl-btn[data-selected="true"][data-level="1"] { background: var(--color-l1-bg); border-color: var(--color-l1); }
+  .lvl-btn[data-selected="true"][data-level="1"] span:first-child { color: var(--color-l1); }
+  .lvl-btn[data-selected="true"][data-level="2"] { background: var(--color-l2-bg); border-color: var(--color-l2); }
+  .lvl-btn[data-selected="true"][data-level="2"] span:first-child { color: var(--color-l2); }
+  .lvl-btn[data-selected="true"][data-level="3"] { background: var(--color-l3-bg); border-color: var(--color-l3); }
+  .lvl-btn[data-selected="true"][data-level="3"] span:first-child { color: var(--color-l3); }
+  .lvl-btn[data-selected="true"][data-level="4"] { background: var(--color-l4-bg); border-color: var(--color-l4); }
+  .lvl-btn[data-selected="true"][data-level="4"] span:first-child { color: var(--color-l4); }
+  .lvl-btn[data-selected="true"]::after {
+    content: "✓"; position: absolute; top: 1px; right: 4px; font-size: 11px;
+    color: inherit; font-weight: bold;
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- paulasilva-ms chrome bar -->
+<div class="deck-brand">
+  <svg viewBox="0 0 1914 1062" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="paulasilva" style="width:18px;height:auto;flex-shrink:0;">
+    <title>paulasilva</title>
+    <path fill="#F25022" d="M532 131 L36 462 L13 497 L13 560 L23 582 L48 604 L521 923 L539 926 L539 699 L547 680 L314 530 L527 395 L551 371 L558 347 L558 155 L547 135 Z"/>
+    <path fill="#7FBA00" d="M551 681 L542 693 L540 700 L540 917 L546 930 L558 940 L571 943 L778 943 L788 941 L798 935 L809 910 L809 702 L807 694 L799 682 L784 674 L566 674 Z"/>
+    <path fill="#FFB900" d="M1390 16 L1208 13 L1184 23 L1171 38 L768 1009 L768 1026 L778 1038 L957 1042 L975 1037 L995 1017 L1346 179 L1349 145 L1367 129 L1401 47 L1402 31 Z"/>
+    <path fill="#00A4EF" d="M1369 131 L1350 149 L1349 355 L1354 369 L1385 399 L1592 528 L1373 667 L1354 688 L1349 703 L1349 907 L1361 924 L1377 926 L1871 595 L1893 563 L1894 501 L1885 477 L1863 456 L1398 142 Z"/>
+  </svg>
+  <span class="deck-brand__text">Paula Silva | Software Global Black Belt</span>
+</div>
+
+
+<header class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 py-4">
+    <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+      <h1 class="text-xl font-bold text-gray-900">Calculadora de Pontuação · AI Maturity Assessment</h1>
+      <button onclick="resetAll()" class="text-xs px-3 py-1.5 rounded border border-gray-300 hover:bg-gray-50">Limpar tudo</button>
+    </div>
+    <p class="text-xs text-gray-600 mb-3">
+      Demonstração interativa do algoritmo SUMPRODUCT em 3 camadas. 3 capabilities reais (1 por pilar).
+      Selecione um nível por questão e veja capability/pillar/overall recalculando ao vivo.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+      <div class="rounded-lg border-2 border-indigo-200 bg-indigo-50 p-5 col-span-2">
+        <div class="text-xs uppercase tracking-wide text-indigo-700 font-semibold">Overall Score</div>
+        <div class="text-4xl font-bold mt-1 text-indigo-900" id="overall-score">—</div>
+        <div class="text-xs text-indigo-700 mt-0.5" id="overall-label">Aguardando respostas</div>
+        <div class="text-[10px] text-indigo-600 mt-1 font-mono" id="overall-formula">overall = Σ(cap × peso) / Σ(peso)</div>
+      </div>
+      
+        <div class="rounded-lg border-2 border-gray-200 bg-white p-5" data-pillar-summary="P1">
+          <div class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Pillar P1</div>
+          <div class="text-3xl font-bold mt-1 text-gray-900 pillar-score">—</div>
+          <div class="text-xs text-gray-500 pillar-label">Aguardando respostas</div>
+        </div>
+        <div class="rounded-lg border-2 border-gray-200 bg-white p-5" data-pillar-summary="P2">
+          <div class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Pillar P2</div>
+          <div class="text-3xl font-bold mt-1 text-gray-900 pillar-score">—</div>
+          <div class="text-xs text-gray-500 pillar-label">Aguardando respostas</div>
+        </div>
+        <div class="rounded-lg border-2 border-gray-200 bg-white p-5" data-pillar-summary="P3">
+          <div class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Pillar P3</div>
+          <div class="text-3xl font-bold mt-1 text-gray-900 pillar-score">—</div>
+          <div class="text-xs text-gray-500 pillar-label">Aguardando respostas</div>
+        </div>
+    </div>
+
+    <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+      <span id="threshold-badge" class="px-2 py-0.5 rounded font-semibold">—</span>
+      <span class="text-gray-500" id="answered-count">0 / 0 questões respondidas</span>
+      <span class="text-gray-300">|</span>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--color-l0)"></span>L0 &lt;0.5</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--color-l1)"></span>L1 [0.5,1.5)</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--color-l2)"></span>L2 [1.5,2.5)</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--color-l3)"></span>L3 [2.5,3.5)</span>
+        <span class="inline-flex items-center gap-1"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--color-l4)"></span>L4 ≥3.5</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+  
+  <section class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden capability-block"
+    data-pillar="P1" data-cid="P1-C1">
+
+    <header class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 px-6 py-5 bg-gray-50/50">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200">P1 — Produtividade do Desenvolvedor</span>
+        <span class="text-xs font-mono text-gray-400">P1-C1</span>
+        <h2 class="text-lg font-bold text-gray-900">Assistentes de Codificação IA</h2>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Peso da capability:</span>
+          <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+            class="cap-weight w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Target (gap):</span>
+          <input type="number" min="0" max="4" step="0.1" value="3.0"
+            class="cap-target w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+      </div>
+    </header>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="bg-gray-50 border-b border-gray-200">
+          <tr>
+            <th class="py-3 pl-6 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 w-24">ID</th>
+            <th class="py-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Pergunta · Selecione o nível</th>
+            <th class="py-3 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-20">Peso</th>
+            <th class="py-3 pr-6 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-24">Contribuição</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-qid="P1-C1-Q1" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P1-C1-Q1</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida sua organização utiliza ferramentas de completação de código com IA (ex. GitHub Copilot)?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P1-C1-Q1" data-level="0"
+                title="Sem ferramentas de IA de codificação implementadas. Todo o código é escrito manualmente sem assistência de IA."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q1" data-level="1"
+                title="Implementação piloto de assistente de codificação IA para &lt;10% dos desenvolvedores. Uso ad-hoc sem diretrizes."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q1" data-level="2"
+                title="Assistente de codificação IA implantado para 25-50% dos desenvolvedores com diretrizes de uso e treinamento básico."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q1" data-level="3"
+                title="Assistente de codificação IA implantado para &gt;75% dos desenvolvedores com ganhos de produtividade medidos &gt;15% e bibliotecas de prompts."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q1" data-level="4"
+                title="Assistente de codificação IA universal (&gt;95%) com ajuste fino de modelo personalizado e melhoria de velocidade medida &gt;30%."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P1-C1-Q1" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P1-C1-Q2" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P1-C1-Q2</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Quão efetivamente sua equipe aproveita IA para revisão de código e melhoria de qualidade?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P1-C1-Q2" data-level="0"
+                title="Sem participação de IA em revisão de código. Todas as revisões são revisões manuais entre pares."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q2" data-level="1"
+                title="Linting básico e ferramentas de análise estática em CI. Sem sugestões de revisão impulsadas por IA."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q2" data-level="2"
+                title="Bot de revisão com IA configurado em 30-60% dos repositórios, fornecendo sugestões automatizadas de código."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q2" data-level="3"
+                title="Revisão com IA integrada em &gt;80% dos repositórios com regras personalizadas alinhadas aos padrões da equipe."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q2" data-level="4"
+                title="IA realiza primeira revisão em todos os PRs, aprovando automaticamente mudanças de baixo risco e escalando as críticas."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P1-C1-Q2" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P1-C1-Q3" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P1-C1-Q3</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Como sua organização mede e rastreia o impacto das ferramentas de codificação IA na produtividade?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P1-C1-Q3" data-level="0"
+                title="Sem medição do impacto das ferramentas de IA. Sem métricas de produtividade base capturadas."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q3" data-level="1"
+                title="Feedback anedótico de desenvolvedores sobre a utilidade de ferramentas de IA. Sem medição quantitativa."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q3" data-level="2"
+                title="Métricas DORA básicas rastreadas (frequência de implantação, tempo de entrega). Análise de uso de ferramentas de IA disponível."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q3" data-level="3"
+                title="Métricas abrangentes de produtividade do desenvolvedor incluindo medidas específicas de IA: taxa de aceitação, tempo economizado."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q3" data-level="4"
+                title="Plataforma de inteligência de produtividade em tempo real correlacionando o uso de ferramentas de IA com resultados de negócio."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P1-C1-Q3" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P1-C1-Q4" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P1-C1-Q4</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Qual nível de capacidades de testes assistidos por IA sua organização emprega?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P1-C1-Q4" data-level="0"
+                title="Todos os testes escritos manualmente. Cobertura de testes inferior a 40% na maioria dos projetos."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q4" data-level="1"
+                title="Uso ocasional de IA para gerar esqueletos de testes unitários. A cobertura permanece abaixo de 50%."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q4" data-level="2"
+                title="Geração de testes com IA integrada no fluxo de desenvolvimento para 30-50% do novo código. Cobertura &gt;60%."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q4" data-level="3"
+                title="IA gera &gt;70% de testes unitários com revisão humana. Cobertura &gt;75%. IA identifica casos extremos."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q4" data-level="4"
+                title="Otimização de testes impulsionada por IA: gera suites de regressão automaticamente, identifica testes instáveis, otimiza cobertura."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P1-C1-Q4" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P1-C1-Q5" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P1-C1-Q5</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Como sua organização governa o código gerado por IA em termos de segurança e conformidade?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P1-C1-Q5" data-level="0"
+                title="Sem governança sobre código gerado por IA. Nenhuma política existe. Desenvolvedores usam ferramentas de IA sem restrições."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q5" data-level="1"
+                title="Política básica existe proibindo uso de IA em módulos sensíveis à segurança. Sem automação."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q5" data-level="2"
+                title="Código gerado por IA passa por análise de segurança padrão (SAST/DAST). Verificação de conformidade de licenças em CI."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q5" data-level="3"
+                title="Portões de qualidade de código dedicados para IA: varredura de vulnerabilidades, auditoria de licenças, revisão de qualidade de código."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P1-C1-Q5" data-level="4"
+                title="Governança de código IA em tempo real: cada sugestão varrida antes de exibir, licenças bloqueadas e métricas de qualidade rastreadas."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P1-C1-Q5" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="border-t border-gray-200 bg-gray-50/70 px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(nível × peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wsum">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wtotal">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Capability score</div>
+        <div class="font-mono font-bold text-lg cap-score">—</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Rótulo · Gap</div>
+        <div class="cap-label-gap text-sm font-semibold text-gray-500">—</div>
+      </div>
+    </footer>
+  </section>
+
+  <section class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden capability-block"
+    data-pillar="P2" data-cid="P2-C1">
+
+    <header class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 px-6 py-5 bg-gray-50/50">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700 border-emerald-200">P2 — Ciclo de Vida DevOps</span>
+        <span class="text-xs font-mono text-gray-400">P2-C1</span>
+        <h2 class="text-lg font-bold text-gray-900">Inteligência de Pipeline CI/CD</h2>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Peso da capability:</span>
+          <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+            class="cap-weight w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Target (gap):</span>
+          <input type="number" min="0" max="4" step="0.1" value="3.0"
+            class="cap-target w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+      </div>
+    </header>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="bg-gray-50 border-b border-gray-200">
+          <tr>
+            <th class="py-3 pl-6 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 w-24">ID</th>
+            <th class="py-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Pergunta · Selecione o nível</th>
+            <th class="py-3 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-20">Peso</th>
+            <th class="py-3 pr-6 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-24">Contribuição</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-qid="P2-C1-Q1" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q1</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Quão maduro é seu pipeline CI/CD em termos de automação e integração de IA?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q1" data-level="0"
+                title="Manual builds and deployments. No CI/CD pipeline. Deployments happen weekly or less frequently."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q1" data-level="1"
+                title="Basic CI pipeline with automated builds and unit tests. Manual deployment process. Deployment frequency: weekly."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q1" data-level="2"
+                title="Full CI/CD pipeline with automated testing, staging deployment, and manual production promotion. Deployment frequency: daily."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q1" data-level="3"
+                title="Intelligent CI/CD: auto-scaling test suites, smart test selection (run only affected tests), canary deployments. Multiple deployments per day."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q1" data-level="4"
+                title="AI-optimized pipeline: predictive build failures, auto-remediation of flaky tests, ML-driven canary analysis, self-healing deployments."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q1" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P2-C1-Q2" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q2</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Inteligência de Pipeline CI/CD (pipeline-as-code everywhere) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q2" data-level="0"
+                title="Sem pipeline-as-code everywhere implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q2" data-level="1"
+                title="Implementação piloto de pipeline-as-code everywhere com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q2" data-level="2"
+                title="pipeline-as-code everywhere adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q2" data-level="3"
+                title="pipeline-as-code everywhere padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q2" data-level="4"
+                title="pipeline-as-code everywhere é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q2" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P2-C1-Q3" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q3</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Inteligência de Pipeline CI/CD (build caching and artifact reuse) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q3" data-level="0"
+                title="Sem build caching and artifact reuse implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q3" data-level="1"
+                title="Implementação piloto de build caching and artifact reuse com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q3" data-level="2"
+                title="build caching and artifact reuse adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q3" data-level="3"
+                title="build caching and artifact reuse padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q3" data-level="4"
+                title="build caching and artifact reuse é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q3" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P2-C1-Q4" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q4</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Inteligência de Pipeline CI/CD (trunk-based development) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q4" data-level="0"
+                title="Sem trunk-based development implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q4" data-level="1"
+                title="Implementação piloto de trunk-based development com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q4" data-level="2"
+                title="trunk-based development adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q4" data-level="3"
+                title="trunk-based development padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q4" data-level="4"
+                title="trunk-based development é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q4" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P2-C1-Q5" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q5</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Inteligência de Pipeline CI/CD (deployment frequency) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q5" data-level="0"
+                title="Sem deployment frequency implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q5" data-level="1"
+                title="Implementação piloto de deployment frequency com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q5" data-level="2"
+                title="deployment frequency adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q5" data-level="3"
+                title="deployment frequency padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q5" data-level="4"
+                title="deployment frequency é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q5" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P2-C1-Q6" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P2-C1-Q6</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Inteligência de Pipeline CI/CD (feature flags for progressive delivery) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P2-C1-Q6" data-level="0"
+                title="Sem feature flags for progressive delivery implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q6" data-level="1"
+                title="Implementação piloto de feature flags for progressive delivery com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q6" data-level="2"
+                title="feature flags for progressive delivery adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q6" data-level="3"
+                title="feature flags for progressive delivery padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P2-C1-Q6" data-level="4"
+                title="feature flags for progressive delivery é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P2-C1-Q6" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="border-t border-gray-200 bg-gray-50/70 px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(nível × peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wsum">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wtotal">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Capability score</div>
+        <div class="font-mono font-bold text-lg cap-score">—</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Rótulo · Gap</div>
+        <div class="cap-label-gap text-sm font-semibold text-gray-500">—</div>
+      </div>
+    </footer>
+  </section>
+
+  <section class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden capability-block"
+    data-pillar="P3" data-cid="P3-C1">
+
+    <header class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 px-6 py-5 bg-gray-50/50">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-violet-100 text-violet-700 border-violet-200">P3 — Plataforma de Aplicações</span>
+        <span class="text-xs font-mono text-gray-400">P3-C1</span>
+        <h2 class="text-lg font-bold text-gray-900">Arquitetura Cloud-Native</h2>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Peso da capability:</span>
+          <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+            class="cap-weight w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+        <label class="flex items-center gap-1.5">
+          <span class="text-gray-600">Target (gap):</span>
+          <input type="number" min="0" max="4" step="0.1" value="3.0"
+            class="cap-target w-20 rounded border border-gray-300 px-2.5 py-1.5 text-center" onchange="recalculate()" />
+        </label>
+      </div>
+    </header>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="bg-gray-50 border-b border-gray-200">
+          <tr>
+            <th class="py-3 pl-6 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 w-24">ID</th>
+            <th class="py-3 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Pergunta · Selecione o nível</th>
+            <th class="py-3 pr-3 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-20">Peso</th>
+            <th class="py-3 pr-6 text-xs font-semibold uppercase tracking-wide text-gray-500 text-center w-24">Contribuição</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-qid="P3-C1-Q1" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P3-C1-Q1</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Qual é a maturidade da adoção de arquitetura cloud-native?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P3-C1-Q1" data-level="0"
+                title="Monolithic applications deployed on VMs or bare metal. No containerization."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q1" data-level="1"
+                title="Some applications containerized (&lt;30%). Docker used for development but not production."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q1" data-level="2"
+                title="50-70% of workloads containerized. Kubernetes or container orchestration in production. Basic microservice decomposition."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q1" data-level="3"
+                title="&gt;85% workloads cloud-native. Service mesh, GitOps deployment, automated scaling. Well-defined service boundaries."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q1" data-level="4"
+                title="Full cloud-native with AI-optimized resource allocation, predictive auto-scaling, self-healing infrastructure, and serverless where appropriate."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P3-C1-Q1" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P3-C1-Q2" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P3-C1-Q2</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Arquitetura Nativa da Nuvem (container adoption) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P3-C1-Q2" data-level="0"
+                title="Sem container adoption implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q2" data-level="1"
+                title="Implementação piloto de container adoption com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q2" data-level="2"
+                title="container adoption adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q2" data-level="3"
+                title="container adoption padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q2" data-level="4"
+                title="container adoption é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P3-C1-Q2" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P3-C1-Q3" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P3-C1-Q3</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Arquitetura Nativa da Nuvem (service mesh / zero trust networking) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P3-C1-Q3" data-level="0"
+                title="Sem service mesh / zero trust networking implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q3" data-level="1"
+                title="Implementação piloto de service mesh / zero trust networking com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q3" data-level="2"
+                title="service mesh / zero trust networking adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q3" data-level="3"
+                title="service mesh / zero trust networking padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q3" data-level="4"
+                title="service mesh / zero trust networking é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P3-C1-Q3" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P3-C1-Q4" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P3-C1-Q4</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Arquitetura Nativa da Nuvem (event-driven architecture) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P3-C1-Q4" data-level="0"
+                title="Sem event-driven architecture implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q4" data-level="1"
+                title="Implementação piloto de event-driven architecture com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q4" data-level="2"
+                title="event-driven architecture adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q4" data-level="3"
+                title="event-driven architecture padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q4" data-level="4"
+                title="event-driven architecture é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P3-C1-Q4" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        <tr data-qid="P3-C1-Q5" class="border-b border-gray-100 last:border-0 align-top">
+          <td class="py-4 pl-6 pr-3 text-xs font-mono text-gray-500 whitespace-nowrap">P3-C1-Q5</td>
+          <td class="py-4 pr-4">
+            <p class="text-sm text-gray-800 leading-snug">Em que medida Arquitetura Nativa da Nuvem (managed services preference) foi adotado entre as equipes?</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button"
+                data-qid="P3-C1-Q5" data-level="0"
+                title="Sem managed services preference implementado. As equipes operam sem esta capacidade."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L0</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Inicial</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q5" data-level="1"
+                title="Implementação piloto de managed services preference com &lt;10% de cobertura de equipes e uso ad-hoc."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L1</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Em Desenvolvimento</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q5" data-level="2"
+                title="managed services preference adotado por 25-50% das equipes com diretrizes básicas e treinamento."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L2</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Definido</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q5" data-level="3"
+                title="managed services preference padronizado em &gt;75% das equipes com resultados medidos e governança."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L3</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Gerenciado</span>
+              </button>
+              <button type="button"
+                data-qid="P3-C1-Q5" data-level="4"
+                title="managed services preference é otimizado, automatizado e continuamente melhorado com insights baseados em dados."
+                class="lvl-btn group relative flex flex-col items-start gap-1 rounded-md border-2 border-gray-200 bg-white px-3 py-2 text-xs hover:border-gray-300 hover:bg-gray-50 transition-all"
+                onclick="selectLevel(this)">
+                <span class="font-bold text-gray-700">L4</span>
+                <span class="text-[10px] text-gray-500 leading-tight">Otimizando</span>
+              </button>
+            </div>
+          </td>
+          <td class="py-4 pr-3 text-center">
+            <input type="number" min="0.5" max="2.0" step="0.1" value="1.0"
+              data-qid="P3-C1-Q5" onchange="recalculate()"
+              class="weight-input w-20 rounded border border-gray-300 px-2.5 py-1.5 text-sm text-center" />
+          </td>
+          <td class="py-4 pr-6 text-center">
+            <span class="contrib text-sm font-mono text-gray-400">—</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="border-t border-gray-200 bg-gray-50/70 px-6 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(nível × peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wsum">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Σ(peso)</div>
+        <div class="font-mono font-semibold text-gray-800 wtotal">0.00</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Capability score</div>
+        <div class="font-mono font-bold text-lg cap-score">—</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-wide text-gray-500">Rótulo · Gap</div>
+        <div class="cap-label-gap text-sm font-semibold text-gray-500">—</div>
+      </div>
+    </footer>
+  </section>
+
+  <section class="rounded-xl border border-gray-200 bg-white p-5">
+    <h3 class="font-bold text-gray-900 mb-2">Como ler o cálculo</h3>
+    <ol class="text-sm text-gray-700 space-y-1 list-decimal list-inside">
+      <li><strong>Capability score</strong> = Σ(nível × peso da questão) / Σ(peso da questão).</li>
+      <li><strong>Pillar score</strong> = Σ(capability_score × peso da capability) / Σ(peso) — apenas capabilities respondidas entram.</li>
+      <li><strong>Overall</strong> = SUMPRODUCT direto sobre <em>todas</em> as capabilities (não é média dos pillars).</li>
+      <li><strong>Gap</strong> = target − current; <strong>Priority score</strong> = peso_capability × gap.</li>
+      <li><strong>Threshold:</strong> &lt;25 questões = bloqueado · 25–39 = warning · ≥40 = ok.</li>
+    </ol>
+    <p class="text-xs text-gray-500 mt-3">
+      Algoritmo idêntico ao código Rust em <code>app/backend/src/scoring.rs</code>.
+      Esta página é uma demonstração standalone — nenhum dado é enviado para servidor.
+    </p>
+  </section>
+</main>
+
+<script>
+const responses = {};   // qid -> level (0..4)
+
+function classifyLabel(score) {
+  if (score === null) return ["—", "text-gray-400", "transparent"];
+  if (score < 0.5)   return ["L0 — Inicial",            "text-[var(--color-l0)]", "var(--color-l0-bg)"];
+  if (score < 1.5)   return ["L1 — Em Desenvolvimento", "text-[var(--color-l1)]", "var(--color-l1-bg)"];
+  if (score < 2.5)   return ["L2 — Definido",           "text-[var(--color-l2)]", "var(--color-l2-bg)"];
+  if (score < 3.5)   return ["L3 — Gerenciado",         "text-[var(--color-l3)]", "var(--color-l3-bg)"];
+  return                   ["L4 — Otimizando",          "text-[var(--color-l4)]", "var(--color-l4-bg)"];
+}
+
+function classifyPriority(ps) {
+  if (ps >= 2.4) return ["P0 — Crítico",  "text-red-700 bg-red-100"];
+  if (ps >= 1.6) return ["P1 — Alto",     "text-orange-700 bg-orange-100"];
+  if (ps >= 0.9) return ["P2 — Médio",    "text-yellow-800 bg-yellow-100"];
+  return            ["P3 — Baixo",        "text-gray-700 bg-gray-100"];
+}
+
+function selectLevel(btn) {
+  const qid = btn.dataset.qid;
+  const level = parseInt(btn.dataset.level, 10);
+  // toggle: if same already selected, unselect
+  if (responses[qid] === level) {
+    delete responses[qid];
+  } else {
+    responses[qid] = level;
+  }
+  // update visual state for this question's buttons
+  document.querySelectorAll(`.lvl-btn[data-qid="${qid}"]`).forEach(b => {
+    b.dataset.selected = (responses[qid] === parseInt(b.dataset.level, 10)) ? "true" : "false";
+  });
+  recalculate();
+}
+
+function recalculate() {
+  let totalAnswered = 0;
+  let totalApplicable = 0;
+  // overall numerador/denominador (sobre todas capabilities respondidas)
+  let overallWS = 0, overallWT = 0;
+
+  // per pillar acumulator
+  const pillarAccum = {};
+
+  document.querySelectorAll('.capability-block').forEach(block => {
+    const pid = block.dataset.pillar;
+    const capWeightInput = block.querySelector('.cap-weight');
+    const capTargetInput = block.querySelector('.cap-target');
+    const capWeight = parseFloat(capWeightInput.value) || 1.0;
+    const capTarget = parseFloat(capTargetInput.value) || 3.0;
+
+    let wsum = 0, wtotal = 0, answered = 0, applicable = 0;
+
+    block.querySelectorAll('tr[data-qid]').forEach(row => {
+      applicable += 1;
+      const qid = row.dataset.qid;
+      const wInput = row.querySelector('.weight-input');
+      const w = parseFloat(wInput.value) || 1.0;
+      const contribCell = row.querySelector('.contrib');
+      if (responses[qid] !== undefined) {
+        const lvl = responses[qid];
+        wsum += lvl * w;
+        wtotal += w;
+        answered += 1;
+        contribCell.textContent = `${(lvl*w).toFixed(2)} / ${w.toFixed(2)}`;
+        contribCell.classList.remove('text-gray-400');
+        contribCell.classList.add('text-gray-700');
+      } else {
+        contribCell.textContent = '—';
+        contribCell.classList.add('text-gray-400');
+        contribCell.classList.remove('text-gray-700');
+      }
+    });
+
+    totalAnswered += answered;
+    totalApplicable += applicable;
+
+    const score = wtotal > 0 ? wsum / wtotal : null;
+
+    // update footer
+    block.querySelector('.wsum').textContent = wsum.toFixed(2);
+    block.querySelector('.wtotal').textContent = wtotal.toFixed(2);
+    const capScoreEl = block.querySelector('.cap-score');
+    const capLabelEl = block.querySelector('.cap-label-gap');
+
+    if (score !== null) {
+      capScoreEl.textContent = score.toFixed(3);
+      const [label, txtCls] = classifyLabel(score);
+      capScoreEl.className = 'font-mono font-bold text-lg cap-score ' + txtCls;
+      const gap = Math.max(0, capTarget - score);
+      const priorityScore = capWeight * gap;
+      const [priLabel, priCls] = classifyPriority(priorityScore);
+      capLabelEl.innerHTML =
+        `<div class="${txtCls} font-bold">${label}</div>` +
+        `<div class="text-xs text-gray-600 mt-0.5">gap ${gap.toFixed(2)} · ps ${priorityScore.toFixed(2)}</div>` +
+        `<span class="inline-block mt-1 px-1.5 py-0.5 text-[10px] font-semibold rounded ${priCls}">${priLabel}</span>`;
+
+      // contribute to pillar + overall
+      if (!pillarAccum[pid]) pillarAccum[pid] = { ws: 0, wt: 0 };
+      pillarAccum[pid].ws += score * capWeight;
+      pillarAccum[pid].wt += capWeight;
+      overallWS += score * capWeight;
+      overallWT += capWeight;
+    } else {
+      capScoreEl.textContent = '—';
+      capScoreEl.className = 'font-mono font-bold text-lg cap-score text-gray-400';
+      capLabelEl.innerHTML = '<span class="text-gray-400">aguardando</span>';
+    }
+  });
+
+  // update pillar summary cards
+  document.querySelectorAll('[data-pillar-summary]').forEach(card => {
+    const pid = card.dataset.pillarSummary;
+    const acc = pillarAccum[pid];
+    const scoreEl = card.querySelector('.pillar-score');
+    const labelEl = card.querySelector('.pillar-label');
+    if (acc && acc.wt > 0) {
+      const ps = acc.ws / acc.wt;
+      const [label, txtCls, bg] = classifyLabel(ps);
+      scoreEl.textContent = ps.toFixed(2);
+      scoreEl.className = 'text-3xl font-bold mt-1 ' + txtCls;
+      labelEl.textContent = label;
+      labelEl.className = 'text-xs mt-0.5 ' + txtCls;
+      card.style.background = bg;
+    } else {
+      scoreEl.textContent = '—';
+      scoreEl.className = 'text-3xl font-bold mt-1 text-gray-400';
+      labelEl.textContent = 'Aguardando respostas';
+      labelEl.className = 'text-xs text-gray-500';
+      card.style.background = '#ffffff';
+    }
+  });
+
+  // overall
+  const overallEl = document.getElementById('overall-score');
+  const overallLabelEl = document.getElementById('overall-label');
+  const overallFormulaEl = document.getElementById('overall-formula');
+  if (overallWT > 0) {
+    const overall = overallWS / overallWT;
+    const [label, txtCls] = classifyLabel(overall);
+    overallEl.textContent = overall.toFixed(3);
+    overallEl.className = 'text-4xl font-bold mt-1 ' + txtCls;
+    overallLabelEl.textContent = label;
+    overallLabelEl.className = 'text-xs mt-0.5 ' + txtCls;
+    overallFormulaEl.textContent = `overall = ${overallWS.toFixed(2)} / ${overallWT.toFixed(2)} = ${overall.toFixed(3)}`;
+  } else {
+    overallEl.textContent = '—';
+    overallEl.className = 'text-4xl font-bold mt-1 text-indigo-900';
+    overallLabelEl.textContent = 'Aguardando respostas';
+    overallFormulaEl.textContent = 'overall = Σ(cap × peso) / Σ(peso)';
+  }
+
+  // threshold badge
+  const tBadge = document.getElementById('threshold-badge');
+  const aCount = document.getElementById('answered-count');
+  aCount.textContent = `${totalAnswered} / ${totalApplicable} questões respondidas`;
+  // Esta calculadora demo tem ~17 questões; thresholds reais (25/40) são para assessment completo.
+  // Aqui mostramos o badge como referência.
+  if (totalAnswered >= 40) {
+    tBadge.textContent = 'Threshold OK (≥40)';
+    tBadge.className = 'px-2 py-0.5 rounded font-semibold text-green-700 bg-green-100';
+  } else if (totalAnswered >= 25) {
+    tBadge.textContent = 'Threshold WARNING (25–39)';
+    tBadge.className = 'px-2 py-0.5 rounded font-semibold text-yellow-800 bg-yellow-100';
+  } else if (totalAnswered > 0) {
+    tBadge.textContent = `Threshold BLOCKED (<25) — demo, ignorável`;
+    tBadge.className = 'px-2 py-0.5 rounded font-semibold text-red-700 bg-red-100';
+  } else {
+    tBadge.textContent = 'Aguardando respostas';
+    tBadge.className = 'px-2 py-0.5 rounded font-semibold text-gray-600 bg-gray-100';
+  }
+}
+
+function resetAll() {
+  for (const k of Object.keys(responses)) delete responses[k];
+  document.querySelectorAll('.lvl-btn').forEach(b => b.dataset.selected = 'false');
+  document.querySelectorAll('.weight-input').forEach(i => i.value = '1.0');
+  document.querySelectorAll('.cap-weight').forEach(i => i.value = '1.0');
+  document.querySelectorAll('.cap-target').forEach(i => i.value = '3.0');
+  recalculate();
+}
+
+// initial render
+recalculate();
+</script>
+
+</body>
+</html>

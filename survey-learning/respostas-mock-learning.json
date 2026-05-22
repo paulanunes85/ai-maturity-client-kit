@@ -1,0 +1,687 @@
+{
+  "metadata": {
+    "source": "template-export-forms-learning.xlsx (5 respondentes mockados)",
+    "imported_at": "2026-05-08T12:00:00Z",
+    "total_respondents": 5,
+    "total_questions": 32,
+    "anonymous": false,
+    "scope": "individual_identified (name+email per respondent)"
+  },
+  "respondents": [
+    {
+      "respondent_id": 1,
+      "name": "Maria Tech Leader",
+      "email": "maria.tl@cliente-exemplo.com.br",
+      "responses": {
+        "L1-Q1": {
+          "type": "text-short",
+          "value": "Maria Tech Leader"
+        },
+        "L1-Q2": {
+          "type": "text-short",
+          "value": "maria.tl@cliente-exemplo.com.br"
+        },
+        "L1-Q3": {
+          "type": "choice",
+          "value": "Desenvolvedor Backend"
+        },
+        "L1-Q4": {
+          "type": "choice",
+          "value": "Outro / não pertenço a um squad fixo"
+        },
+        "L2-Q1": {
+          "type": "choice",
+          "value": "L3 — Uso Agent + Spaces, mensuro ganho"
+        },
+        "L2-Q2": {
+          "type": "choice",
+          "value": "L3 — Uso 4+ ferramentas avançadas"
+        },
+        "L2-Q3": {
+          "type": "choice",
+          "value": "L3 — Trato IA como pair em várias fases"
+        },
+        "L2-Q4": {
+          "type": "choice",
+          "value": "L3 — Já criei custom agents/skills/prompts"
+        },
+        "L2-Q5": {
+          "type": "choice",
+          "value": "L3 — Time mantém ativamente"
+        },
+        "L2-Q6": {
+          "type": "choice",
+          "value": "L3 — Mensuro DORA/DX + compartilho com colegas"
+        },
+        "L2-Q7": {
+          "type": "choice",
+          "value": "L3 — Scanners obrigatórios + SBOM + treinamento"
+        },
+        "L3-Q1": {
+          "type": "multi",
+          "value": "D8 — Security & Governance (GHAS, SBOM, red-lines); D5 — Agent Concepts (custom agents, MCP, A2A)"
+        },
+        "L3-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L4-Q1": {
+          "type": "multi",
+          "value": "Modo Edit (edição multi-arquivo); Modo Ask (perguntas eficazes); Test generation; Copilot Spaces (contexto compartilhado)"
+        },
+        "L4-Q2": {
+          "type": "multi",
+          "value": "A2A (Agent-to-Agent) protocol; Microsoft Foundry — visão geral; Azure OpenAI Service (API direta); Foundry Agent Service (criar agentes)"
+        },
+        "L4-Q3": {
+          "type": "multi",
+          "value": "Documentação automática; Code review com IA antes de PR; Onboarding em projeto novo com IA + Spaces; SDD com Spec Kit (Spec-Driven Development)"
+        },
+        "L4-Q4": {
+          "type": "multi",
+          "value": "Criar custom agents (.agent.md); Personas Agentic DevOps (System Designer, Agent Operator); Testar agents (test suites para prompts/skills)"
+        },
+        "L4-Q5": {
+          "type": "multi",
+          "value": "Política de uso de IA (templates); SBOM (Software Bill of Materials)"
+        },
+        "L5-Q1": {
+          "type": "multi",
+          "value": "Vídeos curtos (YouTube, Microsoft Learn); Book club / paper club"
+        },
+        "L5-Q2": {
+          "type": "choice",
+          "value": "< 1h/semana"
+        },
+        "L5-Q3": {
+          "type": "multi",
+          "value": "Manhã de quarta/quinta; Tarde de quarta/quinta"
+        },
+        "L5-Q4": {
+          "type": "choice",
+          "value": "Self-paced (meu ritmo, mais flexibilidade)"
+        },
+        "L6-Q1": {
+          "type": "choice",
+          "value": "Sim — quero ser Champion ativo"
+        },
+        "L6-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L6-Q3": {
+          "type": "choice",
+          "value": "Sim — mentor sênior em IA"
+        },
+        "L6-Q4": {
+          "type": "choice",
+          "value": "Talvez — depende do tópico"
+        },
+        "L6-Q5": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L7-Q1": {
+          "type": "multi",
+          "value": "Falta de orçamento para cursos pagos; Não sei por onde começar; Falta de treinamento estruturado; Tudo bem — sem barreiras significativas; Política de segurança bloqueia testes"
+        },
+        "L7-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L7-Q3": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L7-Q4": {
+          "type": "text",
+          "value": "[texto livre exemplo de Maria Tech Leader]"
+        },
+        "L7-Q5": {
+          "type": "choice",
+          "value": "Sim — quero ver o plano e os workshops sugeridos"
+        }
+      }
+    },
+    {
+      "respondent_id": 2,
+      "name": "Joao Backend SRE",
+      "email": "joao.sre@cliente-exemplo.com.br",
+      "responses": {
+        "L1-Q1": {
+          "type": "text-short",
+          "value": "Joao Backend SRE"
+        },
+        "L1-Q2": {
+          "type": "text-short",
+          "value": "joao.sre@cliente-exemplo.com.br"
+        },
+        "L1-Q3": {
+          "type": "choice",
+          "value": "Data Engineer / ML Engineer"
+        },
+        "L1-Q4": {
+          "type": "choice",
+          "value": "Outro / não pertenço a um squad fixo"
+        },
+        "L2-Q1": {
+          "type": "choice",
+          "value": "L2 — Uso Ask/Edit no dia-a-dia"
+        },
+        "L2-Q2": {
+          "type": "choice",
+          "value": "L2 — Uso 2-3 ferramentas básicas"
+        },
+        "L2-Q3": {
+          "type": "choice",
+          "value": "L2 — TDD ou SDD ocasional"
+        },
+        "L2-Q4": {
+          "type": "choice",
+          "value": "L2 — Conheço modos do Copilot"
+        },
+        "L2-Q5": {
+          "type": "choice",
+          "value": "L2 — Uso e atualizo ocasionalmente"
+        },
+        "L2-Q6": {
+          "type": "choice",
+          "value": "L2 — Tenho Champion no time"
+        },
+        "L2-Q7": {
+          "type": "choice",
+          "value": "L2 — GHAS ativo + política básica"
+        },
+        "L3-Q1": {
+          "type": "multi",
+          "value": "D3 — MS/GitHub Tooling (Foundry, Spaces, Spec Kit, MCP); D6 — Instructions / Memory (instructions files, prompt library); D7 — Best Practices (DORA, comunidade, mentoria); D4 — AI Dev Practices (TDD com IA, SDD); D2 — Copilot Adoption (modos avançados, Coding Agent)"
+        },
+        "L3-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L4-Q1": {
+          "type": "multi",
+          "value": "Copilot CLI; Test generation; Slash commands (/explain, /fix, /tests); Copilot Spaces (contexto compartilhado); PR review com Copilot"
+        },
+        "L4-Q2": {
+          "type": "multi",
+          "value": "A2A (Agent-to-Agent) protocol; Foundry Memory (long-term context); Microsoft Foundry — visão geral; Multi-agent orchestration; Não tenho interesse em Foundry hoje"
+        },
+        "L4-Q3": {
+          "type": "multi",
+          "value": "SDD com Spec Kit (Spec-Driven Development); Onboarding em projeto novo com IA + Spaces; Code review com IA antes de PR"
+        },
+        "L4-Q4": {
+          "type": "multi",
+          "value": "Criar prompt files (.prompt.md); Handoffs entre agentes; Guardrails / red-lines de agents; Subagentes (delegação)"
+        },
+        "L4-Q5": {
+          "type": "multi",
+          "value": "SBOM (Software Bill of Materials); Vulnerabilidades comuns em código gerado por IA; DLP para prompts de IA; JIT permissions para agentes; Microsoft Defender for DevOps / Cloud"
+        },
+        "L5-Q1": {
+          "type": "multi",
+          "value": "Pair programming com Champion; Show & tell de colegas"
+        },
+        "L5-Q2": {
+          "type": "choice",
+          "value": "< 1h/semana"
+        },
+        "L5-Q3": {
+          "type": "multi",
+          "value": "Manhã de quarta/quinta; Sexta tarde (low-stress); Tarde de quarta/quinta; Almoço (lunch & learn)"
+        },
+        "L5-Q4": {
+          "type": "choice",
+          "value": "Cohort (grupo fixo, mais accountability)"
+        },
+        "L6-Q1": {
+          "type": "choice",
+          "value": "Sim — quero ser Champion ativo"
+        },
+        "L6-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L6-Q3": {
+          "type": "choice",
+          "value": "Não — prefiro auto-aprendizado"
+        },
+        "L6-Q4": {
+          "type": "choice",
+          "value": "Não me sinto pronto"
+        },
+        "L6-Q5": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L7-Q1": {
+          "type": "multi",
+          "value": "Não vejo prioridade clara da liderança; Não sei por onde começar; Falta de licença para Foundry / Azure AI"
+        },
+        "L7-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L7-Q3": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L7-Q4": {
+          "type": "text",
+          "value": "[texto livre exemplo de Joao Backend SRE]"
+        },
+        "L7-Q5": {
+          "type": "choice",
+          "value": "Sim — quero ver o plano e os workshops sugeridos"
+        }
+      }
+    },
+    {
+      "respondent_id": 3,
+      "name": "Ana Security Lead",
+      "email": "ana.sec@cliente-exemplo.com.br",
+      "responses": {
+        "L1-Q1": {
+          "type": "text-short",
+          "value": "Ana Security Lead"
+        },
+        "L1-Q2": {
+          "type": "text-short",
+          "value": "ana.sec@cliente-exemplo.com.br"
+        },
+        "L1-Q3": {
+          "type": "choice",
+          "value": "QA / SDET"
+        },
+        "L1-Q4": {
+          "type": "choice",
+          "value": "Outro / não pertenço a um squad fixo"
+        },
+        "L2-Q1": {
+          "type": "choice",
+          "value": "L3 — Uso Agent + Spaces, mensuro ganho"
+        },
+        "L2-Q2": {
+          "type": "choice",
+          "value": "L3 — Uso 4+ ferramentas avançadas"
+        },
+        "L2-Q3": {
+          "type": "choice",
+          "value": "L3 — Trato IA como pair em várias fases"
+        },
+        "L2-Q4": {
+          "type": "choice",
+          "value": "L3 — Já criei custom agents/skills/prompts"
+        },
+        "L2-Q5": {
+          "type": "choice",
+          "value": "L3 — Time mantém ativamente"
+        },
+        "L2-Q6": {
+          "type": "choice",
+          "value": "L3 — Mensuro DORA/DX + compartilho com colegas"
+        },
+        "L2-Q7": {
+          "type": "choice",
+          "value": "L3 — Scanners obrigatórios + SBOM + treinamento"
+        },
+        "L3-Q1": {
+          "type": "multi",
+          "value": "D8 — Security & Governance (GHAS, SBOM, red-lines); D5 — Agent Concepts (custom agents, MCP, A2A); D2 — Copilot Adoption (modos avançados, Coding Agent); D6 — Instructions / Memory (instructions files, prompt library); D7 — Best Practices (DORA, comunidade, mentoria)"
+        },
+        "L3-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L4-Q1": {
+          "type": "multi",
+          "value": "Coding Agent (autônomo no GitHub.com — assigna issue, abre PR); Modo Ask (perguntas eficazes); Copilot Spaces (contexto compartilhado); Test generation; Modo Agent (autônomo no IDE)"
+        },
+        "L4-Q2": {
+          "type": "multi",
+          "value": "Multi-agent orchestration; Não tenho interesse em Foundry hoje; Microsoft Foundry — visão geral; Connectors (Dynamics, SAP, SharePoint)"
+        },
+        "L4-Q3": {
+          "type": "multi",
+          "value": "Documentação automática; Code review com IA antes de PR"
+        },
+        "L4-Q4": {
+          "type": "multi",
+          "value": "Criar custom skills (SKILL.md); Personas Agentic DevOps (System Designer, Agent Operator)"
+        },
+        "L4-Q5": {
+          "type": "multi",
+          "value": "Compliance / LGPD / GDPR + IA; Política de uso de IA (templates)"
+        },
+        "L5-Q1": {
+          "type": "multi",
+          "value": "Hackathon interno; Podcast"
+        },
+        "L5-Q2": {
+          "type": "choice",
+          "value": "< 1h/semana"
+        },
+        "L5-Q3": {
+          "type": "multi",
+          "value": "Sexta tarde (low-stress); Almoço (lunch & learn); Manhã de quarta/quinta; Não consigo síncrono — só self-paced"
+        },
+        "L5-Q4": {
+          "type": "choice",
+          "value": "Híbrido (módulos self-paced + sessões síncronas)"
+        },
+        "L6-Q1": {
+          "type": "choice",
+          "value": "Não tenho interesse hoje"
+        },
+        "L6-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L6-Q3": {
+          "type": "choice",
+          "value": "Outro (especifique no campo livre)"
+        },
+        "L6-Q4": {
+          "type": "choice",
+          "value": "Talvez — depende do tópico"
+        },
+        "L6-Q5": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L7-Q1": {
+          "type": "multi",
+          "value": "Tudo bem — sem barreiras significativas; Falta de licença para Foundry / Azure AI"
+        },
+        "L7-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L7-Q3": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L7-Q4": {
+          "type": "text",
+          "value": "[texto livre exemplo de Ana Security Lead]"
+        },
+        "L7-Q5": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    },
+    {
+      "respondent_id": 4,
+      "name": "Pedro Junior Dev",
+      "email": "pedro.jr@cliente-exemplo.com.br",
+      "responses": {
+        "L1-Q1": {
+          "type": "text-short",
+          "value": "Pedro Junior Dev"
+        },
+        "L1-Q2": {
+          "type": "text-short",
+          "value": "pedro.jr@cliente-exemplo.com.br"
+        },
+        "L1-Q3": {
+          "type": "choice",
+          "value": "Desenvolvedor Frontend"
+        },
+        "L1-Q4": {
+          "type": "choice",
+          "value": "[Lista a customizar pela org]"
+        },
+        "L2-Q1": {
+          "type": "choice",
+          "value": "L1 — Sei o básico (inline completion)"
+        },
+        "L2-Q2": {
+          "type": "choice",
+          "value": "L1 — Conheço de nome"
+        },
+        "L2-Q3": {
+          "type": "choice",
+          "value": "L1 — Uso IA pontualmente"
+        },
+        "L2-Q4": {
+          "type": "choice",
+          "value": "L1 — Conheço só o básico"
+        },
+        "L2-Q5": {
+          "type": "choice",
+          "value": "L1 — Tenho 1 arquivo básico"
+        },
+        "L2-Q6": {
+          "type": "choice",
+          "value": "L1 — Auto-aprendizado isolado"
+        },
+        "L2-Q7": {
+          "type": "choice",
+          "value": "L1 — Política informal"
+        },
+        "L3-Q1": {
+          "type": "multi",
+          "value": "D7 — Best Practices (DORA, comunidade, mentoria); D3 — MS/GitHub Tooling (Foundry, Spaces, Spec Kit, MCP); D2 — Copilot Adoption (modos avançados, Coding Agent); D6 — Instructions / Memory (instructions files, prompt library)"
+        },
+        "L3-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L4-Q1": {
+          "type": "multi",
+          "value": "Copilot CLI; Copilot Spaces (contexto compartilhado); Modo Agent (autônomo no IDE); PR review com Copilot; Slash commands (/explain, /fix, /tests)"
+        },
+        "L4-Q2": {
+          "type": "multi",
+          "value": "A2A (Agent-to-Agent) protocol; Azure OpenAI Service (API direta); Não tenho interesse em Foundry hoje; MCP (Model Context Protocol) + Foundry MCP server; Microsoft Foundry — visão geral"
+        },
+        "L4-Q3": {
+          "type": "multi",
+          "value": "Debugging assistido por IA; Documentação automática; TDD com IA (test-first com Copilot)"
+        },
+        "L4-Q4": {
+          "type": "multi",
+          "value": "Testar agents (test suites para prompts/skills); Criar custom agents (.agent.md); Criar prompt files (.prompt.md)"
+        },
+        "L4-Q5": {
+          "type": "multi",
+          "value": "Vulnerabilidades comuns em código gerado por IA; JIT permissions para agentes; DLP para prompts de IA; GitHub Advanced Security (CodeQL, secret scan); SBOM (Software Bill of Materials)"
+        },
+        "L5-Q1": {
+          "type": "multi",
+          "value": "Hackathon interno; Documentação escrita + tentativa-e-erro; Show & tell de colegas; Curso online self-paced (Coursera, Pluralsight, MS Learn)"
+        },
+        "L5-Q2": {
+          "type": "choice",
+          "value": "2-4h/semana"
+        },
+        "L5-Q3": {
+          "type": "multi",
+          "value": "Após expediente (com hora extra); Sexta tarde (low-stress)"
+        },
+        "L5-Q4": {
+          "type": "choice",
+          "value": "Self-paced (meu ritmo, mais flexibilidade)"
+        },
+        "L6-Q1": {
+          "type": "choice",
+          "value": "Não tenho interesse hoje"
+        },
+        "L6-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L6-Q3": {
+          "type": "choice",
+          "value": "Não — prefiro auto-aprendizado"
+        },
+        "L6-Q4": {
+          "type": "choice",
+          "value": "Sim — em vários tópicos"
+        },
+        "L6-Q5": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L7-Q1": {
+          "type": "multi",
+          "value": "Não vejo prioridade clara da liderança; Falta de espaço para experimentar (sandbox / repo de teste); Falta de orçamento para cursos pagos; Falta de Champion no time"
+        },
+        "L7-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L7-Q3": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L7-Q4": {
+          "type": "text",
+          "value": "[texto livre exemplo de Pedro Junior Dev]"
+        },
+        "L7-Q5": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    },
+    {
+      "respondent_id": 5,
+      "name": "Sofia Frontend Lead",
+      "email": "sofia.fe@cliente-exemplo.com.br",
+      "responses": {
+        "L1-Q1": {
+          "type": "text-short",
+          "value": "Sofia Frontend Lead"
+        },
+        "L1-Q2": {
+          "type": "text-short",
+          "value": "sofia.fe@cliente-exemplo.com.br"
+        },
+        "L1-Q3": {
+          "type": "choice",
+          "value": "Tech Lead"
+        },
+        "L1-Q4": {
+          "type": "choice",
+          "value": "[Lista a customizar pela org]"
+        },
+        "L2-Q1": {
+          "type": "choice",
+          "value": "L2 — Uso Ask/Edit no dia-a-dia"
+        },
+        "L2-Q2": {
+          "type": "choice",
+          "value": "L2 — Uso 2-3 ferramentas básicas"
+        },
+        "L2-Q3": {
+          "type": "choice",
+          "value": "L2 — TDD ou SDD ocasional"
+        },
+        "L2-Q4": {
+          "type": "choice",
+          "value": "L2 — Conheço modos do Copilot"
+        },
+        "L2-Q5": {
+          "type": "choice",
+          "value": "L2 — Uso e atualizo ocasionalmente"
+        },
+        "L2-Q6": {
+          "type": "choice",
+          "value": "L2 — Tenho Champion no time"
+        },
+        "L2-Q7": {
+          "type": "choice",
+          "value": "L2 — GHAS ativo + política básica"
+        },
+        "L3-Q1": {
+          "type": "multi",
+          "value": "D3 — MS/GitHub Tooling (Foundry, Spaces, Spec Kit, MCP); D6 — Instructions / Memory (instructions files, prompt library)"
+        },
+        "L3-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L4-Q1": {
+          "type": "multi",
+          "value": "Modo Ask (perguntas eficazes); Coding Agent (autônomo no GitHub.com — assigna issue, abre PR); Copilot Spaces (contexto compartilhado)"
+        },
+        "L4-Q2": {
+          "type": "multi",
+          "value": "Foundry Agent Service (criar agentes); A2A (Agent-to-Agent) protocol; Não tenho interesse em Foundry hoje"
+        },
+        "L4-Q3": {
+          "type": "multi",
+          "value": "Documentação automática; Prompt engineering (técnicas avançadas); Debugging assistido por IA; Refactoring com IA"
+        },
+        "L4-Q4": {
+          "type": "multi",
+          "value": "Testar agents (test suites para prompts/skills); Guardrails / red-lines de agents; Handoffs entre agentes"
+        },
+        "L4-Q5": {
+          "type": "multi",
+          "value": "GitHub Advanced Security (CodeQL, secret scan); JIT permissions para agentes; Audit logs de IA + análise; Vulnerabilidades comuns em código gerado por IA; DLP para prompts de IA"
+        },
+        "L5-Q1": {
+          "type": "multi",
+          "value": "Podcast; Pair programming com Champion; Hackathon interno; Curso online self-paced (Coursera, Pluralsight, MS Learn)"
+        },
+        "L5-Q2": {
+          "type": "choice",
+          "value": "Mais de 6h/semana"
+        },
+        "L5-Q3": {
+          "type": "multi",
+          "value": "Após expediente (com hora extra); Não consigo síncrono — só self-paced"
+        },
+        "L5-Q4": {
+          "type": "choice",
+          "value": "Não tenho preferência"
+        },
+        "L6-Q1": {
+          "type": "choice",
+          "value": "Sim — quero ser Champion ativo"
+        },
+        "L6-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L6-Q3": {
+          "type": "choice",
+          "value": "Não — prefiro auto-aprendizado"
+        },
+        "L6-Q4": {
+          "type": "choice",
+          "value": "Sim — em vários tópicos"
+        },
+        "L6-Q5": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L7-Q1": {
+          "type": "multi",
+          "value": "Falta de Champion no time; Não sei por onde começar"
+        },
+        "L7-Q2": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L7-Q3": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L7-Q4": {
+          "type": "text",
+          "value": "[texto livre exemplo de Sofia Frontend Lead]"
+        },
+        "L7-Q5": {
+          "type": "choice",
+          "value": "Não, obrigado"
+        }
+      }
+    }
+  ]
+}

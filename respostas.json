@@ -1,0 +1,811 @@
+{
+  "metadata": {
+    "respondent_name": "Maria Tech Leader (exemplo)",
+    "respondent_email": "maria.tech@cliente-exemplo.com.br",
+    "respondent_role": "Diretora de Engenharia",
+    "audience": [
+      "all",
+      "manager"
+    ],
+    "organization": "Cliente Exemplo S.A.",
+    "assessment_date": "2026-05-08",
+    "language": "pt-BR"
+  },
+  "target_overrides": {
+    "P3-C5": 4.0,
+    "P2-C4": 3.5,
+    "P1-C1": 4.0
+  },
+  "responses": {
+    "P1-C1-Q1": {
+      "level": 3,
+      "evidence": "Cobertura de 80%+ com métricas mostrando ganhos consistentes (~20% velocidade).",
+      "text_pt_br": "Em que medida sua organização utiliza ferramentas de completação de código com IA (ex. GitHub Copilot)?"
+    },
+    "P1-C1-Q2": {
+      "level": 3,
+      "evidence": "Programa maduro com ~85% cobertura, dashboards Grafana ativos e revisão trimestral.",
+      "text_pt_br": "Quão efetivamente sua equipe aproveita IA para revisão de código e melhoria de qualidade?"
+    },
+    "P1-C1-Q3": {
+      "level": 2,
+      "evidence": "Aproximadamente 45% de adoção, com workshops mensais e métricas iniciais.",
+      "text_pt_br": "Como sua organização mede e rastreia o impacto das ferramentas de codificação IA na produtividade?"
+    },
+    "P1-C1-Q4": {
+      "level": 4,
+      "evidence": "Adoção universal (>95%) com fine-tuning customizado e ganhos medidos >35%.",
+      "text_pt_br": "Qual nível de capacidades de testes assistidos por IA sua organização emprega?"
+    },
+    "P1-C1-Q5": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Como sua organização governa o código gerado por IA em termos de segurança e conformidade?"
+    },
+    "P1-C2-Q1": {
+      "level": 2,
+      "evidence": "Implantação em 35% dos serviços; documentação publicada no Confluence interno.",
+      "text_pt_br": "Quão maduro é seu portal ou plataforma interna para desenvolvedores?"
+    },
+    "P1-C2-Q2": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Quão efetivamente suas equipes usam ambientes de desenvolvimento padronizados?"
+    },
+    "P1-C2-Q3": {
+      "level": 2,
+      "evidence": "Implantação em 35% dos serviços; documentação publicada no Confluence interno.",
+      "text_pt_br": "Em que medida Plataforma de Experiência do Desenvolvedor (self-service IDP) foi adotado entre as equipes?"
+    },
+    "P1-C2-Q4": {
+      "level": 3,
+      "evidence": "Programa maduro com ~85% cobertura, dashboards Grafana ativos e revisão trimestral.",
+      "text_pt_br": "Em que medida Plataforma de Experiência do Desenvolvedor (golden paths and templates) foi adotado entre as equipes?"
+    },
+    "P1-C2-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Experiência do Desenvolvedor (developer portal) foi adotado entre as equipes?"
+    },
+    "P1-C2-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Experiência do Desenvolvedor (paved road policy enforcement) foi adotado entre as equipes?"
+    },
+    "P1-C3-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Quão efetivamente sua organização captura e compartilha conhecimento de desenvolvimento?"
+    },
+    "P1-C3-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão do Conhecimento (semantic code search) foi adotado entre as equipes?"
+    },
+    "P1-C3-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão do Conhecimento (RAG-based docs assistant) foi adotado entre as equipes?"
+    },
+    "P1-C3-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão do Conhecimento (runbook and playbook coverage) foi adotado entre as equipes?"
+    },
+    "P1-C3-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão do Conhecimento (ADR (architecture decision records)) foi adotado entre as equipes?"
+    },
+    "P1-C3-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão do Conhecimento (learning content & curated paths) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q1": {
+      "level": 3,
+      "evidence": "Programa maduro com ~85% cobertura, dashboards Grafana ativos e revisão trimestral.",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (AI reviewer bot on every PR) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q2": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (static linting and style auto-fix) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q3": {
+      "level": 3,
+      "evidence": "Cobertura de 80%+ com métricas mostrando ganhos consistentes (~20% velocidade).",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (automated security review) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q4": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (required-reviewer rules) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (review SLA tracking) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (change size enforcement) foi adotado entre as equipes?"
+    },
+    "P1-C4-Q7": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Revisão de Código (reviewer load balancing) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (codespaces/dev containers for instant env) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (structured onboarding playbook) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (mentor pairing program) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (hands-on curriculum & kata) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (shadow on-call rotation) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (onboarding feedback loop) foi adotado entre as equipes?"
+    },
+    "P1-C5-Q7": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Onboarding e Treinamento de Desenvolvedores (ramp-time measurement) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (internal repos with open contribution) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (CONTRIBUTING.md standards) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (inner-source discovery portal) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (good-first-issue labeling) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (cross-team design reviews) foi adotado entre as equipes?"
+    },
+    "P1-C6-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Inner Source e Colaboração (community of practice) foi adotado entre as equipes?"
+    },
+    "P1-C7-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Documentação (docs-as-code in Git) foi adotado entre as equipes?"
+    },
+    "P1-C7-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Documentação (auto-generated API reference) foi adotado entre as equipes?"
+    },
+    "P1-C7-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Documentação (AI-assisted doc drafting) foi adotado entre as equipes?"
+    },
+    "P1-C7-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Documentação (doc quality linting) foi adotado entre as equipes?"
+    },
+    "P1-C7-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Documentação (docs analytics) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (DORA four key metrics) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (developer experience surveys) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (build/test feedback loop time) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (SPACE framework adoption) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (flow vs friction dashboards) foi adotado entre as equipes?"
+    },
+    "P1-C8-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Medição de Produtividade do Desenvolvedor (quarterly productivity OKRs) foi adotado entre as equipes?"
+    },
+    "P1-C9-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Ambientes e Espaços de Trabalho (reproducible local envs (devcontainers)) foi adotado entre as equipes?"
+    },
+    "P1-C9-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Ambientes e Espaços de Trabalho (cloud workspaces (Codespaces/Gitpod)) foi adotado entre as equipes?"
+    },
+    "P1-C9-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Ambientes e Espaços de Trabalho (tool and SDK version pinning) foi adotado entre as equipes?"
+    },
+    "P1-C9-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Ambientes e Espaços de Trabalho (on-demand test data) foi adotado entre as equipes?"
+    },
+    "P1-C9-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Ambientes e Espaços de Trabalho (workspace telemetry & health) foi adotado entre as equipes?"
+    },
+    "P2-C1-Q1": {
+      "level": 2,
+      "evidence": "Aproximadamente 45% de adoção, com workshops mensais e métricas iniciais.",
+      "text_pt_br": "Quão maduro é seu pipeline CI/CD em termos de automação e integração de IA?"
+    },
+    "P2-C1-Q2": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Em que medida Inteligência de Pipeline CI/CD (pipeline-as-code everywhere) foi adotado entre as equipes?"
+    },
+    "P2-C1-Q3": {
+      "level": 2,
+      "evidence": "Implantação em 35% dos serviços; documentação publicada no Confluence interno.",
+      "text_pt_br": "Em que medida Inteligência de Pipeline CI/CD (build caching and artifact reuse) foi adotado entre as equipes?"
+    },
+    "P2-C1-Q4": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Inteligência de Pipeline CI/CD (trunk-based development) foi adotado entre as equipes?"
+    },
+    "P2-C1-Q5": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Em que medida Inteligência de Pipeline CI/CD (deployment frequency) foi adotado entre as equipes?"
+    },
+    "P2-C1-Q6": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Inteligência de Pipeline CI/CD (feature flags for progressive delivery) foi adotado entre as equipes?"
+    },
+    "P2-C2-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Qual porcentagem de sua infraestrutura é gerenciada por código?"
+    },
+    "P2-C2-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Infraestrutura como Código (Terraform/Bicep-based IaC) foi adotado entre as equipes?"
+    },
+    "P2-C2-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Infraestrutura como Código (module and pattern library) foi adotado entre as equipes?"
+    },
+    "P2-C2-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Infraestrutura como Código (GitOps for config drift) foi adotado entre as equipes?"
+    },
+    "P2-C2-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Infraestrutura como Código (policy-as-code (OPA/Conftest)) foi adotado entre as equipes?"
+    },
+    "P2-C2-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Infraestrutura como Código (ephemeral environment per PR) foi adotado entre as equipes?"
+    },
+    "P2-C3-Q1": {
+      "level": 3,
+      "evidence": "Programa maduro com ~85% cobertura, dashboards Grafana ativos e revisão trimestral.",
+      "text_pt_br": "Quão abrangente é sua stack de observabilidade (logs, métricas, traces)?"
+    },
+    "P2-C3-Q2": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Observabilidade e Monitoramento (structured logging w/ correlation IDs) foi adotado entre as equipes?"
+    },
+    "P2-C3-Q3": {
+      "level": 3,
+      "evidence": "Programa maduro com ~85% cobertura, dashboards Grafana ativos e revisão trimestral.",
+      "text_pt_br": "Em que medida Observabilidade e Monitoramento (distributed tracing (OpenTelemetry)) foi adotado entre as equipes?"
+    },
+    "P2-C3-Q4": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Observabilidade e Monitoramento (SLOs and error budgets) foi adotado entre as equipes?"
+    },
+    "P2-C3-Q5": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Observabilidade e Monitoramento (synthetic monitoring) foi adotado entre as equipes?"
+    },
+    "P2-C3-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Observabilidade e Monitoramento (anomaly detection with ML) foi adotado entre as equipes?"
+    },
+    "P2-C4-Q1": {
+      "level": 1,
+      "evidence": "Adoção esporádica por iniciativa de tech leads, sem KPIs definidos.",
+      "text_pt_br": "Quão integrada está a segurança no seu pipeline de desenvolvimento e implantação?"
+    },
+    "P2-C4-Q2": {
+      "level": 0,
+      "evidence": "Sem prática estabelecida — nenhuma ferramenta ou política implementada.",
+      "text_pt_br": "Em que medida Integração de Segurança (DevSecOps) (SAST in every pipeline) foi adotado entre as equipes?"
+    },
+    "P2-C4-Q3": {
+      "level": 1,
+      "evidence": "Piloto isolado em 1 squad (~8% dos times); sem governança formal.",
+      "text_pt_br": "Em que medida Integração de Segurança (DevSecOps) (SCA and dependency review) foi adotado entre as equipes?"
+    },
+    "P2-C4-Q4": {
+      "level": 1,
+      "evidence": "Programa em fase exploratória; menos de 15% de cobertura medida.",
+      "text_pt_br": "Em que medida Integração de Segurança (DevSecOps) (secret scanning and push protection) foi adotado entre as equipes?"
+    },
+    "P2-C4-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Integração de Segurança (DevSecOps) (DAST and API security testing) foi adotado entre as equipes?"
+    },
+    "P2-C4-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Integração de Segurança (DevSecOps) (security champions program) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (blue/green or canary deploys) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (automated rollback) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (feature flag platform) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (release coordination via ChatOps) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (progressive delivery across regions) foi adotado entre as equipes?"
+    },
+    "P2-C5-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Estratégias de Release e Implantação (release metrics dashboard) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (unit test coverage targets) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (integration test suites) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (end-to-end / journey tests) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (contract testing) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (AI-assisted test generation) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (flaky-test detection & quarantine) foi adotado entre as equipes?"
+    },
+    "P2-C6-Q7": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Automação de Testes (mutation testing) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (on-call rotation with tooling) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (blameless postmortems) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (error budget policy) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (chaos engineering) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (incident commander role) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q6": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (SRE-dev partnership model) foi adotado entre as equipes?"
+    },
+    "P2-C7-Q7": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Incidentes e SRE (runbook automation) foi adotado entre as equipes?"
+    },
+    "P2-C8-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Artefatos e Pacotes (internal package registry) foi adotado entre as equipes?"
+    },
+    "P2-C8-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Artefatos e Pacotes (SBOM for every build) foi adotado entre as equipes?"
+    },
+    "P2-C8-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Artefatos e Pacotes (artifact signing (SLSA)) foi adotado entre as equipes?"
+    },
+    "P2-C8-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Artefatos e Pacotes (vulnerability scanning of artifacts) foi adotado entre as equipes?"
+    },
+    "P2-C8-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Artefatos e Pacotes (retention & promotion policies) foi adotado entre as equipes?"
+    },
+    "P2-C9-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Mudanças e GitOps (GitOps controllers in prod) foi adotado entre as equipes?"
+    },
+    "P2-C9-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Mudanças e GitOps (automated change tickets) foi adotado entre as equipes?"
+    },
+    "P2-C9-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Mudanças e GitOps (approvals in PR (not tickets)) foi adotado entre as equipes?"
+    },
+    "P2-C9-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Mudanças e GitOps (environment promotion via PR) foi adotado entre as equipes?"
+    },
+    "P2-C9-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Mudanças e GitOps (compliance evidence auto-collected) foi adotado entre as equipes?"
+    },
+    "P2-C10-Q1": {
+      "level": 1,
+      "evidence": "Adoção esporádica por iniciativa de tech leads, sem KPIs definidos.",
+      "text_pt_br": "Em que medida Segurança de Dependências e Cadeia de Suprimentos (dependabot or renovate on every repo) foi adotado entre as equipes?"
+    },
+    "P2-C10-Q2": {
+      "level": 1,
+      "evidence": "Programa em fase exploratória; menos de 15% de cobertura medida.",
+      "text_pt_br": "Em que medida Segurança de Dependências e Cadeia de Suprimentos (allow-list registries only) foi adotado entre as equipes?"
+    },
+    "P2-C10-Q3": {
+      "level": 0,
+      "evidence": "Sem prática estabelecida — nenhuma ferramenta ou política implementada.",
+      "text_pt_br": "Em que medida Segurança de Dependências e Cadeia de Suprimentos (build provenance (SLSA level)) foi adotado entre as equipes?"
+    },
+    "P2-C10-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Segurança de Dependências e Cadeia de Suprimentos (critical dep response playbook) foi adotado entre as equipes?"
+    },
+    "P2-C10-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Segurança de Dependências e Cadeia de Suprimentos (vendor/OSS risk reviews) foi adotado entre as equipes?"
+    },
+    "P3-C1-Q1": {
+      "level": 3,
+      "evidence": "Cobertura de 80%+ com métricas mostrando ganhos consistentes (~20% velocidade).",
+      "text_pt_br": "Qual é a maturidade da adoção de arquitetura cloud-native?"
+    },
+    "P3-C1-Q2": {
+      "level": 3,
+      "evidence": "Cobertura de 80%+ com métricas mostrando ganhos consistentes (~20% velocidade).",
+      "text_pt_br": "Em que medida Arquitetura Nativa da Nuvem (container adoption) foi adotado entre as equipes?"
+    },
+    "P3-C1-Q3": {
+      "level": 2,
+      "evidence": "Aproximadamente 45% de adoção, com workshops mensais e métricas iniciais.",
+      "text_pt_br": "Em que medida Arquitetura Nativa da Nuvem (service mesh / zero trust networking) foi adotado entre as equipes?"
+    },
+    "P3-C1-Q4": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Arquitetura Nativa da Nuvem (event-driven architecture) foi adotado entre as equipes?"
+    },
+    "P3-C1-Q5": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Em que medida Arquitetura Nativa da Nuvem (managed services preference) foi adotado entre as equipes?"
+    },
+    "P3-C2-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Quão madura é sua estratégia de gestão de APIs?"
+    },
+    "P3-C2-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de APIs (API gateway for all external APIs) foi adotado entre as equipes?"
+    },
+    "P3-C2-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de APIs (OpenAPI contracts) foi adotado entre as equipes?"
+    },
+    "P3-C2-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de APIs (versioning & deprecation policy) foi adotado entre as equipes?"
+    },
+    "P3-C2-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de APIs (developer portal with self-serve keys) foi adotado entre as equipes?"
+    },
+    "P3-C3-Q1": {
+      "level": 2,
+      "evidence": "Aproximadamente 45% de adoção, com workshops mensais e métricas iniciais.",
+      "text_pt_br": "Quão madura é a capacidade da sua organização de construir e implantar aplicações com IA?"
+    },
+    "P3-C3-Q2": {
+      "level": 2,
+      "evidence": "Implantação em 35% dos serviços; documentação publicada no Confluence interno.",
+      "text_pt_br": "Em que medida Desenvolvimento de Aplicações de IA (LLM application frameworks) foi adotado entre as equipes?"
+    },
+    "P3-C3-Q3": {
+      "level": 3,
+      "evidence": "Adoção em mais de 75% dos squads; biblioteca de templates compartilhada e métricas DORA monitoradas.",
+      "text_pt_br": "Em que medida Desenvolvimento de Aplicações de IA (evaluation harness for AI) foi adotado entre as equipes?"
+    },
+    "P3-C3-Q4": {
+      "level": 2,
+      "evidence": "Aproximadamente 45% de adoção, com workshops mensais e métricas iniciais.",
+      "text_pt_br": "Em que medida Desenvolvimento de Aplicações de IA (vector database / RAG platform) foi adotado entre as equipes?"
+    },
+    "P3-C3-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desenvolvimento de Aplicações de IA (responsible AI / safety filters) foi adotado entre as equipes?"
+    },
+    "P3-C4-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Dados e Lakehouse (lakehouse or data platform in use) foi adotado entre as equipes?"
+    },
+    "P3-C4-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Dados e Lakehouse (data contracts between producers & consumers) foi adotado entre as equipes?"
+    },
+    "P3-C4-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Dados e Lakehouse (catalog and lineage tracking) foi adotado entre as equipes?"
+    },
+    "P3-C4-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Dados e Lakehouse (self-service analytics) foi adotado entre as equipes?"
+    },
+    "P3-C4-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Plataforma de Dados e Lakehouse (real-time streaming ingestion) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q1": {
+      "level": 1,
+      "evidence": "Piloto isolado em 1 squad (~8% dos times); sem governança formal.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (agents with tool-use in prod) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q2": {
+      "level": 1,
+      "evidence": "Adoção esporádica por iniciativa de tech leads, sem KPIs definidos.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (orchestration framework (Semantic Kernel, etc)) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q3": {
+      "level": 2,
+      "evidence": "Cobertura de ~40% das equipes com diretrizes escritas e treinamento básico.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (evaluation and safety for agents) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q4": {
+      "level": 0,
+      "evidence": "Tópico não está no radar atual da liderança técnica.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (tool/action registry) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q5": {
+      "level": 1,
+      "evidence": "Adoção esporádica por iniciativa de tech leads, sem KPIs definidos.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (human-in-the-loop controls) foi adotado entre as equipes?"
+    },
+    "P3-C5-Q6": {
+      "level": 0,
+      "evidence": "Sem prática estabelecida — nenhuma ferramenta ou política implementada.",
+      "text_pt_br": "Em que medida Aplicações Agênticas (agent cost and latency telemetry) foi adotado entre as equipes?"
+    },
+    "P3-C6-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Identidades e Acessos (SSO for all apps) foi adotado entre as equipes?"
+    },
+    "P3-C6-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Identidades e Acessos (workload identity (no long-lived secrets)) foi adotado entre as equipes?"
+    },
+    "P3-C6-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Identidades e Acessos (least-privilege with JIT elevation) foi adotado entre as equipes?"
+    },
+    "P3-C6-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Identidades e Acessos (conditional access policies) foi adotado entre as equipes?"
+    },
+    "P3-C6-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Gestão de Identidades e Acessos (access reviews and audit) foi adotado entre as equipes?"
+    },
+    "P3-C7-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Multi-Cloud e Portabilidade (container-based workloads for portability) foi adotado entre as equipes?"
+    },
+    "P3-C7-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Multi-Cloud e Portabilidade (abstracted data tier (Postgres, etc)) foi adotado entre as equipes?"
+    },
+    "P3-C7-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Multi-Cloud e Portabilidade (multi-region deployment capability) foi adotado entre as equipes?"
+    },
+    "P3-C7-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Multi-Cloud e Portabilidade (cloud-agnostic IaC modules) foi adotado entre as equipes?"
+    },
+    "P3-C7-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Multi-Cloud e Portabilidade (disaster recovery drills) foi adotado entre as equipes?"
+    },
+    "P3-C8-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desempenho e Escalabilidade (performance budgets per service) foi adotado entre as equipes?"
+    },
+    "P3-C8-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desempenho e Escalabilidade (load/stress testing in CI) foi adotado entre as equipes?"
+    },
+    "P3-C8-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desempenho e Escalabilidade (autoscaling based on real demand) foi adotado entre as equipes?"
+    },
+    "P3-C8-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desempenho e Escalabilidade (profiling in production) foi adotado entre as equipes?"
+    },
+    "P3-C8-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida Desempenho e Escalabilidade (capacity planning cadence) foi adotado entre as equipes?"
+    },
+    "P3-C9-Q1": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida FinOps e Otimização de Custos (cost allocation & showback) foi adotado entre as equipes?"
+    },
+    "P3-C9-Q2": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida FinOps e Otimização de Custos (committed use / savings plans) foi adotado entre as equipes?"
+    },
+    "P3-C9-Q3": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida FinOps e Otimização de Custos (idle and unused resource cleanup) foi adotado entre as equipes?"
+    },
+    "P3-C9-Q4": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida FinOps e Otimização de Custos (rightsizing recommendations) foi adotado entre as equipes?"
+    },
+    "P3-C9-Q5": {
+      "level": null,
+      "evidence": "",
+      "text_pt_br": "Em que medida FinOps e Otimização de Custos (unit economics per product) foi adotado entre as equipes?"
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "computed_at": "2026-05-08T21:43:26.313698+00:00",
+    "source": "respostas-devs.json",
+    "n_respondents": 5,
+    "rubric_version": "1.0 (deterministic)",
+    "anonymous": true,
+    "scope": "team aggregate (no individual scores in output)",
+    "branding": {
+      "design_system": "paulasilva-ms Design System v1.7.0",
+      "author": "Paula Silva",
+      "role": "Software Global Black Belt",
+      "contact": "paulasilva@microsoft.com",
+      "tagline": "Building the future of software development with AI and Agentic DevOps",
+      "palette": {
+        "primary": "#00A4EF",
+        "positive": "#7FBA00",
+        "warn": "#FFB900",
+        "critical": "#F25022"
+      }
+    }
+  },
+  "team_overall": {
+    "score": 2.22,
+    "label": "L2 — Definido",
+    "respondents_with_overall": 5
+  },
+  "dimensions": {
+    "D2": {
+      "name": "Copilot Adoption",
+      "description": "Adoção e profundidade de uso do GitHub Copilot — frequência, modos (Ask/Edit/Agent/Coding Agent), features, ganho mensurado",
+      "team_score": 0.8,
+      "label": "L1 — Em Desenvolvimento",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 2,
+        "L1": 2,
+        "L2": 1,
+        "L3": 0,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 40.0,
+        "L1": 40.0,
+        "L2": 20.0,
+        "L3": 0.0,
+        "L4": 0.0
+      }
+    },
+    "D3": {
+      "name": "MS/GH Tooling Breadth",
+      "description": "Amplitude de uso do ecossistema Microsoft/GitHub — Foundry, Spaces, Coding Agent, MCP, Spec Kit, GHAS",
+      "team_score": 2.4,
+      "label": "L2 — Definido",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 1,
+        "L1": 0,
+        "L2": 0,
+        "L3": 4,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 20.0,
+        "L1": 0.0,
+        "L2": 0.0,
+        "L3": 80.0,
+        "L4": 0.0
+      }
+    },
+    "D4": {
+      "name": "AI Dev Practices",
+      "description": "Práticas estruturadas com IA — TDD, SDD, pair programming, debugging, onboarding",
+      "team_score": 2.68,
+      "label": "L3 — Gerenciado",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 0,
+        "L1": 0,
+        "L2": 1,
+        "L3": 4,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 0.0,
+        "L1": 0.0,
+        "L2": 20.0,
+        "L3": 80.0,
+        "L4": 0.0
+      }
+    },
+    "D5": {
+      "name": "Agent Concepts Mastery",
+      "description": "Conhecimento de conceitos avançados — agentes, MCP, A2A, handoffs, subagentes, personas Agentic DevOps + criação de primitives + testes",
+      "team_score": 2.56,
+      "label": "L3 — Gerenciado",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 0,
+        "L1": 0,
+        "L2": 1,
+        "L3": 4,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 0.0,
+        "L1": 0.0,
+        "L2": 20.0,
+        "L3": 80.0,
+        "L4": 0.0
+      }
+    },
+    "D6": {
+      "name": "Instructions Maturity",
+      "description": "Maturidade de instructions files — copilot-instructions.md, AGENTS.md, CLAUDE.md, manutenção, prompt library compartilhada",
+      "team_score": 2.31,
+      "label": "L2 — Definido",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 0,
+        "L1": 0,
+        "L2": 3,
+        "L3": 2,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 0.0,
+        "L1": 0.0,
+        "L2": 60.0,
+        "L3": 40.0,
+        "L4": 0.0
+      }
+    },
+    "D7": {
+      "name": "Best Practices",
+      "description": "Cultura e usabilidade — Champions, métricas DORA/DX, comunidade, compartilhamento",
+      "team_score": 2.91,
+      "label": "L3 — Gerenciado",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 0,
+        "L1": 0,
+        "L2": 2,
+        "L3": 3,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 0.0,
+        "L1": 0.0,
+        "L2": 40.0,
+        "L3": 60.0,
+        "L4": 0.0
+      }
+    },
+    "D8": {
+      "name": "Security & Governance",
+      "description": "Política de IA, GHAS, scanners, SBOM, escopo+red-lines de agents, JIT permissions, audit, treinamento",
+      "team_score": 1.92,
+      "label": "L2 — Definido",
+      "respondents_with_score": 5,
+      "distribution_count": {
+        "L0": 0,
+        "L1": 1,
+        "L2": 3,
+        "L3": 1,
+        "L4": 0
+      },
+      "distribution_pct": {
+        "L0": 0.0,
+        "L1": 20.0,
+        "L2": 60.0,
+        "L3": 20.0,
+        "L4": 0.0
+      }
+    }
+  },
+  "ranking": {
+    "top": [
+      [
+        "D7",
+        "Best Practices",
+        2.91
+      ],
+      [
+        "D4",
+        "AI Dev Practices",
+        2.68
+      ],
+      [
+        "D5",
+        "Agent Concepts Mastery",
+        2.56
+      ]
+    ],
+    "bottom": [
+      [
+        "D2",
+        "Copilot Adoption",
+        0.8
+      ],
+      [
+        "D8",
+        "Security & Governance",
+        1.92
+      ],
+      [
+        "D6",
+        "Instructions Maturity",
+        2.31
+      ]
+    ]
+  }
+}

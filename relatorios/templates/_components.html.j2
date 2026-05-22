@@ -1,0 +1,219 @@
+{# =============================================================================
+   Reusable component macros for AI Maturity report templates.
+   Imported as: {% from "_components.html.j2" import score_card, ... %}
+   See SDD §6.2 for where each macro is used.
+   ============================================================================= #}
+
+
+{# ─── score_card(pillar) ───────────────────────────────────────────
+   Pillar score summary card with current → target and gap visualization.
+   Usage in: pillar sections of all reports.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro score_card(pillar) %}
+<div class="score-card score-card--{{ pillar.id | lower }}">
+  <div class="score-card__title">{{ pillar.id }}: {{ pillar.name }}</div>
+  <div class="score-card__numbers">
+    <span class="score-card__current">L{{ '%.1f' | format(pillar.weighted_avg) }}</span>
+    <span class="score-card__arrow">→</span>
+    <span class="score-card__target">L{{ '%.1f' | format(pillar.target) }}</span>
+    <span class="score-card__gap">{{ t('label.gap') }} +{{ '%.2f' | format(pillar.gap) }}</span>
+  </div>
+  <div class="score-card__band">
+    <div class="score-card__band-fill" style="width: {{ ((pillar.weighted_avg / 4.0) * 100) | round(1) }}%;"></div>
+  </div>
+</div>
+{% endmacro %}
+
+
+{# ─── overall_score_band(scores) ───────────────────────────────────
+   Big horizontal score-band visualization with marker at current overall.
+   Used in Score Justification §1 and Roadmap parts §1.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro overall_score_band(current, target=4.0) %}
+{% set pct = ((current / target) * 100) | round(1) %}
+<div class="score-band">
+  <div class="score-band__gradient"></div>
+  <div class="score-band__labels">
+    <span>L0</span><span>L1</span><span>L2</span><span>L3</span><span>L4</span>
+  </div>
+  <div class="score-band__marker" style="left: {{ pct }}%;">
+    <span class="score-band__marker-label">L{{ '%.2f' | format(current) }}</span>
+  </div>
+</div>
+{% endmacro %}
+
+
+{# ─── kpi_tile(label, value) ──────────────────────────────────────
+   Single KPI tile: big value over caption.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro kpi_tile(label, value) %}
+<div class="kpi-tile">
+  <div class="kpi-tile__value">{{ value }}</div>
+  <div class="kpi-tile__label">{{ label }}</div>
+</div>
+{% endmacro %}
+
+
+{# ─── findings_list(items, kind) ──────────────────────────────────
+   Strengths (✓) or Gaps (⚠) bullet list with appropriate icon and color.
+   kind = 'strength' | 'gap'
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro findings_list(items, kind) %}
+{% set icon = '✓' if kind == 'strength' else '⚠' %}
+<ul class="findings-list findings-list--{{ kind }}">
+  {% for item in items %}
+  <li><span class="findings-list__icon">{{ icon }}</span>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+
+{# ─── priority_badge(priority) ────────────────────────────────────
+   Colored badge: HIGH / MEDIUM / LOW (or CRITICAL) for gap priority.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro priority_badge(priority) %}
+{% set p = priority | lower %}
+<span class="priority-badge priority-badge--{{ p }}">{{ t('priority.' ~ p) }}</span>
+{% endmacro %}
+
+
+{# ─── effort_pill(tier) ───────────────────────────────────────────
+   Effort tier label: S / M / L / XL.
+   Per FR-REPORT-012, this REPLACES all monetary investment figures.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro effort_pill(tier) %}
+<span class="effort-pill effort-pill--{{ tier | lower }}">{{ tier | upper }}</span>
+{% endmacro %}
+
+
+{# ─── pe_indicator(is_pe) ─────────────────────────────────────────
+   Small [PE] indicator inline with capability name.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro pe_indicator(is_pe) %}
+{% if is_pe %}<span class="pe-badge">PE</span>{% endif %}
+{% endmacro %}
+
+
+{# ─── audience_badge(audience) ────────────────────────────────────
+   Developer-only audience tag per FR-REPORT-013 / FRD-023.
+   audience is a list. Renders only when "developer" is the only audience.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro audience_badge(audience) %}
+{% if audience and 'developer' in audience and audience | length == 1 %}
+<span class="audience-badge">{{ t('audience.developer_only') }}</span>
+{% endif %}
+{% endmacro %}
+
+
+{# ─── horizon_pill(horizon_id) ────────────────────────────────────
+   Small H1/H2/H3 pill tag for inline references.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro horizon_pill(horizon_id) %}
+<span class="horizon-pill horizon-pill--{{ horizon_id | lower }}">{{ horizon_id }}</span>
+{% endmacro %}
+
+
+{# ─── gap_cell(gap_value, priority) ───────────────────────────────
+   Inline colored cell for gap value (used in tables).
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro gap_cell(gap_value, priority) %}
+<span class="gap-cell gap-cell--{{ priority | lower }}">{{ '%.1f' | format(gap_value) }}</span>
+{% endmacro %}
+
+
+{# ─── effort_tier_legend() ────────────────────────────────────────
+   Reusable legend explaining the S/M/L/XL effort tier semantics.
+   Should appear in every Roadmap PDF.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro effort_tier_legend() %}
+<div class="effort-tier-legend">
+  <div class="effort-tier-legend__title">{{ t('legend.effort_tier_title') }}</div>
+  <div class="effort-tier-legend__grid">
+    <div class="effort-tier-legend__item">
+      <span class="effort-tier-legend__pill effort-pill effort-pill--s">S</span>
+      <div><strong>{{ t('effort.s.label') }}</strong></div>
+      <div class="text-muted">{{ t('effort.s.description') }}</div>
+    </div>
+    <div class="effort-tier-legend__item">
+      <span class="effort-tier-legend__pill effort-pill effort-pill--m">M</span>
+      <div><strong>{{ t('effort.m.label') }}</strong></div>
+      <div class="text-muted">{{ t('effort.m.description') }}</div>
+    </div>
+    <div class="effort-tier-legend__item">
+      <span class="effort-tier-legend__pill effort-pill effort-pill--l">L</span>
+      <div><strong>{{ t('effort.l.label') }}</strong></div>
+      <div class="text-muted">{{ t('effort.l.description') }}</div>
+    </div>
+    <div class="effort-tier-legend__item">
+      <span class="effort-tier-legend__pill effort-pill effort-pill--xl">XL</span>
+      <div><strong>{{ t('effort.xl.label') }}</strong></div>
+      <div class="text-muted">{{ t('effort.xl.description') }}</div>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+
+{# ─── wizard_placeholder(field_label) ─────────────────────────────
+   Placeholder marker for Part 4 sections without wizard input.
+   Per FR-REPORT-011 AC-011c.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro wizard_placeholder(field_label) %}
+<span class="wizard-placeholder">{{ t('wizard.placeholder', field=field_label) }}</span>
+{% endmacro %}
+
+
+{# ─── section_divider(num, title, subtitle) ───────────────────────
+   Full-page section divider used between major report sections.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro section_divider(num, title, subtitle='') %}
+<div class="section-divider">
+  <div class="section-divider__num">{{ '%02d' | format(num) }}</div>
+  <h2 class="section-divider__title">{{ title }}</h2>
+  {% if subtitle %}<div class="section-divider__subtitle">{{ subtitle }}</div>{% endif %}
+</div>
+{% endmacro %}
+
+
+{# ─── cover_block(...) ────────────────────────────────────────────
+   The cover page used by every PDF. Document title and subtitle vary.
+   ─────────────────────────────────────────────────────────────────── #}
+{% macro cover_block(organization, assessment, branding, doc_title, doc_subtitle='') %}
+<section class="cover">
+  <header class="cover__brand">
+    <span class="cover__platform">{{ branding.platform_name }}</span>
+  </header>
+
+  <div class="cover__main">
+    <div class="cover__customer">{{ organization.name }}</div>
+    <h1 class="cover__title">{{ doc_title }}</h1>
+    {% if doc_subtitle %}<h2 class="cover__subtitle">{{ doc_subtitle }}</h2>{% endif %}
+  </div>
+
+  <div>
+    <dl class="cover__meta">
+      <dt>{{ t('meta.assessment_name') }}</dt>
+      <dd>{{ assessment.name }}</dd>
+
+      <dt>{{ t('meta.industry') }}</dt>
+      <dd>{{ organization.industry or t('label.not_specified') }}</dd>
+
+      <dt>{{ t('meta.assessment_date') }}</dt>
+      <dd>{{ assessment.completed_date }}</dd>
+
+      <dt>{{ t('meta.framework_version') }}</dt>
+      <dd>{{ assessment.framework_version }}</dd>
+
+      <dt>{{ t('meta.generated_date') }}</dt>
+      <dd>{{ assessment.generated_date }}</dd>
+
+      <dt>{{ t('meta.scope') }}</dt>
+      <dd>{{ organization.assessment_scope if (organization.assessment_scope and organization.assessment_scope != '—') else t('label.not_specified') }}</dd>
+    </dl>
+
+    <div class="cover__footer">
+      {{ t('footer.confidential', org=organization.name) }}
+    </div>
+  </div>
+</section>
+{% endmacro %}

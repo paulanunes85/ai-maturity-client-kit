@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-08T21:43:26.467842+00:00",
+    "generator": "wizard/scripts/auto_fill_from_plano.py (Mode D)",
+    "source_plano": "plano-capacitacao-2026-05-08.md",
+    "completion_pct": 67,
+    "manual_required": [
+      "tpo",
+      "raci_matrix"
+    ],
+    "branding": {
+      "design_system": "paulasilva-ms Design System v1.7.0",
+      "author": "Paula Silva",
+      "role": "Software Global Black Belt",
+      "contact": "paulasilva@microsoft.com",
+      "tagline": "Building the future of software development with AI and Agentic DevOps",
+      "palette": {
+        "primary": "#00A4EF",
+        "positive": "#7FBA00",
+        "warn": "#FFB900",
+        "critical": "#F25022"
+      }
+    }
+  },
+  "implementation_guide_inputs": {
+    "executive_steering_committee": "Comitê Executivo Diretivo (Champions ativos identificados pelo Learning Survey):\n\n- Maria Tech Leader — maria.tl@cliente-exemplo.com.br\n- Joao Backend SRE — joao.sre@cliente-exemplo.com.br\n- Sofia Frontend Lead — sofia.fe@cliente-exemplo.com.br",
+    "tpo": "(preencher manualmente — Learning Survey não cobre TPO. Liste Programa Manager + escritório + autoridade de decisão)",
+    "raci_matrix": "(preencher manualmente — Learning Survey não cobre RACI. Use template em wizard/implementation-guide-inputs.template.json)",
+    "communication_plan": "Plano de Comunicação derivado do calendário sugerido:\n\n| Semana | Workshop | Audiência | Champion | Formato |\n|---|---|---|---|---|\n| W1 | Champions Kickoff | 3 | Líder Eng | 2h síncrono |\n| W2 | Copilot Spaces (contexto compartilhado) | 5 | Maria Tech Leader | 4h hands-on |\n| W3 | A2A (Agent-to-Agent) protocol | 4 | Maria Tech Leader | 4h hands-on |\n| W4 | Microsoft Foundry — visão geral | 4 | Maria Tech Leader | 4h hands-on |\n| W4 | Office hours #1 | Todos | Champions | 1h Q&A |\n| W6, W8, W10, W12 | Office hours quinzenal | Todos | Champions | 1h Q&A |",
+    "training_plan": "Plano de Treinamento (cohorts por dimensão derivados do Learning Survey):\n\n### Cohort D2 (Copilot Adoption)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D3 (MS/GH Tooling Breadth)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D4 (AI Dev Practices)\n- **1 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D5 (Agent Concepts Mastery)\n- **2 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D6 (Instructions Maturity)\n- **4 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D7 (Best Practices)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D8 (Security & Governance)\n- **2 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time",
+    "adkar_notes": "Plano de Mudança ADKAR derivado do Learning Survey:\n\n**Awareness:** Comunicar plano de capacitação consolidado em all-hands; cada dev recebe seu plano personalizado por email.\n\n**Desire:** Tornar visível que workshops têm inscritos pré-validados (não opt-in genérico).\n\n**Knowledge:** Workshops top 5 (do Learning Survey):\n1. Copilot Spaces (contexto compartilhado) (5 inscritos)\n2. A2A (Agent-to-Agent) protocol (4 inscritos)\n3. Microsoft Foundry — visão geral (4 inscritos)\n4. Documentação automática (4 inscritos)\n5. Modo Ask (perguntas eficazes) (3 inscritos)\n\n**Ability:** Office hours quinzenal (sem agenda fixa, devs trazem dúvidas práticas).\n\n**Reinforcement:** Métricas de adoção mensais publicadas; reconhecimento dos Champions; revisão trimestral do plano com novo Learning Survey.\n",
+    "quick_wins_w1_4": "- W1: Champions Kickoff\n- W2: Copilot Spaces (contexto compartilhado)\n- W3: A2A (Agent-to-Agent) protocol\n- W4: Microsoft Foundry — visão geral\n- W4: Office hours #1",
+    "quick_wins_w5_8": "(preencher — sem dados suficientes nas semanas 5-8)",
+    "quick_wins_w9_12": "- W10: Office hours quinzenal"
+  }
+}

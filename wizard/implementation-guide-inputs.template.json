@@ -1,0 +1,37 @@
+{
+  "_help": "Template para preencher os 9 inputs do wizard de Implementation Guide manualmente (sem usar o HTML). Quando preencher, renomeie para 'implementation-guide-inputs.json' e mova para a raiz de kit-cliente/. A skill /gerar-relatorio vai mesclar este JSON no payload final dos PDFs (Parte 4 — Implementation Guide).",
+  "_schema_source": "Espelha app/frontend/src/components/dashboard/ImplementationGuideWizard.tsx + sample_payload.json::implementation_guide_inputs",
+  "_dicas": [
+    "Cada campo é texto livre — pode usar markdown (tabelas, listas, negrito).",
+    "Você pode deixar campos vazios — o relatório usa placeholders para o que estiver em branco.",
+    "Quanto mais específico (com nomes reais, métricas, datas), melhor o output.",
+    "Para tabelas RACI/comunicação/treinamento, use markdown table format."
+  ],
+
+  "metadata": {
+    "generated_at": "2026-05-08T12:00:00Z",
+    "generator": "manual edit",
+    "completion_pct": 0
+  },
+
+  "implementation_guide_inputs": {
+
+    "executive_steering_committee": "Liste 5-8 pessoas no Comitê Executivo Diretivo. Inclua: Sponsor, Programa Lead, Líder Financeiro, Líder de Segurança, Change Champion. Formato sugerido (uma por linha):\n\nNome — Cargo (Papel no programa)\nEx.: Maria Santos — CTO (Sponsor executivo)\nEx.: David Lin — CFO (Aprovador de investimento)",
+
+    "tpo": "Descreva o Technology Product Owner / Escritório do Programa de Transformação. Inclua:\n- Programa Manager (nome + dedicação %)\n- Membros do escritório (3-5 pessoas)\n- Responsabilidades-chave\n- Autoridade de decisão (até onde pode aprovar sem escalar)\n\nEx.:\nProgram Manager: Carlos Rivera (100%)\nMembros: Anna Becker (Lead Architect), Tom Yamada (Change Manager), Lisa Park (PMO Lead)\nAutoridade: aprovação de hires até 8 FTE, ajustes de roadmap H1, escalação para Steering em mudanças >$ N",
+
+    "raci_matrix": "Matriz RACI das principais atividades. Use formato markdown table:\n\n| Atividade | R (Responsible) | A (Accountable) | C (Consulted) | I (Informed) |\n|---|---|---|---|---|\n| Aprovação de iniciativa | Pillar Lead | TPO Director | Steering | Toda Eng |\n| Sign-off de Effort | TPO Director | CFO + CTO | Steering | Pillar Leads |\n| Hiring | Pillar Lead | VP Eng | HR | TPO |\n| Quarterly review | TPO Director | CTO | Steering | Toda Eng |\n| Escalação de risco | TPO Director | Steering | Pillar Leads | Working Groups |",
+
+    "communication_plan": "Plano de comunicação detalhado. Use markdown table:\n\n| Audiência | Canal | Frequência | Owner |\n|---|---|---|---|\n| Toda Engenharia | Town Hall + newsletter | Trimestral + Mensal | Change Manager |\n| Working Groups | Slack + stand-up | Semanal | Pillar Leads |\n| Steering Executivo | Reunião dedicada | Mensal | TPO Director |\n| Champions | Slack + cohort calls | Contínuo + Mensal | DevEx Lead |\n| Stakeholders externos | Quarterly Business Review | Trimestral | CTO |",
+
+    "training_plan": "Plano de capacitação por audiência. Use markdown table:\n\n| Audiência | Formato | Cadência | Critério de conclusão |\n|---|---|---|---|\n| Todos Devs | Workshop 4h hands-on | Cohorts mensais | 1 PR mergeado com IA assistance |\n| Champions | Train-the-trainer | Quinzenal | Conduzir 1 workshop interno |\n| Eng Managers | Briefing + playbook | Trimestral | Reportar adoção do squad |\n| SREs | Bootcamp + chaos cert | H1 onboarding | Cert + 1 GameDay liderado |",
+
+    "adkar_notes": "Plano de gestão de mudança ADKAR. Para cada estágio, descreva intervenções concretas:\n\n**Awareness (Consciência):**\nO que vamos fazer para que TODOS saibam o que é a transformação e POR QUÊ.\nEx.: Town Hall trimestral; emails personalizados de liderança; one-pagers em todos os canais; FAQ centralizado.\n\n**Desire (Desejo):**\nComo gerar VONTADE individual de adotar.\nEx.: Showcases de Champions; reconhecimento público; demonstração de ganho pessoal de produtividade.\n\n**Knowledge (Conhecimento):**\nComo as pessoas vão APRENDER o novo.\nEx.: Workshops hands-on; biblioteca de cases internos; pair programming com Champions; office hours semanais.\n\n**Ability (Capacidade):**\nComo dar suporte para PRATICAR e desenvolver fluência.\nEx.: Sandbox environment; mentorias 1:1; templates pré-prontos; tempo dedicado no sprint.\n\n**Reinforcement (Reforço):**\nComo manter o novo comportamento ao longo do tempo.\nEx.: Métricas DORA expostas em dashboard público; OKRs por squad; retros de roadblocks; celebração de marcos.",
+
+    "quick_wins_w1_4": "Quick wins do primeiro mês (4 semanas) — iniciativas pequenas que constroem momentum visível. 4-6 itens com data sugerida.\n\nEx.:\n1. Habilitar GitHub Copilot Enterprise para 2 squads piloto (W1)\n2. Setup de dashboard DORA básico no Grafana (W2)\n3. Workshop introdutório de 2h (40+ devs) (W3)\n4. Primeira biblioteca de prompts compartilhada (W4)\n5. Caso de sucesso documentado e divulgado (W4)",
+
+    "quick_wins_w5_8": "Segunda onda de quick wins (semanas 5-8) — expansão e consolidação dos primeiros pilotos.\n\nEx.:\n1. Expandir Copilot para 50% dos devs (W5-6)\n2. Habilitar GHAS em todos os repos (W6)\n3. Primeiro pilot de Code Review IA (W7)\n4. Métricas DORA exibidas no all-hands (W8)\n5. Champions Network formalizado (5-8 pessoas) (W8)",
+
+    "quick_wins_w9_12": "Terceira onda (semanas 9-12) — solidificando a base antes de escalar para H2.\n\nEx.:\n1. Expansão para 80% dos devs (W9-10)\n2. SBOM gerado para 100% dos serviços críticos (W10)\n3. Champions Network formalizado (12+ pessoas) (W11)\n4. Retro completa de H1 + plano H2 publicado (W12)\n5. Primeiro relatório executivo de impacto (W12)"
+  }
+}

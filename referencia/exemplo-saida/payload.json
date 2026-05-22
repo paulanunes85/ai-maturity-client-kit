@@ -1,0 +1,2486 @@
+{
+  "deliverable": "score_justification",
+  "locale": "pt-br",
+  "organization": {
+    "name": "Cliente Exemplo S.A.",
+    "industry": "Financial Services / Insurance",
+    "primary_contact_role": "Diretora de Engenharia",
+    "number_of_developers": "200+",
+    "number_of_applications": "50+",
+    "primary_cloud_provider": "Hyperscaler A",
+    "current_devops_tools": "Source-control, CI runners, data lakehouse, API gateway",
+    "assessment_scope": "Engineering Organization",
+    "key_business_drivers": "Modernize platform delivery, accelerate AI-assisted coding adoption, raise PE readiness from LOW to MEDIUM within 12 months.",
+    "timeline_for_transformation": "36 months (H1: 0-6mo, H2: 6-18mo, H3: 18-36mo)"
+  },
+  "assessment": {
+    "id": "Maria Tech Leader (exemplo)",
+    "name": "AI Maturity Assessment 2026 H1",
+    "framework_version": "1.0.0",
+    "completed_date": "2026-05-08",
+    "generated_date": "2026-05-08"
+  },
+  "scores": {
+    "overall": {
+      "weighted_avg": 1.99,
+      "level_label": "L2 — Definido",
+      "target": 4.0,
+      "gap": 2.01
+    },
+    "pillars": [
+      {
+        "id": "P1",
+        "name": "Developer Productivity",
+        "weighted_avg": 2.69,
+        "level_label": "L3 — Gerenciado",
+        "target": 4.0,
+        "gap": 1.31,
+        "weighted_sum_calc": "22 (3×1.0 + 2×1.0 + 2×1.5 + 2×1.5 + 2×1.0 + 3×1.0 + 2×1.0 + 2×2.0)",
+        "weights_sum": 18,
+        "capabilities_count": 8,
+        "current_state_metrics": [
+          {
+            "metric": "AI Coding Adoption",
+            "current": "26.5%",
+            "target": ">90%",
+            "gap": "+63.5pp"
+          },
+          {
+            "metric": "Suggestion Acceptance",
+            "current": "30%",
+            "target": ">50%",
+            "gap": "+20pp"
+          },
+          {
+            "metric": "Agent Mode Usage",
+            "current": "0%",
+            "target": ">40%",
+            "gap": "+40pp"
+          }
+        ]
+      },
+      {
+        "id": "P2",
+        "name": "DevOps Lifecycle",
+        "weighted_avg": 1.52,
+        "level_label": "L2 — Definido",
+        "target": 4.0,
+        "gap": 2.48,
+        "weighted_sum_calc": "47 (3×1.5 + 3×2.0 + 3×2.0 + 2×2.0 + 3×2.5 + 2×2.0 + 3×2.5 + 2×1.5 + 2×0.0 + 3×2.0)",
+        "weights_sum": 26,
+        "capabilities_count": 10,
+        "current_state_metrics": [
+          {
+            "metric": "Deployment Frequency",
+            "current": "Weekly",
+            "target": "On-demand",
+            "gap": "Daily → On-demand"
+          },
+          {
+            "metric": "Lead Time for Changes",
+            "current": "1-7 days",
+            "target": "<1 hour",
+            "gap": "Significant"
+          },
+          {
+            "metric": "Change Failure Rate",
+            "current": "15%",
+            "target": "<5%",
+            "gap": "+10pp"
+          }
+        ]
+      },
+      {
+        "id": "P3",
+        "name": "Application Platform",
+        "weighted_avg": 1.92,
+        "level_label": "L2 — Definido",
+        "target": 4.0,
+        "gap": 2.08,
+        "weighted_sum_calc": "55.5 (2×2.0 + 3×0.5 + 3×3.0 + 2×2.0 + 3×2.0 + 2×2.5 + 3×3.0 + 2×2.0 + 2×1.5 + 3×3.0)",
+        "weights_sum": 26,
+        "capabilities_count": 10,
+        "current_state_metrics": [
+          {
+            "metric": "Platform Adoption",
+            "current": "40%",
+            "target": ">85%",
+            "gap": "+45pp"
+          },
+          {
+            "metric": "MTTR",
+            "current": "4-8 hours",
+            "target": "<30 min",
+            "gap": "Significant"
+          },
+          {
+            "metric": "Uptime",
+            "current": "99.5%",
+            "target": "99.95%",
+            "gap": "+0.45pp"
+          }
+        ]
+      }
+    ],
+    "pe_readiness": {
+      "weighted_score": 2.6,
+      "level": "L3 — Gerenciado",
+      "three_horizons_verdict": "BUILD FOUNDATION FIRST",
+      "agentic_platform_engineering": {
+        "destination_label": "Agentic Platform Engineering",
+        "recommended_path": "build_foundation_first",
+        "recommended_path_label": "Build foundation first",
+        "recommended_idp": null,
+        "rationale": "PE Readiness score 1.48 (LOW) indicates basic capabilities exist but foundational gaps must close before adopting either Three Horizons (Red Hat Developer Hub) or Open Horizons (Backstage). A small Open Horizons pilot may be valuable to learn before scaling, but full IDP adoption should wait until score reaches MEDIUM (≥2.0)."
+      }
+    }
+  },
+  "capabilities": [
+    {
+      "id": "P1-C1",
+      "code": "1.1",
+      "name": "AI Coding Assistants & Adoption",
+      "pillar_id": "P1",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 0.5,
+      "current_score": 3.04,
+      "current_level_label": "L3 — Gerenciado",
+      "target_score": 4.0,
+      "target_level_label": "L4 — Otimizando",
+      "gap": 0.96,
+      "gap_priority": "P2",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "645 AI coding licenses deployed (out of 2,430 developers)",
+        "Penetration rate: 26.5%",
+        "30% suggestion acceptance rate",
+        "0 Agent Mode usage observed"
+      ],
+      "scoring_rationale": "Score of L1 was assigned because the organization is piloting AI coding assistants with approximately 26% of developers, well below the 50% threshold required for L2. While initial deployment exists, suggestion acceptance is below target and advanced features (Agent Mode, agentic workflows) show zero usage.",
+      "h1_state_evidence": [
+        "26.5% AI coding penetration (645 of 2,430 developers)",
+        "30% suggestion acceptance",
+        "0% Agent Mode usage"
+      ],
+      "h1_initiatives": [
+        "Deploy enterprise-tier AI coding licenses to 100% of developers",
+        "Establish adoption metrics dashboard with weekly reporting",
+        "Launch champions program (1 champion per 20 developers)",
+        "Mandatory training: 4-hour onboarding for all developers"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Agent Mode rollout",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous code generation with multi-agent workflows",
+      "h1_success_metrics": [
+        {
+          "metric": "AI Coding Adoption Rate",
+          "current": "26.5%",
+          "h1_target": "60%"
+        },
+        {
+          "metric": "Suggestion Acceptance Rate",
+          "current": "30%",
+          "h1_target": "45%"
+        }
+      ]
+    },
+    {
+      "id": "P1-C2",
+      "code": "1.2",
+      "name": "Code Review with AI",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 2.49,
+      "current_level_label": "L2 — Definido",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.51,
+      "gap_priority": "P3",
+      "audience": [
+        "developer"
+      ],
+      "evidence_collected": [
+        "AI code review available but not standardized",
+        "<10% of pull requests use AI-assisted review",
+        "No policy mandates AI review usage",
+        "Manual review remains primary mechanism"
+      ],
+      "scoring_rationale": "Score of L1 reflects nascent AI code review usage. Tools are available to all developers but adoption is sporadic, with fewer than 10% of PRs leveraging AI assistance. Without a standardized policy or measurable enforcement, the capability remains in pilot phase.",
+      "h1_state_evidence": [
+        "<10% PRs using AI review",
+        "No standardized policy"
+      ],
+      "h1_initiatives": [
+        "Deploy AI code review across all repositories",
+        "Define mandatory checks for security and quality",
+        "Integrate AI suggestions into PR workflow"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Multi-model review consensus",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous review with human approval gate",
+      "h1_success_metrics": [
+        {
+          "metric": "AI-reviewed PRs",
+          "current": "10%",
+          "h1_target": "75%"
+        }
+      ]
+    },
+    {
+      "id": "P1-C3",
+      "code": "1.3",
+      "name": "Test Generation & TDD with AI",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "developer"
+      ],
+      "evidence_collected": [
+        "AI test generation in pilot for 2 teams",
+        "Code coverage stable at 80%",
+        "No mutation testing in place",
+        "Test maintenance still primarily manual"
+      ],
+      "scoring_rationale": "Score of L1.5 reflects piloted but inconsistent AI test generation. Two teams have evidence of consistent usage with measurable coverage improvements, but the practice is not organization-wide. The half-point above L1 acknowledges concrete pilot success.",
+      "h1_state_evidence": [
+        "2 teams piloting",
+        "80% coverage stable"
+      ],
+      "h1_initiatives": [
+        "Roll out AI test generation to all teams",
+        "Introduce mutation testing tooling",
+        "Establish coverage targets per service tier"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "Property-based testing",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-evolving test suites",
+      "h1_success_metrics": [
+        {
+          "metric": "Test Coverage",
+          "current": "80%",
+          "h1_target": "85%"
+        },
+        {
+          "metric": "Mutation Score",
+          "current": "N/A",
+          "h1_target": "60%"
+        }
+      ]
+    },
+    {
+      "id": "P1-C4",
+      "code": "1.4",
+      "name": "Documentation Automation",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 2.5,
+      "current_level_label": "L3 — Gerenciado",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.5,
+      "gap_priority": "P3",
+      "audience": [
+        "developer"
+      ],
+      "evidence_collected": [
+        "Some teams use AI for inline documentation",
+        "API documentation auto-generated for 30% of services",
+        "Architecture decision records still manual",
+        "No standardized doc-generation policy"
+      ],
+      "scoring_rationale": "Score of L1.5 reflects partial automation: API docs auto-generated for a subset of services, but ADRs and runbooks still manual. The half-point recognizes meaningful automation in production for code-level documentation.",
+      "h1_state_evidence": [
+        "30% APIs auto-documented",
+        "ADRs manual"
+      ],
+      "h1_initiatives": [
+        "Standardize AI doc generation across all services",
+        "Auto-generate ADRs from PR conversations",
+        "Integrate doc validation into CI"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "Knowledge graph integration",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-maintaining documentation",
+      "h1_success_metrics": [
+        {
+          "metric": "API Doc Coverage",
+          "current": "30%",
+          "h1_target": "85%"
+        }
+      ]
+    },
+    {
+      "id": "P1-C5",
+      "code": "1.5",
+      "name": "Developer Onboarding & Skills",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Developer onboarding takes 4-6 weeks to first commit",
+        "Mentorship is informal",
+        "AI tools introduced via 1-hour orientation",
+        "No measurable AI skills assessment"
+      ],
+      "scoring_rationale": "Score of L1 because onboarding includes basic AI tool exposure but lacks structured ramp-up paths, formal AI skills tracks, or measurable proficiency gates. The 4-6 week time-to-first-commit is well above industry benchmarks.",
+      "h1_state_evidence": [
+        "4-6 week onboarding",
+        "Informal AI exposure"
+      ],
+      "h1_initiatives": [
+        "Build AI-augmented onboarding portal",
+        "Define AI proficiency levels and assessments",
+        "Establish mentor-AI pairing for first 30 days"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Personalized AI learning paths",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-directed learning with AI tutors",
+      "h1_success_metrics": [
+        {
+          "metric": "Time to First Commit",
+          "current": "4-6 weeks",
+          "h1_target": "2 weeks"
+        }
+      ]
+    },
+    {
+      "id": "P1-C6",
+      "code": "1.6",
+      "name": "IDE & Local Dev Environment",
+      "pillar_id": "P1",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 0.5,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "developer"
+      ],
+      "evidence_collected": [
+        "IDE setup takes 4-8 hours per developer",
+        "No standardized dev container configuration",
+        "Cloud IDE in pilot for 1 team",
+        "Local environment drift causes 20% of new-dev support tickets"
+      ],
+      "scoring_rationale": "Score of L1 reflects the manual, drift-prone state of local environments. While a cloud IDE pilot exists, it is not the default. Setup time and environment-related support tickets indicate significant opportunity for standardization.",
+      "h1_state_evidence": [
+        "4-8h IDE setup",
+        "1 team on cloud IDE"
+      ],
+      "h1_initiatives": [
+        "Standardize dev containers across all repositories",
+        "Roll out cloud IDE as default for new hires",
+        "Create one-click environment templates per service"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Cloud IDE org-wide",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Ephemeral on-demand environments",
+      "h1_success_metrics": [
+        {
+          "metric": "Setup Time",
+          "current": "4-8h",
+          "h1_target": "<1h"
+        }
+      ]
+    },
+    {
+      "id": "P1-C7",
+      "code": "1.7",
+      "name": "AI-Assisted Refactoring & Modernization",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "developer"
+      ],
+      "evidence_collected": [
+        "Manual refactoring is the norm",
+        "Legacy modernization done case-by-case",
+        "No AI-driven dependency upgrade automation",
+        "Technical debt tracking exists but not AI-prioritized"
+      ],
+      "scoring_rationale": "Score of L1 reflects awareness of refactoring needs but lack of AI tooling integration. The organization tracks technical debt manually but has no automated prioritization or AI-assisted modernization in production.",
+      "h1_state_evidence": [
+        "Manual refactoring",
+        "No AI dependency upgrades"
+      ],
+      "h1_initiatives": [
+        "Pilot AI dependency upgrade automation",
+        "Train teams on AI-driven refactoring patterns",
+        "Establish technical-debt to AI-roadmap pipeline"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Multi-step refactoring agents",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous autonomous modernization",
+      "h1_success_metrics": [
+        {
+          "metric": "Auto-Upgraded Deps/mo",
+          "current": "0",
+          "h1_target": "20"
+        }
+      ]
+    },
+    {
+      "id": "P1-C8",
+      "code": "1.8",
+      "name": "Productivity Metrics & SPACE",
+      "pillar_id": "P1",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "DORA metrics tracked at portfolio level",
+        "SPACE framework partially adopted (3 of 5 dimensions)",
+        "Quarterly developer experience surveys conducted",
+        "No real-time productivity dashboard"
+      ],
+      "scoring_rationale": "Score of L2 reflects established DORA tracking and partial SPACE adoption. Surveys provide qualitative signal, but real-time AI-driven productivity insights are absent.",
+      "h1_state_evidence": [
+        "DORA at portfolio level",
+        "Quarterly surveys"
+      ],
+      "h1_initiatives": [
+        "Build real-time productivity dashboard",
+        "Complete SPACE adoption (5 of 5 dimensions)",
+        "Integrate AI-derived signals into engineering reviews"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "Predictive productivity analytics",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous AI coaching",
+      "h1_success_metrics": [
+        {
+          "metric": "SPACE Coverage",
+          "current": "60%",
+          "h1_target": "100%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C1",
+      "code": "2.1",
+      "name": "Source Control & Branching Strategy",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 2.33,
+      "current_level_label": "L2 — Definido",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.67,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Git-based source control across all teams",
+        "Branching strategies vary (GitFlow vs trunk-based)",
+        "No org-wide branch policy automation",
+        "Some repos enforce signed commits"
+      ],
+      "scoring_rationale": "Score of L1.5 reflects modern source control with inconsistent branching practices. The half-point above L1 recognizes signed-commit enforcement on a meaningful subset of repositories.",
+      "h1_state_evidence": [
+        "Mixed branching strategies",
+        "Partial signed-commit enforcement"
+      ],
+      "h1_initiatives": [
+        "Standardize on trunk-based development",
+        "Enforce branch protection org-wide",
+        "Mandate signed commits across all repos"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI-based PR routing",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous integration with AI gating",
+      "h1_success_metrics": [
+        {
+          "metric": "Trunk-based Repos",
+          "current": "40%",
+          "h1_target": "85%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C2",
+      "code": "2.2",
+      "name": "CI/CD Pipelines",
+      "pillar_id": "P2",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 0.5,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "All teams have automated CI",
+        "CD pipelines exist for 60% of services",
+        "Pipeline-as-code in widespread use",
+        "Manual gates remain in production deployments"
+      ],
+      "scoring_rationale": "Score of L2 reflects mature CI with partial CD coverage. Pipeline-as-code is standard, but the 40% of services without automated CD and the prevalence of manual production gates prevent advancement to L3.",
+      "h1_state_evidence": [
+        "60% CD coverage",
+        "Manual prod gates"
+      ],
+      "h1_initiatives": [
+        "Achieve 100% CD pipeline coverage",
+        "Replace manual gates with automated checks",
+        "Implement progressive delivery patterns"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI-driven pipeline optimization",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-healing pipelines",
+      "h1_success_metrics": [
+        {
+          "metric": "CD Coverage",
+          "current": "60%",
+          "h1_target": "85%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C3",
+      "code": "2.3",
+      "name": "Build & Artifact Management",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 2.4,
+      "current_level_label": "L2 — Definido",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.6,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Centralized artifact registry in use",
+        "Build caching enabled for major repos",
+        "SBOM generation for 50% of artifacts",
+        "Reproducible builds not enforced org-wide"
+      ],
+      "scoring_rationale": "Score of L2 reflects centralized artifact management with build optimization. SBOM coverage at 50% and lack of org-wide reproducible-build enforcement keep the score below L3.",
+      "h1_state_evidence": [
+        "50% SBOM coverage",
+        "No reproducibility enforcement"
+      ],
+      "h1_initiatives": [
+        "Achieve 100% SBOM coverage",
+        "Mandate reproducible builds",
+        "Optimize build cache hit rates"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "Distributed remote caching",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Hermetic builds with provenance",
+      "h1_success_metrics": [
+        {
+          "metric": "SBOM Coverage",
+          "current": "50%",
+          "h1_target": "100%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C4",
+      "code": "2.4",
+      "name": "Test Automation",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.75,
+      "current_level_label": "L1 — Em Desenvolvimento",
+      "target_score": 3.5,
+      "target_level_label": "L4 — Otimizando",
+      "gap": 2.75,
+      "gap_priority": "P0",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Unit test automation in CI for all services",
+        "Integration tests for 70% of services",
+        "E2E tests in nightly pipelines",
+        "Flaky-test detection still manual"
+      ],
+      "scoring_rationale": "Score of L2 reflects strong unit and integration test automation. The lack of automated flaky-test detection and incomplete E2E coverage in main pipelines prevent L3.",
+      "h1_state_evidence": [
+        "100% unit, 70% integration",
+        "Manual flaky-test triage"
+      ],
+      "h1_initiatives": [
+        "Deploy automated flaky-test detection",
+        "Move E2E tests to PR pipeline for critical paths",
+        "Standardize test parallelization"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI test selection",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Predictive test orchestration",
+      "h1_success_metrics": [
+        {
+          "metric": "Integration Coverage",
+          "current": "70%",
+          "h1_target": "90%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C5",
+      "code": "2.5",
+      "name": "Security & DevSecOps",
+      "pillar_id": "P2",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 0.5,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "SAST and SCA in 100% of pipelines",
+        "DAST for 60% of public-facing services",
+        "Secret scanning enforced",
+        "Threat modeling tooling in pilot"
+      ],
+      "scoring_rationale": "Score of L2.5 reflects mature shift-left security with broad SAST/SCA adoption and enforced secret scanning. The half-point above L2 acknowledges DAST for the majority of public services and threat-modeling pilots.",
+      "h1_state_evidence": [
+        "100% SAST/SCA",
+        "60% DAST",
+        "Threat modeling pilot"
+      ],
+      "h1_initiatives": [
+        "Expand DAST to 100% of public services",
+        "Roll out threat modeling tool org-wide",
+        "Integrate AI vulnerability prioritization"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI-driven runtime protection",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous security response",
+      "h1_success_metrics": [
+        {
+          "metric": "DAST Coverage",
+          "current": "60%",
+          "h1_target": "100%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C6",
+      "code": "2.6",
+      "name": "Release & Deployment Strategy",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Blue-green deployments for critical services",
+        "Canary releases in 30% of services",
+        "Feature flags for 40% of new features",
+        "Automated rollback for 50% of deployments"
+      ],
+      "scoring_rationale": "Score of L2 reflects modern deployment strategies in production but with uneven adoption. Canary at 30% and feature flags at 40% indicate progressive delivery is the exception rather than the rule.",
+      "h1_state_evidence": [
+        "30% canary",
+        "40% feature flags"
+      ],
+      "h1_initiatives": [
+        "Standardize feature flags across all services",
+        "Expand canary deployments to 80% of services",
+        "Automate rollback decisions based on SLO breaches"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI-driven release decisions",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous progressive delivery",
+      "h1_success_metrics": [
+        {
+          "metric": "Canary Coverage",
+          "current": "30%",
+          "h1_target": "70%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C7",
+      "code": "2.7",
+      "name": "Observability & Monitoring",
+      "pillar_id": "P2",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 0.5,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Distributed tracing for 80% of services",
+        "Centralized logging org-wide",
+        "SLOs defined for 70% of services",
+        "Alert tuning still manual"
+      ],
+      "scoring_rationale": "Score of L2.5 reflects strong observability foundations with distributed tracing, centralized logs, and SLO discipline. The half-point above L2 reflects breadth of tracing and SLO adoption. Manual alert tuning prevents L3.",
+      "h1_state_evidence": [
+        "80% tracing",
+        "70% SLOs",
+        "Manual alerting"
+      ],
+      "h1_initiatives": [
+        "Deploy AI-driven anomaly detection",
+        "Achieve 100% SLO coverage",
+        "Reduce alert noise via intelligent grouping"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI anomaly detection org-wide",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Predictive incident prevention",
+      "h1_success_metrics": [
+        {
+          "metric": "SLO Coverage",
+          "current": "70%",
+          "h1_target": "100%"
+        }
+      ]
+    },
+    {
+      "id": "P2-C8",
+      "code": "2.8",
+      "name": "Incident Management & SRE",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "On-call rotations exist for tier-1 services",
+        "Postmortems written but not always actionable",
+        "MTTR varies widely (30 min to 8 hours)",
+        "No formal SRE practice"
+      ],
+      "scoring_rationale": "Score of L1.5 reflects basic incident response with significant variability in MTTR. The half-point recognizes consistent on-call coverage for tier-1 services. Lack of formal SRE practice limits L2.",
+      "h1_state_evidence": [
+        "MTTR 30min-8h",
+        "No SRE practice"
+      ],
+      "h1_initiatives": [
+        "Establish formal SRE function",
+        "Standardize postmortem and action-item tracking",
+        "Deploy AI-assisted incident triage"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "AI-driven incident response",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-healing systems",
+      "h1_success_metrics": [
+        {
+          "metric": "MTTR (P95)",
+          "current": "8h",
+          "h1_target": "2h"
+        }
+      ]
+    },
+    {
+      "id": "P2-C9",
+      "code": "2.9",
+      "name": "Chaos Engineering",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "No chaos engineering practice in place",
+        "No game days conducted",
+        "Disaster recovery exercises annual only",
+        "No fault injection tooling deployed"
+      ],
+      "scoring_rationale": "Score of L0 reflects complete absence of chaos engineering practices. While disaster recovery exercises occur annually, they do not constitute proactive chaos testing.",
+      "h1_state_evidence": [
+        "No chaos practice",
+        "Annual DR only"
+      ],
+      "h1_initiatives": [
+        "Deploy chaos engineering tooling",
+        "Establish quarterly game day cadence",
+        "Build chaos testing into pre-prod pipelines"
+      ],
+      "h1_target_score": 1.5,
+      "h2_target_score": 2.5,
+      "h2_key_enabler": "Production chaos experiments",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous chaos with AI safety net",
+      "h1_success_metrics": [
+        {
+          "metric": "Game Days/yr",
+          "current": "0",
+          "h1_target": "4"
+        }
+      ]
+    },
+    {
+      "id": "P2-C10",
+      "code": "2.10",
+      "name": "Compliance & Audit Automation",
+      "pillar_id": "P2",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 0.67,
+      "current_level_label": "L1 — Em Desenvolvimento",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 2.33,
+      "gap_priority": "P0",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Policy-as-code for cloud configurations",
+        "Audit trails captured for 80% of changes",
+        "Compliance reporting partially automated",
+        "Manual evidence collection for major audits"
+      ],
+      "scoring_rationale": "Score of L2 reflects established policy-as-code and broad audit-trail coverage. The manual nature of major audit evidence collection prevents L3.",
+      "h1_state_evidence": [
+        "80% audit trail",
+        "Partial compliance automation"
+      ],
+      "h1_initiatives": [
+        "Automate evidence collection for all controls",
+        "Deploy continuous compliance dashboards",
+        "Integrate compliance checks into CD pipelines"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI control attestation",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous compliance with AI verification",
+      "h1_success_metrics": [
+        {
+          "metric": "Automated Controls",
+          "current": "60%",
+          "h1_target": "85%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C1",
+      "code": "3.1",
+      "name": "Cloud-Native Architecture",
+      "pillar_id": "P3",
+      "is_pe_indicator": true,
+      "weight": 2,
+      "pe_weight": 0.5,
+      "current_score": 2.6,
+      "current_level_label": "L3 — Gerenciado",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.4,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "70% of services containerized",
+        "Microservices for new builds",
+        "Legacy monoliths still in production for 30% of workloads",
+        "Service mesh in pilot"
+      ],
+      "scoring_rationale": "Score of L2 reflects significant cloud-native adoption. The remaining 30% of monolithic workloads and the pilot stage of service mesh keep the score below L3.",
+      "h1_state_evidence": [
+        "70% containerized",
+        "Service mesh pilot"
+      ],
+      "h1_initiatives": [
+        "Plan modernization for legacy monoliths",
+        "Roll out service mesh org-wide",
+        "Adopt event-driven architecture for new services"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Service mesh standardization",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Cloud-native by default with mesh-aware routing",
+      "h1_success_metrics": [
+        {
+          "metric": "Containerization",
+          "current": "70%",
+          "h1_target": "90%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C2",
+      "code": "3.2",
+      "name": "Internal Developer Platform (IDP)",
+      "pillar_id": "P3",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 1.0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "No formal IDP in place",
+        "Self-service primarily through documented runbooks",
+        "Service catalog in early planning phase",
+        "1 team experimenting with portal tooling"
+      ],
+      "scoring_rationale": "Score of L0.5 reflects early-stage IDP thinking with no production deployment. The half-point recognizes the experimental work by one team. The complete absence of a service catalog or self-service portal keeps the score below L1.",
+      "h1_state_evidence": [
+        "No IDP",
+        "Service catalog planned",
+        "1 team experimenting"
+      ],
+      "h1_initiatives": [
+        "Define IDP vision and target architecture",
+        "Deploy minimum-viable service catalog",
+        "Identify and onboard 3 pilot teams to IDP"
+      ],
+      "h1_target_score": 1.5,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "IDP general availability",
+      "h3_target_score": 4.0,
+      "h3_target_label": "AI-powered platform with golden paths",
+      "h1_success_metrics": [
+        {
+          "metric": "Teams on IDP",
+          "current": "0",
+          "h1_target": "3"
+        }
+      ]
+    },
+    {
+      "id": "P3-C3",
+      "code": "3.3",
+      "name": "Containerization & Orchestration",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 2.25,
+      "current_level_label": "L2 — Definido",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0.75,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Kubernetes is the production runtime",
+        "Multi-cluster federation in place",
+        "Auto-scaling configured for 90% of services",
+        "GitOps for cluster configuration"
+      ],
+      "scoring_rationale": "Score of L3 reflects mature Kubernetes practice with multi-cluster federation, broad auto-scaling, and GitOps for configuration. The remaining gap to L4 is largely about AI-driven workload placement and predictive scaling.",
+      "h1_state_evidence": [
+        "K8s production",
+        "GitOps",
+        "90% auto-scaling"
+      ],
+      "h1_initiatives": [
+        "Pilot AI-driven workload placement",
+        "Optimize resource utilization with predictive scaling",
+        "Standardize multi-cluster patterns"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI workload placement",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous workload optimization",
+      "h1_success_metrics": [
+        {
+          "metric": "Cluster Utilization",
+          "current": "60%",
+          "h1_target": "75%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C4",
+      "code": "3.4",
+      "name": "API & Microservices Management",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "API gateway in production for external APIs",
+        "OpenAPI specs for 70% of services",
+        "API versioning conventions established",
+        "API contract testing not enforced"
+      ],
+      "scoring_rationale": "Score of L2 reflects mature API gateway with broad OpenAPI adoption and versioning discipline. The lack of enforced contract testing prevents L3.",
+      "h1_state_evidence": [
+        "70% OpenAPI",
+        "No contract testing"
+      ],
+      "h1_initiatives": [
+        "Mandate OpenAPI specs for 100% of services",
+        "Deploy contract testing in CI",
+        "Enable AI-driven API discovery"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI API design assistant",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous API governance",
+      "h1_success_metrics": [
+        {
+          "metric": "OpenAPI Coverage",
+          "current": "70%",
+          "h1_target": "100%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C5",
+      "code": "3.5",
+      "name": "Data Platform & Lakehouse",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 0.83,
+      "current_level_label": "L1 — Em Desenvolvimento",
+      "target_score": 4.0,
+      "target_level_label": "L4 — Otimizando",
+      "gap": 3.17,
+      "gap_priority": "P0",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Lakehouse architecture deployed",
+        "ETL pipelines for major sources",
+        "Data quality monitoring partial",
+        "Data mesh principles in pilot for 1 domain"
+      ],
+      "scoring_rationale": "Score of L2 reflects modern lakehouse architecture with established ETL. Partial data quality monitoring and the pilot stage of data mesh keep the score below L3.",
+      "h1_state_evidence": [
+        "Lakehouse deployed",
+        "Partial DQ monitoring"
+      ],
+      "h1_initiatives": [
+        "Expand data quality monitoring to all critical pipelines",
+        "Roll out data mesh principles to 3 domains",
+        "Standardize data contracts"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI data quality",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-serving data products",
+      "h1_success_metrics": [
+        {
+          "metric": "DQ Coverage",
+          "current": "50%",
+          "h1_target": "85%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C6",
+      "code": "3.6",
+      "name": "AI/ML Platform",
+      "pillar_id": "P3",
+      "is_pe_indicator": true,
+      "weight": 2,
+      "pe_weight": 0.5,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "MLOps platform deployed for 5 use cases",
+        "Model registry and versioning in place",
+        "Feature store in pilot",
+        "A/B testing for model deployments"
+      ],
+      "scoring_rationale": "Score of L2.5 reflects mature MLOps for production use cases with versioning and registry. The half-point above L2 recognizes A/B testing for model deployments. Feature store pilot stage prevents L3.",
+      "h1_state_evidence": [
+        "5 production use cases",
+        "A/B testing",
+        "Feature store pilot"
+      ],
+      "h1_initiatives": [
+        "GA the feature store for all teams",
+        "Expand MLOps to 15+ use cases",
+        "Deploy model monitoring with drift detection"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "Production drift management",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-improving model lifecycle",
+      "h1_success_metrics": [
+        {
+          "metric": "Production Models",
+          "current": "5",
+          "h1_target": "15"
+        }
+      ]
+    },
+    {
+      "id": "P3-C7",
+      "code": "3.7",
+      "name": "Infrastructure-as-Code",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 3,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "All infrastructure provisioned via IaC",
+        "Terraform modules standardized",
+        "Drift detection automated",
+        "Module testing comprehensive"
+      ],
+      "scoring_rationale": "Score of L3 reflects mature IaC with module standardization, drift detection, and comprehensive testing. The remaining gap to L4 concerns AI-assisted module generation and policy intelligence.",
+      "h1_state_evidence": [
+        "100% IaC",
+        "Module testing",
+        "Drift detection"
+      ],
+      "h1_initiatives": [
+        "Pilot AI-assisted module generation",
+        "Deploy policy-as-code with AI suggestions",
+        "Standardize module versioning"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI module generation",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous infrastructure provisioning",
+      "h1_success_metrics": [
+        {
+          "metric": "Module Reuse",
+          "current": "60%",
+          "h1_target": "75%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C8",
+      "code": "3.8",
+      "name": "FinOps & Cost Optimization",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Cost allocation tags enforced",
+        "Monthly cost reviews per team",
+        "Reserved capacity planning quarterly",
+        "No automated rightsizing"
+      ],
+      "scoring_rationale": "Score of L2 reflects mature cost discipline with allocation tags and review cadence. The absence of automated rightsizing and predictive cost analytics prevents L3.",
+      "h1_state_evidence": [
+        "Tags enforced",
+        "Manual rightsizing"
+      ],
+      "h1_initiatives": [
+        "Deploy automated rightsizing",
+        "Build predictive cost analytics",
+        "Establish FinOps as a formal practice"
+      ],
+      "h1_target_score": 2.5,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI cost optimization",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Continuous autonomous optimization",
+      "h1_success_metrics": [
+        {
+          "metric": "Cost Variance",
+          "current": "±15%",
+          "h1_target": "±5%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C9",
+      "code": "3.9",
+      "name": "Reliability & Resilience Engineering",
+      "pillar_id": "P3",
+      "is_pe_indicator": false,
+      "weight": 2,
+      "pe_weight": 0,
+      "current_score": 0.0,
+      "current_level_label": "Sem resposta",
+      "target_score": 3.0,
+      "target_level_label": "L3 — Gerenciado",
+      "gap": 0,
+      "gap_priority": "P3",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Multi-AZ deployments for tier-1 services",
+        "Multi-region for 20% of services",
+        "Backup strategies documented",
+        "Recovery testing inconsistent"
+      ],
+      "scoring_rationale": "Score of L1.5 reflects multi-AZ resilience with limited multi-region coverage. The half-point above L1 recognizes consistent multi-AZ for critical services. Inconsistent recovery testing prevents L2.",
+      "h1_state_evidence": [
+        "Multi-AZ tier-1",
+        "20% multi-region",
+        "Inconsistent DR"
+      ],
+      "h1_initiatives": [
+        "Standardize quarterly recovery testing",
+        "Expand multi-region to 60% of services",
+        "Deploy reliability scorecards"
+      ],
+      "h1_target_score": 2.0,
+      "h2_target_score": 3.0,
+      "h2_key_enabler": "Cross-region resilience",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Autonomous resilience orchestration",
+      "h1_success_metrics": [
+        {
+          "metric": "Uptime (P99)",
+          "current": "99.5%",
+          "h1_target": "99.9%"
+        }
+      ]
+    },
+    {
+      "id": "P3-C10",
+      "code": "3.10",
+      "name": "Platform Adoption & Engineering Culture",
+      "pillar_id": "P3",
+      "is_pe_indicator": true,
+      "weight": 3,
+      "pe_weight": 1.0,
+      "current_score": 3.0,
+      "current_level_label": "L3",
+      "target_score": 4.0,
+      "target_level_label": "L4",
+      "gap": 1.0,
+      "gap_priority": "LOW",
+      "audience": [
+        "all"
+      ],
+      "evidence_collected": [
+        "Quarterly engineering culture surveys",
+        "Strong DevOps community of practice",
+        "Internal tech talks and demo days",
+        "Platform team has clear charter and product mindset"
+      ],
+      "scoring_rationale": "Score of L3 reflects mature platform-as-product mindset with active community and feedback loops. The remaining gap to L4 concerns AI-driven platform evolution and predictive platform improvements.",
+      "h1_state_evidence": [
+        "Strong CoP",
+        "Product mindset",
+        "Quarterly surveys"
+      ],
+      "h1_initiatives": [
+        "Deploy AI-driven platform feedback analytics",
+        "Establish platform OKRs with AI baselines",
+        "Run platform innovation sprints"
+      ],
+      "h1_target_score": 3.0,
+      "h2_target_score": 3.5,
+      "h2_key_enabler": "AI platform analytics",
+      "h3_target_score": 4.0,
+      "h3_target_label": "Self-improving platform with AI insights",
+      "h1_success_metrics": [
+        {
+          "metric": "Platform NPS",
+          "current": "+30",
+          "h1_target": "+45"
+        }
+      ]
+    }
+  ],
+  "horizons": [
+    {
+      "id": "H1",
+      "name": "Foundation",
+      "duration_label": "Months 0-6",
+      "target_overall_maturity": 2.5,
+      "focus": "Establishing AI-Assisted Development Foundation",
+      "narrative": "H1 establishes the foundational platform, governance, and adoption patterns required for transformation at scale.",
+      "key_initiatives": [
+        {
+          "title": "AI Coding Adoption Foundation",
+          "items": [
+            "Deploy enterprise-tier AI coding licenses to 100% of developers",
+            "Establish weekly adoption metrics dashboard",
+            "Launch champions program"
+          ]
+        },
+        {
+          "title": "Platform Foundation",
+          "items": [
+            "Define IDP target architecture",
+            "Deploy minimum-viable service catalog",
+            "Standardize dev containers"
+          ]
+        }
+      ],
+      "capability_targets": []
+    },
+    {
+      "id": "H2",
+      "name": "Scale",
+      "duration_label": "Months 6-18",
+      "target_overall_maturity": 3.0,
+      "focus": "Scaling Platform Engineering & Agentic Workflows",
+      "narrative": "H2 scales H1 successes across the engineering organization with full IDP adoption and broader agentic workflow integration.",
+      "key_initiatives": [
+        {
+          "title": "IDP General Availability",
+          "items": [
+            "Migrate all teams to IDP",
+            "Establish golden paths for top 10 use cases",
+            "Deploy AI-enhanced developer self-service"
+          ]
+        },
+        {
+          "title": "Agentic Workflows",
+          "items": [
+            "Roll out Agent Mode org-wide",
+            "Deploy AI-driven pipeline optimization",
+            "Implement AI test selection and prioritization"
+          ]
+        }
+      ],
+      "capability_targets": []
+    },
+    {
+      "id": "H3",
+      "name": "Transform",
+      "duration_label": "Months 18-36",
+      "target_overall_maturity": 4.0,
+      "focus": "Autonomous Operations and Self-Healing Systems",
+      "narrative": "H3 transforms operations into autonomous, self-healing systems with multi-agent coordination across the SDLC.",
+      "key_initiatives": [
+        {
+          "title": "Autonomous SDLC",
+          "items": [
+            "Deploy multi-agent coding workflows",
+            "Implement autonomous progressive delivery",
+            "Achieve self-healing infrastructure"
+          ]
+        },
+        {
+          "title": "Continuous Optimization",
+          "items": [
+            "AI-driven workload placement",
+            "Predictive incident prevention",
+            "Continuous compliance with AI verification"
+          ]
+        }
+      ],
+      "capability_targets": []
+    }
+  ],
+  "gap_analysis": [
+    {
+      "pillar_id": "P2",
+      "capability_code": "P2-C4",
+      "capability_name": "Integração de Segurança (DevSecOps)",
+      "current": 0.75,
+      "target": 3.5,
+      "gap": 2.75,
+      "priority": "P0",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P3",
+      "capability_code": "P3-C5",
+      "capability_name": "Aplicações Agênticas",
+      "current": 0.83,
+      "target": 4.0,
+      "gap": 3.17,
+      "priority": "P0",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P2",
+      "capability_code": "P2-C10",
+      "capability_name": "Segurança de Dependências e Cadeia de Suprimentos",
+      "current": 0.67,
+      "target": 3.0,
+      "gap": 2.33,
+      "priority": "P0",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P1",
+      "capability_code": "P1-C1",
+      "capability_name": "Assistentes de Codificação IA",
+      "current": 3.04,
+      "target": 4.0,
+      "gap": 0.96,
+      "priority": "P2",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P2",
+      "capability_code": "P2-C1",
+      "capability_name": "Inteligência de Pipeline CI/CD",
+      "current": 2.33,
+      "target": 3.0,
+      "gap": 0.67,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P3",
+      "capability_code": "P3-C3",
+      "capability_name": "Desenvolvimento de Aplicações IA",
+      "current": 2.25,
+      "target": 3.0,
+      "gap": 0.75,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P2",
+      "capability_code": "P2-C3",
+      "capability_name": "Observabilidade e Monitoramento",
+      "current": 2.4,
+      "target": 3.0,
+      "gap": 0.6,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P1",
+      "capability_code": "P1-C4",
+      "capability_name": "Automação de Revisão de Código",
+      "current": 2.5,
+      "target": 3.0,
+      "gap": 0.5,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P1",
+      "capability_code": "P1-C2",
+      "capability_name": "Plataforma de Experiência do Desenvolvedor",
+      "current": 2.49,
+      "target": 3.0,
+      "gap": 0.51,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    },
+    {
+      "pillar_id": "P3",
+      "capability_code": "P3-C1",
+      "capability_name": "Arquitetura Cloud-Native",
+      "current": 2.6,
+      "target": 3.0,
+      "gap": 0.4,
+      "priority": "P3",
+      "recommended_actions": {
+        "h1": "Definir baseline e estabelecer métricas de cobertura.",
+        "h2": "Expandir piloto para >50% das equipes; instrumentar OKRs.",
+        "h3": "Atingir cobertura universal e otimização contínua."
+      }
+    }
+  ],
+  "three_horizons": {
+    "modernize_h1": [
+      {
+        "technology": "Enterprise AI Coding Platform",
+        "purpose": "AI-assisted coding for all developers",
+        "status": "Recommended",
+        "timeline": "Q1-Q2 2026: Deploy"
+      },
+      {
+        "technology": "Service Catalog (MVP)",
+        "purpose": "Foundation for IDP",
+        "status": "Recommended",
+        "timeline": "Q2 2026: Launch"
+      }
+    ],
+    "platformize_h2": [
+      {
+        "technology": "IDP General Availability",
+        "purpose": "Self-service across teams",
+        "status": "Recommended",
+        "timeline": "Q4 2026 - Q2 2027"
+      },
+      {
+        "technology": "Agent Mode Org-Wide",
+        "purpose": "Agentic coding workflows",
+        "status": "Recommended",
+        "timeline": "H2 2026 ramp"
+      }
+    ],
+    "transform_h3": [
+      {
+        "technology": "Multi-Agent SDLC",
+        "purpose": "Autonomous coding pipelines",
+        "status": "Future Phase",
+        "timeline": "2027-2028"
+      },
+      {
+        "technology": "Self-Healing Infrastructure",
+        "purpose": "Autonomous operations",
+        "status": "Future Phase",
+        "timeline": "2028+"
+      }
+    ]
+  },
+  "technology_resources_per_pillar": {
+    "P1": {
+      "focus_summary": "AI coding adoption + dev experience standardization",
+      "total_effort_tier": "L",
+      "technology_investments": [
+        {
+          "technology": "Enterprise AI Coding Platform",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "AI-assisted coding for 200+ developers"
+        },
+        {
+          "technology": "Cloud IDE Platform",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "Standardized dev environments"
+        },
+        {
+          "technology": "Agent Mode Rollout",
+          "horizon": "H2",
+          "effort_tier": "L",
+          "purpose": "Agentic coding org-wide"
+        },
+        {
+          "technology": "AI Test Generation Suite",
+          "horizon": "H2",
+          "effort_tier": "M",
+          "purpose": "Test automation augmentation"
+        },
+        {
+          "technology": "Multi-Agent Code Workflows",
+          "horizon": "H3",
+          "effort_tier": "L",
+          "purpose": "Autonomous coding flows"
+        }
+      ],
+      "team_skills": [
+        {
+          "role": "Developer Experience Lead",
+          "ftes": 1,
+          "horizon": "H1",
+          "focus": "Strategy & adoption"
+        },
+        {
+          "role": "Developer Experience Engineers",
+          "ftes": 4,
+          "horizon": "H1",
+          "focus": "Tool integration & training"
+        },
+        {
+          "role": "AI Adoption Champions",
+          "ftes": 10,
+          "horizon": "H1",
+          "focus": "Embedded change agents (part-time)"
+        },
+        {
+          "role": "Developer Experience Engineers",
+          "ftes": 6,
+          "horizon": "H2",
+          "focus": "Agent Mode rollout & support"
+        }
+      ],
+      "effort_summary": [
+        {
+          "horizon": "H1",
+          "duration": "0-6 months",
+          "effort_tier": "M",
+          "focus_areas": "Foundation, license rollout, basic adoption"
+        },
+        {
+          "horizon": "H2",
+          "duration": "6-18 months",
+          "effort_tier": "L",
+          "focus_areas": "Agent Mode scale, AI test gen"
+        },
+        {
+          "horizon": "H3",
+          "duration": "18-36 months",
+          "effort_tier": "L",
+          "focus_areas": "Multi-agent autonomous workflows"
+        }
+      ]
+    },
+    "P2": {
+      "focus_summary": "Pipeline maturity + observability + SRE practice",
+      "total_effort_tier": "L",
+      "technology_investments": [
+        {
+          "technology": "Progressive Delivery Platform",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "Canary + feature flags org-wide"
+        },
+        {
+          "technology": "AI Anomaly Detection",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "Observability augmentation"
+        },
+        {
+          "technology": "Chaos Engineering Tooling",
+          "horizon": "H2",
+          "effort_tier": "S",
+          "purpose": "Resilience validation"
+        },
+        {
+          "technology": "AI Pipeline Optimization",
+          "horizon": "H2",
+          "effort_tier": "M",
+          "purpose": "Build/test/deploy intelligence"
+        },
+        {
+          "technology": "Self-Healing Pipelines",
+          "horizon": "H3",
+          "effort_tier": "L",
+          "purpose": "Autonomous CI/CD"
+        }
+      ],
+      "team_skills": [
+        {
+          "role": "Platform Engineering Lead",
+          "ftes": 1,
+          "horizon": "H1",
+          "focus": "Pipeline strategy"
+        },
+        {
+          "role": "SRE Engineers",
+          "ftes": 4,
+          "horizon": "H1",
+          "focus": "SRE function buildout"
+        },
+        {
+          "role": "Security Engineers",
+          "ftes": 2,
+          "horizon": "H1",
+          "focus": "DevSecOps deepening"
+        },
+        {
+          "role": "Platform Engineers",
+          "ftes": 6,
+          "horizon": "H2",
+          "focus": "Observability & chaos engineering"
+        }
+      ],
+      "effort_summary": [
+        {
+          "horizon": "H1",
+          "duration": "0-6 months",
+          "effort_tier": "M",
+          "focus_areas": "Progressive delivery, SRE foundation"
+        },
+        {
+          "horizon": "H2",
+          "duration": "6-18 months",
+          "effort_tier": "L",
+          "focus_areas": "Chaos eng, AI pipelines"
+        },
+        {
+          "horizon": "H3",
+          "duration": "18-36 months",
+          "effort_tier": "L",
+          "focus_areas": "Self-healing operations"
+        }
+      ]
+    },
+    "P3": {
+      "focus_summary": "IDP buildout + cloud-native maturation + AI/ML platform GA",
+      "total_effort_tier": "XL",
+      "technology_investments": [
+        {
+          "technology": "Service Catalog & IDP MVP",
+          "horizon": "H1",
+          "effort_tier": "L",
+          "purpose": "Self-service foundation"
+        },
+        {
+          "technology": "Service Mesh",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "Multi-cluster routing"
+        },
+        {
+          "technology": "Feature Store GA",
+          "horizon": "H1",
+          "effort_tier": "M",
+          "purpose": "MLOps maturity"
+        },
+        {
+          "technology": "IDP General Availability",
+          "horizon": "H2",
+          "effort_tier": "XL",
+          "purpose": "Org-wide self-service"
+        },
+        {
+          "technology": "AI Workload Placement",
+          "horizon": "H2",
+          "effort_tier": "M",
+          "purpose": "Predictive scaling"
+        },
+        {
+          "technology": "Autonomous Platform Operations",
+          "horizon": "H3",
+          "effort_tier": "L",
+          "purpose": "Self-improving platform"
+        }
+      ],
+      "team_skills": [
+        {
+          "role": "Platform Engineering Lead",
+          "ftes": 1,
+          "horizon": "H1",
+          "focus": "IDP strategy & architecture"
+        },
+        {
+          "role": "Platform Engineers",
+          "ftes": 8,
+          "horizon": "H1",
+          "focus": "IDP buildout"
+        },
+        {
+          "role": "MLOps Engineers",
+          "ftes": 3,
+          "horizon": "H1",
+          "focus": "AI/ML platform maturation"
+        },
+        {
+          "role": "Platform Engineers",
+          "ftes": 12,
+          "horizon": "H2",
+          "focus": "IDP GA & scale operations"
+        }
+      ],
+      "effort_summary": [
+        {
+          "horizon": "H1",
+          "duration": "0-6 months",
+          "effort_tier": "L",
+          "focus_areas": "IDP MVP, service mesh, MLOps GA"
+        },
+        {
+          "horizon": "H2",
+          "duration": "6-18 months",
+          "effort_tier": "XL",
+          "focus_areas": "IDP GA, predictive operations"
+        },
+        {
+          "horizon": "H3",
+          "duration": "18-36 months",
+          "effort_tier": "L",
+          "focus_areas": "Autonomous platform, AI insights"
+        }
+      ]
+    }
+  },
+  "success_metrics_per_pillar": {
+    "P1": {
+      "productivity": [
+        {
+          "metric": "AI Coding Adoption Rate",
+          "current": "26.5%",
+          "h1": "60%",
+          "h2": "85%",
+          "h3": ">95%"
+        },
+        {
+          "metric": "Suggestion Acceptance",
+          "current": "30%",
+          "h1": "45%",
+          "h2": "55%",
+          "h3": ">60%"
+        },
+        {
+          "metric": "Time to First Commit",
+          "current": "4-6 weeks",
+          "h1": "2 weeks",
+          "h2": "<1 week",
+          "h3": "<3 days"
+        }
+      ],
+      "quality": [
+        {
+          "metric": "Test Coverage",
+          "current": "80%",
+          "h1": "85%",
+          "h2": "90%",
+          "h3": ">95%"
+        },
+        {
+          "metric": "Mutation Score",
+          "current": "N/A",
+          "h1": "60%",
+          "h2": "75%",
+          "h3": ">85%"
+        }
+      ]
+    },
+    "P2": {
+      "dora_metrics": [
+        {
+          "metric": "Deployment Frequency",
+          "current": "Weekly",
+          "h1": "Daily",
+          "h2": "Multi-daily",
+          "h3": "On-demand"
+        },
+        {
+          "metric": "Lead Time for Changes",
+          "current": "1-7 days",
+          "h1": "<1 day",
+          "h2": "<4 hours",
+          "h3": "<1 hour"
+        },
+        {
+          "metric": "Change Failure Rate",
+          "current": "15%",
+          "h1": "10%",
+          "h2": "7%",
+          "h3": "<5%"
+        },
+        {
+          "metric": "MTTR (P95)",
+          "current": "8h",
+          "h1": "4h",
+          "h2": "1h",
+          "h3": "<30 min"
+        }
+      ],
+      "operational_metrics": [
+        {
+          "metric": "SLO Coverage",
+          "current": "70%",
+          "h1": "100%",
+          "h2": "100%",
+          "h3": "100%"
+        },
+        {
+          "metric": "Game Days/yr",
+          "current": "0",
+          "h1": "4",
+          "h2": "12",
+          "h3": "Continuous"
+        },
+        {
+          "metric": "Incident MTTR",
+          "current": "8h",
+          "h1": "2h",
+          "h2": "30min",
+          "h3": "<10min auto"
+        }
+      ]
+    },
+    "P3": {
+      "platform_engineering": [
+        {
+          "metric": "Teams on IDP",
+          "current": "0",
+          "h1": "3",
+          "h2": "All",
+          "h3": "All + AI golden paths"
+        },
+        {
+          "metric": "Platform NPS",
+          "current": "+30",
+          "h1": "+45",
+          "h2": "+55",
+          "h3": ">+60"
+        },
+        {
+          "metric": "Self-Service Time-to-Provision",
+          "current": "Days",
+          "h1": "Hours",
+          "h2": "Minutes",
+          "h3": "Instant"
+        }
+      ],
+      "ai_platform": [
+        {
+          "metric": "Production Models",
+          "current": "5",
+          "h1": "15",
+          "h2": "40",
+          "h3": ">80"
+        },
+        {
+          "metric": "Model Drift Detection",
+          "current": "Manual",
+          "h1": "Automated",
+          "h2": "Predictive",
+          "h3": "Self-correcting"
+        }
+      ],
+      "resilience": [
+        {
+          "metric": "Uptime (P99)",
+          "current": "99.5%",
+          "h1": "99.9%",
+          "h2": "99.95%",
+          "h3": "99.99%"
+        },
+        {
+          "metric": "Multi-Region Coverage",
+          "current": "20%",
+          "h1": "60%",
+          "h2": "85%",
+          "h3": "100%"
+        }
+      ]
+    }
+  },
+  "risks_per_pillar": {
+    "P1": [
+      {
+        "risk": "Developer adoption resistance",
+        "impact": "High",
+        "probability": "Medium",
+        "mitigation": "Change management, hands-on training, champions program, executive visibility"
+      },
+      {
+        "risk": "AI suggestion quality variance",
+        "impact": "Medium",
+        "probability": "Medium",
+        "mitigation": "Quality monitoring, model tuning, feedback loops"
+      },
+      {
+        "risk": "Skills gap in AI tooling",
+        "impact": "Medium",
+        "probability": "High",
+        "mitigation": "Structured training, pair programming with AI, continuous learning paths"
+      }
+    ],
+    "P2": [
+      {
+        "risk": "Pipeline disruption during transition",
+        "impact": "High",
+        "probability": "Low",
+        "mitigation": "Staged rollout, parallel pipelines, automated rollback"
+      },
+      {
+        "risk": "Security regression with AI tooling",
+        "impact": "High",
+        "probability": "Low",
+        "mitigation": "AI-aware security scanning, mandatory review, audit trails"
+      },
+      {
+        "risk": "Tool sprawl",
+        "impact": "Medium",
+        "probability": "Medium",
+        "mitigation": "Standardize on validated tool catalog, sunset legacy tools per quarter"
+      }
+    ],
+    "P3": [
+      {
+        "risk": "IDP adoption stalls",
+        "impact": "High",
+        "probability": "Medium",
+        "mitigation": "Pilot teams as internal champions, golden paths for top use cases, exec sponsorship"
+      },
+      {
+        "risk": "Legacy modernization complexity",
+        "impact": "High",
+        "probability": "High",
+        "mitigation": "Strangler fig pattern, dedicated modernization team, phased decommission"
+      },
+      {
+        "risk": "Cost overrun on platform investments",
+        "impact": "Medium",
+        "probability": "Medium",
+        "mitigation": "Quarterly FinOps reviews, effort tier gating, pilot before scale"
+      }
+    ],
+    "cross_cutting": [
+      {
+        "risk": "Insufficient executive sponsorship",
+        "impact": "High",
+        "probability": "Low",
+        "mitigation": "Steering committee monthly cadence, OKR alignment, business-value reporting"
+      },
+      {
+        "risk": "Talent retention during transformation",
+        "impact": "High",
+        "probability": "Medium",
+        "mitigation": "Retention bonuses, career development, public visibility of transformation work"
+      },
+      {
+        "risk": "Regulatory compliance regression",
+        "impact": "High",
+        "probability": "Low",
+        "mitigation": "Compliance-as-code, continuous audit, regulatory advisor on steering committee"
+      },
+      {
+        "risk": "Vendor lock-in",
+        "impact": "Medium",
+        "probability": "Medium",
+        "mitigation": "Multi-vendor strategy where viable, abstraction layers, exit-cost analysis at procurement"
+      },
+      {
+        "risk": "Change fatigue",
+        "impact": "High",
+        "probability": "Medium",
+        "mitigation": "Phased rollout, ADKAR framework, recognition of contributors, clear quick-win narrative"
+      }
+    ]
+  },
+  "next_steps_per_pillar": {
+    "P1": {
+      "immediate_30d": [
+        "Secure executive sponsorship for Pillar 1 transformation",
+        "Procure enterprise AI coding licenses for all developers",
+        "Identify 3 pilot teams for AI coding deep-dive",
+        "Establish baseline AI coding metrics dashboard",
+        "Launch champions program with first cohort of 10 champions"
+      ],
+      "h1_launch_30_90d": [
+        "Roll out enterprise AI coding to first 50% of developers",
+        "Deliver mandatory AI coding training to pilot teams",
+        "Standardize dev containers across top 10 repositories",
+        "Begin cloud IDE pilot with 1 development team",
+        "Publish first weekly AI adoption metrics report"
+      ],
+      "dependencies": [
+        "Part 2: DevOps Lifecycle transformation alignment for CI integration",
+        "Part 3: Application Platform IDP work for consistent dev experience",
+        "Part 4: Implementation Guide governance for change management"
+      ]
+    },
+    "P2": {
+      "immediate_30d": [
+        "Establish formal SRE function with named lead",
+        "Inventory existing pipeline maturity per service",
+        "Identify priority services for canary + feature flag rollout",
+        "Define SLO target framework",
+        "Procure progressive delivery tooling"
+      ],
+      "h1_launch_30_90d": [
+        "Achieve 100% CI/CD pipeline coverage gap closure for prioritized services",
+        "Deploy AI anomaly detection to first 5 tier-1 services",
+        "Run first chaos engineering game day",
+        "Standardize postmortem template and tracking",
+        "Launch DevSecOps deepening initiative (DAST 100%, threat modeling)"
+      ],
+      "dependencies": [
+        "Part 1: Developer Productivity for AI test generation alignment",
+        "Part 3: Application Platform observability stack alignment"
+      ]
+    },
+    "P3": {
+      "immediate_30d": [
+        "Define IDP target architecture and golden-path principles",
+        "Hire Platform Engineering Lead",
+        "Inventory existing platform capabilities and gaps",
+        "Identify 3 pilot teams for IDP early adoption",
+        "Procure service mesh tooling"
+      ],
+      "h1_launch_30_90d": [
+        "Deploy minimum-viable service catalog",
+        "Onboard first 3 pilot teams to IDP MVP",
+        "Begin service mesh deployment to 30% of services",
+        "Launch feature store GA",
+        "Establish platform-as-product OKRs"
+      ],
+      "dependencies": [
+        "Part 1: Developer Productivity adoption metrics for IDP success measurement",
+        "Part 2: DevOps Lifecycle observability investments shared with platform"
+      ]
+    }
+  },
+  "key_evidence_sources": {
+    "documents": [
+      "Architectural decision records reviewed across 6 critical services",
+      "Service catalog draft and IDP target architecture proposal",
+      "Current DevOps tooling inventory with utilization data",
+      "Quarterly engineering survey results"
+    ],
+    "dashboards": [
+      "AI coding usage dashboard (license deployment + acceptance metrics)",
+      "DORA metrics dashboard (portfolio level)",
+      "SLO compliance dashboards for tier-1 services",
+      "Cost allocation dashboards by team"
+    ],
+    "interviews": [
+      "Engineering leadership discovery sessions (CTO, VP Eng, Pillar Leads)",
+      "Pillar working group sessions (8 capability deep-dives)",
+      "Developer-experience round tables (15 developers across 5 teams)"
+    ],
+    "metrics": [
+      "DORA metrics: deployment frequency, lead time, change failure, MTTR",
+      "AI suggestion acceptance and adoption telemetry",
+      "Test coverage and mutation testing rates per repository"
+    ],
+    "governance": [
+      "Existing engineering policies (branch protection, security scanning)",
+      "Compliance evidence collection records",
+      "Risk register entries from previous quarters"
+    ]
+  },
+  "implementation_guide_inputs": {
+    "executive_steering_committee": [
+      {
+        "name": "Maria Santos",
+        "role": "Chief Technology Officer (Sponsor)"
+      },
+      {
+        "name": "James Carter",
+        "role": "VP of Engineering"
+      },
+      {
+        "name": "Priya Iyer",
+        "role": "Chief Information Security Officer"
+      },
+      {
+        "name": "David Lin",
+        "role": "Chief Financial Officer (Investment Approver)"
+      },
+      {
+        "name": "Sofia Mendes",
+        "role": "Head of Product"
+      }
+    ],
+    "tpo": {
+      "program_manager": "Carlos Rivera",
+      "members": [
+        "Anna Becker (Lead Architect)",
+        "Tom Yamada (Change Manager)",
+        "Lisa Park (PMO Lead)"
+      ]
+    },
+    "raci_matrix": [
+      {
+        "activity": "Pillar Initiative Approval",
+        "r": "Pillar Lead",
+        "a": "TPO Director",
+        "c": "Steering Committee",
+        "i": "All Engineering"
+      },
+      {
+        "activity": "Effort Tier Sign-off",
+        "r": "TPO Director",
+        "a": "CFO + CTO",
+        "c": "Steering",
+        "i": "Pillar Leads"
+      },
+      {
+        "activity": "Hiring Approval",
+        "r": "Pillar Lead",
+        "a": "VP Eng",
+        "c": "HR Partner",
+        "i": "TPO"
+      },
+      {
+        "activity": "Quarterly Roadmap Update",
+        "r": "TPO Director",
+        "a": "CTO",
+        "c": "Steering, Pillar Leads",
+        "i": "All Eng"
+      },
+      {
+        "activity": "Major Risk Escalation",
+        "r": "TPO Director",
+        "a": "Steering Committee",
+        "c": "Pillar Leads",
+        "i": "Working Groups"
+      }
+    ],
+    "communication_plan": [
+      {
+        "audience": "All Engineering",
+        "channel": "Quarterly Town Hall + monthly newsletter",
+        "frequency": "Quarterly + Monthly",
+        "owner": "Change Manager"
+      },
+      {
+        "audience": "Pillar Working Groups",
+        "channel": "Slack + weekly stand-up",
+        "frequency": "Weekly",
+        "owner": "Pillar Leads"
+      },
+      {
+        "audience": "Executive Steering",
+        "channel": "Steering Committee meeting",
+        "frequency": "Monthly",
+        "owner": "TPO Director"
+      },
+      {
+        "audience": "Champions Network",
+        "channel": "Champions Slack channel + monthly cohort calls",
+        "frequency": "Continuous + Monthly",
+        "owner": "Developer Experience Lead"
+      },
+      {
+        "audience": "External Stakeholders",
+        "channel": "Quarterly business review",
+        "frequency": "Quarterly",
+        "owner": "CTO"
+      }
+    ],
+    "training_plan": [
+      {
+        "audience": "All Developers",
+        "format": "AI-assisted coding workshop (4h hands-on)",
+        "cadence": "Monthly cohorts"
+      },
+      {
+        "audience": "Champions",
+        "format": "Train-the-trainer + community calls",
+        "cadence": "Bi-weekly"
+      },
+      {
+        "audience": "Engineering Managers",
+        "format": "Leadership briefing + adoption review playbook",
+        "cadence": "Quarterly"
+      },
+      {
+        "audience": "SRE Engineers",
+        "format": "SRE bootcamp + chaos engineering certification",
+        "cadence": "H1 onboarding + quarterly refresher"
+      },
+      {
+        "audience": "Platform Engineers",
+        "format": "IDP design sessions + golden path workshops",
+        "cadence": "Monthly"
+      }
+    ],
+    "adkar_notes": "Awareness will be driven through Town Halls and the monthly newsletter, anchored on the 'why now' narrative. Desire will be reinforced via champion stories and visible quick wins (Weeks 1-12). Knowledge will be delivered through structured workshops with hands-on labs. Ability will be measured via adoption metrics and proficiency assessments. Reinforcement is built into the OKR framework with quarterly recognition of teams demonstrating strong adoption.",
+    "quick_wins_w1_4": [
+      "Communicate transformation roadmap to all engineering teams via Town Hall",
+      "Stand up Steering Committee, TPO, and Pillar Working Groups with first cadence meetings",
+      "Identify and onboard 3 pilot teams for Horizon 1 initiatives",
+      "Procure enterprise AI coding licenses for all developers",
+      "Launch champions network with first cohort of 10"
+    ],
+    "quick_wins_w5_8": [
+      "First 50% of developers have AI coding licenses provisioned",
+      "Pilot teams complete AI coding training and begin daily usage",
+      "Baseline DORA + AI adoption KPI dashboards live",
+      "First chaos engineering game day executed",
+      "Service catalog MVP demonstrated to IDP pilot teams"
+    ],
+    "quick_wins_w9_12": [
+      "First measurable productivity uplift in pilot teams (target: 20% lead time reduction)",
+      "AI coding adoption reaches 60% across organization",
+      "First IDP self-service workflow used in production by 3 teams",
+      "Quarterly steering review with first set of measurable outcomes published",
+      "Plan for Horizon 1 expansion to next 30% of teams approved"
+    ],
+    "executive_steering_committee_raw_markdown": "Comitê Executivo Diretivo (Champions ativos identificados pelo Learning Survey):\n\n- Maria Tech Leader — maria.tl@cliente-exemplo.com.br\n- Joao Backend SRE — joao.sre@cliente-exemplo.com.br\n- Sofia Frontend Lead — sofia.fe@cliente-exemplo.com.br",
+    "tpo_raw_markdown": "(preencher manualmente — Learning Survey não cobre TPO. Liste Programa Manager + escritório + autoridade de decisão)",
+    "raci_matrix_raw_markdown": "(preencher manualmente — Learning Survey não cobre RACI. Use template em wizard/implementation-guide-inputs.template.json)",
+    "communication_plan_raw_markdown": "Plano de Comunicação derivado do calendário sugerido:\n\n| Semana | Workshop | Audiência | Champion | Formato |\n|---|---|---|---|---|\n| W1 | Champions Kickoff | 3 | Líder Eng | 2h síncrono |\n| W2 | Copilot Spaces (contexto compartilhado) | 5 | Maria Tech Leader | 4h hands-on |\n| W3 | A2A (Agent-to-Agent) protocol | 4 | Maria Tech Leader | 4h hands-on |\n| W4 | Microsoft Foundry — visão geral | 4 | Maria Tech Leader | 4h hands-on |\n| W4 | Office hours #1 | Todos | Champions | 1h Q&A |\n| W6, W8, W10, W12 | Office hours quinzenal | Todos | Champions | 1h Q&A |",
+    "training_plan_raw_markdown": "Plano de Treinamento (cohorts por dimensão derivados do Learning Survey):\n\n### Cohort D2 (Copilot Adoption)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D3 (MS/GH Tooling Breadth)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D4 (AI Dev Practices)\n- **1 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D5 (Agent Concepts Mastery)\n- **2 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D6 (Instructions Maturity)\n- **4 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D7 (Best Practices)\n- **3 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time:** Self-paced (meu ritmo, mais flexibilidade)\n- **Plano:** cohort de 4-6 semanas com sessões síncronas + lab self-paced\n\n### Cohort D8 (Security & Governance)\n- **2 devs querem evoluir nesta dimensão**\n- **Formato preferido pelo time",
+    "adkar_notes_raw_markdown": "Plano de Mudança ADKAR derivado do Learning Survey:\n\n**Awareness:** Comunicar plano de capacitação consolidado em all-hands; cada dev recebe seu plano personalizado por email.\n\n**Desire:** Tornar visível que workshops têm inscritos pré-validados (não opt-in genérico).\n\n**Knowledge:** Workshops top 5 (do Learning Survey):\n1. Copilot Spaces (contexto compartilhado) (5 inscritos)\n2. A2A (Agent-to-Agent) protocol (4 inscritos)\n3. Microsoft Foundry — visão geral (4 inscritos)\n4. Documentação automática (4 inscritos)\n5. Modo Ask (perguntas eficazes) (3 inscritos)\n\n**Ability:** Office hours quinzenal (sem agenda fixa, devs trazem dúvidas práticas).\n\n**Reinforcement:** Métricas de adoção mensais publicadas; reconhecimento dos Champions; revisão trimestral do plano com novo Learning Survey.\n",
+    "quick_wins_w1_4_raw_markdown": "- W1: Champions Kickoff\n- W2: Copilot Spaces (contexto compartilhado)\n- W3: A2A (Agent-to-Agent) protocol\n- W4: Microsoft Foundry — visão geral\n- W4: Office hours #1",
+    "quick_wins_w5_8_raw_markdown": "(preencher — sem dados suficientes nas semanas 5-8)",
+    "quick_wins_w9_12_raw_markdown": "- W10: Office hours quinzenal"
+  },
+  "branding": {
+    "platform_name": "AI Maturity Assessment Platform",
+    "primary_color": "#00A4EF",
+    "footer_text_template": "Confidential | {organization_name}",
+    "author": "Paula Silva",
+    "role": "Software Global Black Belt",
+    "author_name": "Paula Silva | Software Global Black Belt",
+    "contact": "paulasilva@microsoft.com",
+    "tagline": "Building the future of software development with AI and Agentic DevOps",
+    "design_system": "paulasilva-ms Design System v1.7.0",
+    "palette_red": "#F25022",
+    "palette_green": "#7FBA00",
+    "palette_yellow": "#FFB900",
+    "palette_blue": "#00A4EF"
+  }
+}

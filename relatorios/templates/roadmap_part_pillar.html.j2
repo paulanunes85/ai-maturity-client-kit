@@ -1,0 +1,462 @@
+{# =============================================================================
+   Template: Roadmap Part Pillar (FR-REPORT-003 / 004 / 005)
+   Used by  : Roadmap Part 1 (P1), Part 2 (P2), Part 3 (P3)
+   Switch   : the `pillar_focus` variable (P1/P2/P3) selects which pillar.
+   Layout   : A4 portrait, ~12-18 pages
+   Sections : 1 Exec Summary, 2 Three Horizons (per-cap H1 detail + H2/H3),
+              3 Resources, 4 Success Metrics, 5 Risks, 6 Next Steps
+   See SDD §6.2.2 for full section spec.
+   ★ NO MONETARY FIGURES ANYWHERE — effort tier only (FR-REPORT-012).
+   ============================================================================= #}
+{% from "_components.html.j2" import
+   cover_block,
+   score_card,
+   priority_badge,
+   pe_indicator,
+   audience_badge,
+   gap_cell,
+   effort_pill,
+   horizon_pill,
+   effort_tier_legend,
+   findings_list
+%}
+{% set pillar = scores.pillars | selectattr('id', 'equalto', pillar_focus) | first %}
+{% set pillar_caps = capabilities | selectattr('pillar_id', 'equalto', pillar_focus) | list %}
+{% set pillar_resources = technology_resources_per_pillar[pillar_focus] %}
+{% set pillar_metrics = success_metrics_per_pillar[pillar_focus] %}
+{% set pillar_risks = risks_per_pillar[pillar_focus] %}
+{% set pillar_next_steps = next_steps_per_pillar[pillar_focus] %}
+{% set part_num = pillar_focus | replace('P', '') | int %}
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ t('report.roadmap.title') }} — Part {{ part_num }}: {{ pillar.name }}</title>
+  <link rel="stylesheet" href="_print.css">
+</head>
+<body>
+
+  {# ─── COVER ──────────────────────────────────────────────────── #}
+  {{ cover_block(
+       organization,
+       assessment,
+       branding,
+       t('report.roadmap.title'),
+       t('report.roadmap.part_subtitle', num=part_num, pillar_name=pillar.name)
+  ) }}
+
+  {# ─── TABLE OF CONTENTS ─────────────────────────────────────── #}
+  <section class="toc">
+    <h1>{{ t('section.toc') }}</h1>
+    <ul class="toc__list">
+      <li><a href="#sec-1">1. {{ t('section.executive_summary') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-2">2. {{ t('section.three_horizons') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-1">2.1 {{ t('horizon.h1.full_label') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-2">2.2 {{ t('horizon.h2.full_label') }}</a><span class="toc__page"></span></li>
+      <li class="toc__list--l2"><a href="#sec-2-3">2.3 {{ t('horizon.h3.full_label') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-3">3. {{ t('section.resources') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-4">4. {{ t('section.success_metrics') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-5">5. {{ t('section.risks_mitigations') }}</a><span class="toc__page"></span></li>
+      <li><a href="#sec-6">6. {{ t('section.next_steps') }}</a><span class="toc__page"></span></li>
+    </ul>
+  </section>
+
+  {# ─── §1 EXECUTIVE SUMMARY ─────────────────────────────────── #}
+  <section id="sec-1" class="section">
+    <h1>1. {{ t('section.executive_summary') }}</h1>
+    <p class="lead">{{ t('roadmap.exec_summary.intro', org=organization.name, pillar_name=pillar.name, current=('%.1f' | format(pillar.weighted_avg)), target=('%.1f' | format(pillar.target))) }}</p>
+
+    {{ score_card(pillar) }}
+
+    {% if pillar.current_state_metrics %}
+    <h2 id="sec-1-1">1.1 {{ t('section.current_state_assessment') }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.metric') }}</th>
+          <th>{{ t('table.current_value') }}</th>
+          <th>{{ t('table.target_value') }}</th>
+          <th>{{ t('table.gap') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in pillar.current_state_metrics %}
+        <tr>
+          <td><strong>{{ m.metric }}</strong></td>
+          <td>{{ m.current }}</td>
+          <td>{{ m.target }}</td>
+          <td>{{ m.gap }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    <h2 id="sec-1-2">1.2 {{ t('section.pillar_capability_scores', num=part_num) }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.id') }}</th>
+          <th>{{ t('table.capability') }}</th>
+          <th class="num">{{ t('table.current') }}</th>
+          <th class="num">{{ t('table.target') }}</th>
+          <th class="num">{{ t('table.gap') }}</th>
+          <th>{{ t('table.priority') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cap in pillar_caps %}
+        <tr>
+          <td class="mono">{{ cap.code }}</td>
+          <td>
+            {{ pe_indicator(cap.is_pe_indicator) }}{{ cap.name }}
+            {{ audience_badge(cap.audience) }}
+          </td>
+          <td class="num">L{{ '%.1f' | format(cap.current_score) }}</td>
+          <td class="num">L{{ '%.1f' | format(cap.target_score) }}</td>
+          <td class="num">{{ gap_cell(cap.gap, cap.gap_priority) }}</td>
+          <td>{{ priority_badge(cap.gap_priority) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  {# ─── §2 TRANSFORMATION ROADMAP: THREE HORIZONS ────────────── #}
+  <section id="sec-2" class="section">
+    <h1>2. {{ t('section.three_horizons') }}</h1>
+    <p class="lead">{{ t('roadmap.three_horizons.intro') }}</p>
+
+    {# §2.1 HORIZON 1 — FOUNDATION — per-capability detail #}
+    <h2 id="sec-2-1">2.1 {{ t('horizon.h1.full_label') }}</h2>
+    {% set h1 = horizons | selectattr('id', 'equalto', 'H1') | first %}
+    <p class="text-muted"><strong>{{ t('label.target') }}: L{{ '%.1f' | format(pillar.weighted_avg) }} → L{{ '%.1f' | format(h1.target_overall_maturity) }}</strong> · {{ h1.focus }}</p>
+
+    {% for cap in pillar_caps %}
+    <div class="cap-roadmap">
+      <div class="cap-roadmap__header">
+        <h3 class="cap-roadmap__title">
+          {{ pe_indicator(cap.is_pe_indicator) }}{{ cap.code }} {{ cap.name }}
+        </h3>
+        <div class="cap-roadmap__progression">
+          {{ t('label.current') }}: L{{ '%.1f' | format(cap.current_score) }} →
+          {{ t('label.h1_target') }}: <strong>L{{ '%.1f' | format(cap.h1_target_score) }}</strong> ·
+          {{ t('label.gap') }}: {{ '%.1f' | format(cap.h1_target_score - cap.current_score) }}
+        </div>
+      </div>
+
+      {% if cap.h1_state_evidence %}
+      <h4>{{ t('section.current_state_evidence') }}</h4>
+      <ul>
+        {% for ev in cap.h1_state_evidence %}<li>{{ ev }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if cap.h1_initiatives %}
+      <h4>{{ t('section.h1_initiatives') }}</h4>
+      <ul class="checklist">
+        {% for init in cap.h1_initiatives %}<li>{{ init }}</li>{% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-faint" style="font-size: 9pt; margin: 2mm 0;">{{ t('empty.h1_initiatives') }}</p>
+      {% endif %}
+
+      {% if cap.h1_success_metrics %}
+      <h4>{{ t('section.success_metrics') }}</h4>
+      <table class="compact">
+        <thead>
+          <tr>
+            <th>{{ t('table.metric') }}</th>
+            <th class="num">{{ t('table.current') }}</th>
+            <th class="num">{{ t('table.h1_target') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in cap.h1_success_metrics %}
+          <tr>
+            <td>{{ m.metric }}</td>
+            <td class="num text-muted">{{ m.current }}</td>
+            <td class="num"><strong>{{ m.h1_target }}</strong></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    {# §2.2 HORIZON 2 — SCALE #}
+    <h2 id="sec-2-2">2.2 {{ t('horizon.h2.full_label') }}</h2>
+    {% set h2 = horizons | selectattr('id', 'equalto', 'H2') | first %}
+    <p class="text-muted"><strong>{{ t('label.target') }}: L{{ '%.1f' | format(h1.target_overall_maturity) }} → L{{ '%.1f' | format(h2.target_overall_maturity) }}</strong> · {{ h2.focus }}</p>
+
+    {% if h2.key_initiatives %}
+    <h3>{{ t('section.key_initiatives') }}</h3>
+    {% for init in h2.key_initiatives %}
+    <div class="cap-roadmap no-break">
+      <h4>{{ init.title }}</h4>
+      <ul class="checklist">
+        {% for item in init['items'] %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h3>{{ t('section.h2_capability_targets') }}</h3>
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.capability') }}</th>
+          <th class="num">{{ t('table.h1_exit') }}</th>
+          <th class="num">{{ t('table.h2_target') }}</th>
+          <th>{{ t('table.key_enabler') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cap in pillar_caps %}
+        <tr>
+          <td>{{ cap.code }} {{ cap.name }}</td>
+          <td class="num">L{{ '%.1f' | format(cap.h1_target_score) }}</td>
+          <td class="num"><strong>L{{ '%.1f' | format(cap.h2_target_score) }}</strong></td>
+          <td>{{ cap.h2_key_enabler or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {# §2.3 HORIZON 3 — TRANSFORM #}
+    <h2 id="sec-2-3">2.3 {{ t('horizon.h3.full_label') }}</h2>
+    {% set h3 = horizons | selectattr('id', 'equalto', 'H3') | first %}
+    <p class="text-muted"><strong>{{ t('label.target') }}: L{{ '%.1f' | format(h2.target_overall_maturity) }} → L{{ '%.1f' | format(h3.target_overall_maturity) }}</strong> · {{ h3.focus }}</p>
+
+    {% if h3.key_initiatives %}
+    <h3>{{ t('section.key_initiatives') }}</h3>
+    {% for init in h3.key_initiatives %}
+    <div class="cap-roadmap no-break">
+      <h4>{{ init.title }}</h4>
+      <ul class="checklist">
+        {% for item in init['items'] %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h3>{{ t('section.h3_capability_targets') }}</h3>
+    <table class="compact">
+      <thead>
+        <tr>
+          <th>{{ t('table.capability') }}</th>
+          <th class="num">{{ t('table.h2_exit') }}</th>
+          <th>{{ t('table.h3_target') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cap in pillar_caps %}
+        <tr>
+          <td>{{ cap.code }} {{ cap.name }}</td>
+          <td class="num">L{{ '%.1f' | format(cap.h2_target_score) }}</td>
+          <td><strong>L{{ '%.1f' | format(cap.h3_target_score) }}</strong> — {{ cap.h3_target_label or t('horizon.h3.default_target') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  {# ─── §3 RESOURCES ─────────────────────────────────────────── #}
+  <section id="sec-3" class="section">
+    <h1>3. {{ t('section.resources') }}</h1>
+
+    <h2 id="sec-3-1">3.1 {{ t('section.technology_investments') }}</h2>
+    {% if pillar_resources.technology_investments %}
+    <p class="text-muted">{{ t('resources.tech_intro') }}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.technology') }}</th>
+          <th>{{ t('table.horizon') }}</th>
+          <th>{{ t('table.effort') }}</th>
+          <th>{{ t('table.purpose') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tech in pillar_resources.technology_investments %}
+        <tr>
+          <td><strong>{{ tech.technology }}</strong></td>
+          <td>{{ horizon_pill(tech.horizon) }}</td>
+          <td>{{ effort_pill(tech.effort_tier) }}</td>
+          <td>{{ tech.purpose }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-faint">{{ t('empty.technology_investments') }}</p>
+    {% endif %}
+
+    <h2 id="sec-3-2">3.2 {{ t('section.team_skills') }}</h2>
+    {% if pillar_resources.team_skills %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.role') }}</th>
+          <th class="num">{{ t('table.ftes') }}</th>
+          <th>{{ t('table.horizon') }}</th>
+          <th>{{ t('table.focus') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for role in pillar_resources.team_skills %}
+        <tr>
+          <td><strong>{{ role.role }}</strong></td>
+          <td class="num">{{ role.ftes }}</td>
+          <td>{{ horizon_pill(role.horizon) }}</td>
+          <td>{{ role.focus }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-faint">{{ t('empty.team_skills') }}</p>
+    {% endif %}
+
+    <h2 id="sec-3-3">3.3 {{ t('section.effort_summary_by_horizon') }}</h2>
+    {% if pillar_resources.effort_summary %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.horizon') }}</th>
+          <th>{{ t('table.duration') }}</th>
+          <th>{{ t('table.effort') }}</th>
+          <th>{{ t('table.focus_areas') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for h in pillar_resources.effort_summary %}
+        <tr>
+          <td>{{ horizon_pill(h.horizon) }}</td>
+          <td>{{ h.duration }}</td>
+          <td>{{ effort_pill(h.effort_tier) }}</td>
+          <td>{{ h.focus_areas }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="tr--summary">
+          <td><strong>{{ t('label.total') }}</strong></td>
+          <td><strong>{{ t('label.duration_36mo') }}</strong></td>
+          <td>{{ effort_pill(pillar_resources.total_effort_tier or 'XL') }}</td>
+          <td><strong>{{ t('label.complete_pillar_transformation', pillar_name=pillar.name) }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-faint">{{ t('empty.effort_summary') }}</p>
+    {% endif %}
+
+    {{ effort_tier_legend() }}
+  </section>
+
+  {# ─── §4 SUCCESS METRICS & KPIs ───────────────────────────── #}
+  <section id="sec-4" class="section">
+    <h1>4. {{ t('section.success_metrics') }}</h1>
+
+    {% if pillar_metrics %}
+    {% for category, metrics in pillar_metrics.items() %}
+    {% if metrics %}
+    <h2>4.{{ loop.index }} {{ t('metrics.category.' ~ category) }}</h2>
+    <table class="kpi-progression-table">
+      <thead>
+        <tr>
+          <th>{{ t('table.metric') }}</th>
+          <th class="num">{{ t('table.current') }}</th>
+          <th class="num">{{ t('table.h1_target') }}</th>
+          <th class="num">{{ t('table.h2_target') }}</th>
+          <th class="num">{{ t('table.h3_target') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in metrics %}
+        <tr>
+          <td><strong>{{ m.metric }}</strong></td>
+          <td class="num num--current">{{ m.current }}</td>
+          <td class="num">{{ m.h1 }}</td>
+          <td class="num">{{ m.h2 }}</td>
+          <td class="num num--target"><strong>{{ m.h3 }}</strong></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <p class="text-faint">{{ t('empty.success_metrics') }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §5 RISKS & MITIGATIONS ──────────────────────────────── #}
+  <section id="sec-5" class="section">
+    <h1>5. {{ t('section.risks_mitigations') }}</h1>
+    {% if pillar_risks %}
+    <table>
+      <thead>
+        <tr>
+          <th>{{ t('table.risk') }}</th>
+          <th>{{ t('table.impact') }}</th>
+          <th>{{ t('table.probability') }}</th>
+          <th>{{ t('table.mitigation') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for risk in pillar_risks %}
+        <tr>
+          <td><strong>{{ risk.risk }}</strong></td>
+          <td>{{ priority_badge(risk.impact | lower) }}</td>
+          <td>{{ priority_badge(risk.probability | lower) }}</td>
+          <td>{{ risk.mitigation }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-faint">{{ t('empty.risks') }}</p>
+    {% endif %}
+  </section>
+
+  {# ─── §6 RECOMMENDED NEXT STEPS ───────────────────────────── #}
+  <section id="sec-6" class="section">
+    <h1>6. {{ t('section.next_steps') }}</h1>
+
+    <h2 id="sec-6-1">6.1 {{ t('section.immediate_30d') }}</h2>
+    {% if pillar_next_steps.immediate_30d %}
+    <ol class="next-steps">
+      {% for step in pillar_next_steps.immediate_30d %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="text-faint">{{ t('empty.next_steps_30d') }}</p>
+    {% endif %}
+
+    <h2 id="sec-6-2">6.2 {{ t('section.h1_launch_30_90d') }}</h2>
+    {% if pillar_next_steps.h1_launch_30_90d %}
+    <ol class="next-steps">
+      {% for step in pillar_next_steps.h1_launch_30_90d %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="text-faint">{{ t('empty.next_steps_h1') }}</p>
+    {% endif %}
+
+    <h2 id="sec-6-3">6.3 {{ t('section.dependencies') }}</h2>
+    {% if pillar_next_steps.dependencies %}
+    <ul>
+      {% for dep in pillar_next_steps.dependencies %}
+      <li>{{ dep }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-faint">{{ t('empty.dependencies') }}</p>
+    {% endif %}
+  </section>
+
+</body>
+</html>

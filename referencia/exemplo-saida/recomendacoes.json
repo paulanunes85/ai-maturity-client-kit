@@ -1,0 +1,258 @@
+{
+  "metadata": {
+    "computed_at": "2026-05-08T16:20:08Z",
+    "based_on": "saida/gaps.json"
+  },
+  "ranked_strategies": [
+    {
+      "rank": 1,
+      "strategy_id": "S7",
+      "strategy_name": "Security & Governance",
+      "cumulative_priority": 5.867,
+      "max_priority": "P0 — Crítico",
+      "horizon": "30 dias",
+      "related_capabilities": [
+        {
+          "id": "P2-C4",
+          "name_pt_br": "Integração de Segurança (DevSecOps)",
+          "gap_size": 2.75,
+          "priority": "P0 — Crítico"
+        },
+        {
+          "id": "P2-C10",
+          "name_pt_br": "Segurança de Dependências e Cadeia de Suprimentos",
+          "gap_size": 2.333,
+          "priority": "P0 — Crítico"
+        }
+      ],
+      "related_capabilities_count": 2,
+      "technologies": [
+        {
+          "name": "GitHub Advanced Security",
+          "purpose": "Supply chain and code security"
+        },
+        {
+          "name": "Microsoft Defender",
+          "purpose": "Cloud workload protection"
+        },
+        {
+          "name": "SBOM tools",
+          "purpose": "Software Bill of Materials generation and audit"
+        }
+      ],
+      "first_action": "Habilitar GitHub Advanced Security em todos repos; gerar SBOM dos serviços críticos.",
+      "expected_outcome": "Reduzir vulnerabilidades críticas em 80%+ em 1 trimestre via GHAS + SBOM."
+    },
+    {
+      "rank": 2,
+      "strategy_id": "S6",
+      "strategy_name": "Agentic Activation",
+      "cumulative_priority": 3.917,
+      "max_priority": "P0 — Crítico",
+      "horizon": "30 dias",
+      "related_capabilities": [
+        {
+          "id": "P3-C5",
+          "name_pt_br": "Aplicações Agênticas",
+          "gap_size": 3.167,
+          "priority": "P0 — Crítico"
+        },
+        {
+          "id": "P3-C3",
+          "name_pt_br": "Desenvolvimento de Aplicações IA",
+          "gap_size": 0.75,
+          "priority": "P3 — Baixo"
+        }
+      ],
+      "related_capabilities_count": 2,
+      "technologies": [
+        {
+          "name": "Semantic Kernel",
+          "purpose": "AI agent orchestration framework"
+        },
+        {
+          "name": "AutoGen",
+          "purpose": "Multi-agent conversation framework"
+        },
+        {
+          "name": "LangChain",
+          "purpose": "LLM application development framework"
+        }
+      ],
+      "first_action": "Pilot Semantic Kernel para 1 workflow interno; estabelecer guardrails e observabilidade.",
+      "expected_outcome": "Operar 1-2 agentes em produção com guardrails sólidos em 6 meses."
+    },
+    {
+      "rank": 3,
+      "strategy_id": "S5",
+      "strategy_name": "GitHub Copilot Acceleration",
+      "cumulative_priority": 3.014,
+      "max_priority": "P2 — Médio",
+      "horizon": "Semestre",
+      "related_capabilities": [
+        {
+          "id": "P1-C1",
+          "name_pt_br": "Assistentes de Codificação IA",
+          "gap_size": 0.959,
+          "priority": "P2 — Médio"
+        },
+        {
+          "id": "P2-C1",
+          "name_pt_br": "Inteligência de Pipeline CI/CD",
+          "gap_size": 0.667,
+          "priority": "P3 — Baixo"
+        },
+        {
+          "id": "P1-C4",
+          "name_pt_br": "Automação de Revisão de Código",
+          "gap_size": 0.5,
+          "priority": "P3 — Baixo"
+        },
+        {
+          "id": "P1-C2",
+          "name_pt_br": "Plataforma de Experiência do Desenvolvedor",
+          "gap_size": 0.513,
+          "priority": "P3 — Baixo"
+        }
+      ],
+      "related_capabilities_count": 4,
+      "technologies": [
+        {
+          "name": "GitHub Copilot Enterprise",
+          "purpose": "AI-assisted coding across development teams"
+        },
+        {
+          "name": "GitHub Copilot Workspace",
+          "purpose": "AI-driven task planning and implementation"
+        }
+      ],
+      "first_action": "Rollout Copilot Enterprise em 2 squads piloto; medir adoção e produtividade DORA por 8 semanas.",
+      "expected_outcome": "Subir capabilities de produtividade para L3 em ~2 trimestres com ganho DORA mensurado."
+    },
+    {
+      "rank": 4,
+      "strategy_id": "S2",
+      "strategy_name": "Foundry + SRE",
+      "cumulative_priority": 1.913,
+      "max_priority": "P3 — Baixo",
+      "horizon": "Backlog / monitorar",
+      "related_capabilities": [
+        {
+          "id": "P2-C1",
+          "name_pt_br": "Inteligência de Pipeline CI/CD",
+          "gap_size": 0.667,
+          "priority": "P3 — Baixo"
+        },
+        {
+          "id": "P2-C3",
+          "name_pt_br": "Observabilidade e Monitoramento",
+          "gap_size": 0.6,
+          "priority": "P3 — Baixo"
+        },
+        {
+          "id": "P1-C2",
+          "name_pt_br": "Plataforma de Experiência do Desenvolvedor",
+          "gap_size": 0.513,
+          "priority": "P3 — Baixo"
+        }
+      ],
+      "related_capabilities_count": 3,
+      "technologies": [
+        {
+          "name": "Microsoft Foundry",
+          "purpose": "AI model management and deployment"
+        },
+        {
+          "name": "Azure Monitor",
+          "purpose": "End-to-end observability and alerting"
+        },
+        {
+          "name": "Grafana",
+          "purpose": "Operational dashboards and SLO tracking"
+        }
+      ],
+      "first_action": "Definir SLOs/SLIs para serviços críticos; implantar Azure Monitor + dashboards Grafana.",
+      "expected_outcome": "Atingir SLOs documentados em 100% dos serviços críticos em 2 trimestres."
+    },
+    {
+      "rank": 5,
+      "strategy_id": "S4",
+      "strategy_name": "AI Applications",
+      "cumulative_priority": 0.75,
+      "max_priority": "P3 — Baixo",
+      "horizon": "Backlog / monitorar",
+      "related_capabilities": [
+        {
+          "id": "P3-C3",
+          "name_pt_br": "Desenvolvimento de Aplicações IA",
+          "gap_size": 0.75,
+          "priority": "P3 — Baixo"
+        }
+      ],
+      "related_capabilities_count": 1,
+      "technologies": [
+        {
+          "name": "Azure AI Services",
+          "purpose": "Pre-built AI models and cognitive services"
+        },
+        {
+          "name": "Azure OpenAI",
+          "purpose": "Large language model integration"
+        },
+        {
+          "name": "Prompt Flow",
+          "purpose": "AI workflow orchestration and testing"
+        }
+      ],
+      "first_action": "Identificar 2 casos de uso de alto ROI; PoC com Azure OpenAI + Prompt Flow.",
+      "expected_outcome": "Lançar 2-3 features IA em produção com OKRs claros em 6 meses."
+    },
+    {
+      "rank": 6,
+      "strategy_id": "S3",
+      "strategy_name": "App Modernization",
+      "cumulative_priority": 0.44,
+      "max_priority": "P3 — Baixo",
+      "horizon": "Backlog / monitorar",
+      "related_capabilities": [
+        {
+          "id": "P3-C1",
+          "name_pt_br": "Arquitetura Cloud-Native",
+          "gap_size": 0.4,
+          "priority": "P3 — Baixo"
+        }
+      ],
+      "related_capabilities_count": 1,
+      "technologies": [
+        {
+          "name": "Azure Container Apps",
+          "purpose": "Managed container hosting for modernized workloads"
+        },
+        {
+          "name": "Kubernetes",
+          "purpose": "Container orchestration for complex deployments"
+        },
+        {
+          "name": "Terraform",
+          "purpose": "Infrastructure as Code provisioning"
+        }
+      ],
+      "first_action": "Selecionar 1–2 apps piloto; replatforming para Azure Container Apps + IaC com Terraform.",
+      "expected_outcome": "Modernizar 5-8 apps legacy para cloud-native em 12 meses."
+    }
+  ],
+  "skipped_strategies": [
+    {
+      "strategy_id": "S1",
+      "strategy_name": "GitHub Migration"
+    },
+    {
+      "strategy_id": "S3",
+      "strategy_name": "App Modernization"
+    },
+    {
+      "strategy_id": "S4",
+      "strategy_name": "AI Applications"
+    }
+  ]
+}

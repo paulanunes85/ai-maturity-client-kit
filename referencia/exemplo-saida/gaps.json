@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "computed_at": "2026-05-08T16:20:08Z",
+    "default_target": 3.0,
+    "total_capabilities_with_gap": 10
+  },
+  "summary": {
+    "P0": 3,
+    "P1": 0,
+    "P2": 1,
+    "P3": 6
+  },
+  "gaps": [
+    {
+      "rank": 1,
+      "capability_id": "P2-C4",
+      "capability_name_pt_br": "Integração de Segurança (DevSecOps)",
+      "pillar_id": "P2",
+      "current_score": 0.75,
+      "current_label": "L1 — Em Desenvolvimento",
+      "target_level": 3.5,
+      "gap_size": 2.75,
+      "weight": 1.2,
+      "priority_score": 3.3,
+      "priority": "P0 — Crítico",
+      "horizon_suggested": "30 dias",
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "rank": 2,
+      "capability_id": "P3-C5",
+      "capability_name_pt_br": "Aplicações Agênticas",
+      "pillar_id": "P3",
+      "current_score": 0.833,
+      "current_label": "L1 — Em Desenvolvimento",
+      "target_level": 4.0,
+      "gap_size": 3.167,
+      "weight": 1.0,
+      "priority_score": 3.167,
+      "priority": "P0 — Crítico",
+      "horizon_suggested": "30 dias",
+      "strategies": [
+        "S6"
+      ]
+    },
+    {
+      "rank": 3,
+      "capability_id": "P2-C10",
+      "capability_name_pt_br": "Segurança de Dependências e Cadeia de Suprimentos",
+      "pillar_id": "P2",
+      "current_score": 0.667,
+      "current_label": "L1 — Em Desenvolvimento",
+      "target_level": 3.0,
+      "gap_size": 2.333,
+      "weight": 1.1,
+      "priority_score": 2.567,
+      "priority": "P0 — Crítico",
+      "horizon_suggested": "30 dias",
+      "strategies": [
+        "S7"
+      ]
+    },
+    {
+      "rank": 4,
+      "capability_id": "P1-C1",
+      "capability_name_pt_br": "Assistentes de Codificação IA",
+      "pillar_id": "P1",
+      "current_score": 3.041,
+      "current_label": "L3 — Gerenciado",
+      "target_level": 4.0,
+      "gap_size": 0.959,
+      "weight": 1.2,
+      "priority_score": 1.151,
+      "priority": "P2 — Médio",
+      "horizon_suggested": "Semestre",
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "rank": 5,
+      "capability_id": "P2-C1",
+      "capability_name_pt_br": "Inteligência de Pipeline CI/CD",
+      "pillar_id": "P2",
+      "current_score": 2.333,
+      "current_label": "L2 — Definido",
+      "target_level": 3.0,
+      "gap_size": 0.667,
+      "weight": 1.2,
+      "priority_score": 0.8,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "rank": 6,
+      "capability_id": "P3-C3",
+      "capability_name_pt_br": "Desenvolvimento de Aplicações IA",
+      "pillar_id": "P3",
+      "current_score": 2.25,
+      "current_label": "L2 — Definido",
+      "target_level": 3.0,
+      "gap_size": 0.75,
+      "weight": 1.0,
+      "priority_score": 0.75,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S4",
+        "S6"
+      ]
+    },
+    {
+      "rank": 7,
+      "capability_id": "P2-C3",
+      "capability_name_pt_br": "Observabilidade e Monitoramento",
+      "pillar_id": "P2",
+      "current_score": 2.4,
+      "current_label": "L2 — Definido",
+      "target_level": 3.0,
+      "gap_size": 0.6,
+      "weight": 1.0,
+      "priority_score": 0.6,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S2"
+      ]
+    },
+    {
+      "rank": 8,
+      "capability_id": "P1-C4",
+      "capability_name_pt_br": "Automação de Revisão de Código",
+      "pillar_id": "P1",
+      "current_score": 2.5,
+      "current_label": "L3 — Gerenciado",
+      "target_level": 3.0,
+      "gap_size": 0.5,
+      "weight": 1.1,
+      "priority_score": 0.55,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S5"
+      ]
+    },
+    {
+      "rank": 9,
+      "capability_id": "P1-C2",
+      "capability_name_pt_br": "Plataforma de Experiência do Desenvolvedor",
+      "pillar_id": "P1",
+      "current_score": 2.487,
+      "current_label": "L2 — Definido",
+      "target_level": 3.0,
+      "gap_size": 0.513,
+      "weight": 1.0,
+      "priority_score": 0.513,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "rank": 10,
+      "capability_id": "P3-C1",
+      "capability_name_pt_br": "Arquitetura Cloud-Native",
+      "pillar_id": "P3",
+      "current_score": 2.6,
+      "current_label": "L3 — Gerenciado",
+      "target_level": 3.0,
+      "gap_size": 0.4,
+      "weight": 1.1,
+      "priority_score": 0.44,
+      "priority": "P3 — Baixo",
+      "horizon_suggested": "Backlog / monitorar",
+      "strategies": [
+        "S3"
+      ]
+    }
+  ]
+}
