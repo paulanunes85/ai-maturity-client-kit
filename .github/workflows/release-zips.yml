@@ -4,11 +4,16 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/agents/**'
+      - '.github/copilot-instructions.md'
+      - '.github/prompts/**'
+      - '.github/skills/**'
       - 'kit-en/**'
       - 'kit-es/**'
       - 'README.md'
       - 'GUIA-PASSO-A-PASSO.md'
       - 'framework.json'
+      - 'scripts/build_language_kits.py'
       - '.github/workflows/release-zips.yml'
   workflow_dispatch:
 
@@ -22,26 +27,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build 3 ZIPs (PT, EN, ES)
-        run: |
-          mkdir -p dist
-          # PT: full root kit minus dev/output folders
-          zip -r dist/ai-maturity-kit-pt.zip . \
-            -x ".git/*" "kit-en/*" "kit-es/*" "dist/*" "saida/*" \
-               "docs/*" "**/__pycache__/*" "**/.mypy_cache/*" \
-               ".github/workflows/*"
-          # EN: kit-en + shared assets (framework.json, scripts, etc.)
-          zip -r dist/ai-maturity-kit-en.zip kit-en \
-               framework.json relatorios survey-devs survey-learning \
-               wizard formularios coleta referencia \
-               respostas.json.example Makefile scripts \
-            -x "**/__pycache__/*" "**/.mypy_cache/*"
-          # ES: kit-es + shared assets
-          zip -r dist/ai-maturity-kit-es.zip kit-es \
-               framework.json relatorios survey-devs survey-learning \
-               wizard formularios coleta referencia \
-               respostas.json.example Makefile scripts \
-            -x "**/__pycache__/*" "**/.mypy_cache/*"
-          ls -lh dist/
+        run: python3 scripts/build_language_kits.py --out dist --clean
 
       - name: Publish to "latest" release
         uses: softprops/action-gh-release@v2

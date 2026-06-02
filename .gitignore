@@ -43,3 +43,4 @@ survey-learning/respostas-learning.json
 *.log
 build/
 dist/
+docs/downloads/

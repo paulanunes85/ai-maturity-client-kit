@@ -2,56 +2,91 @@
 
 📖 **Navegação:** [🏠 Índice](../README.md)
 
-Site estático single-page que apresenta o kit. Publicado automaticamente via GitHub Pages quando há push em `main` que toca `docs/`.
+Site estático que apresenta o kit. O conteúdo da landing agora é centralizado em [`content.json`](content.json) e renderizado por [`app.js`](app.js), com três rotas públicas:
 
-## URL pública (após ativação)
+| Rota | Idioma | Shell |
+| --- | --- | --- |
+| `/` | PT-BR | [`index.html`](index.html) |
+| `/en/` | English | [`en/index.html`](en/index.html) |
+| `/es/` | Español | [`es/index.html`](es/index.html) |
 
-```
+## URL pública
+
+```text
 https://paulanunes85.github.io/ai-maturity-client-kit/
 ```
 
-## Conteúdo
+## Arquitetura
 
 | Arquivo | Propósito |
-|---|---|
-| [`index.html`](index.html) | Landing single-page: hero, pipeline, 3 surveys, quick start, 12 skills, FAQ, download |
-| [`styles.css`](styles.css) | CSS com tokens paulasilva-ms (paleta MS 4 cores, Inter + JetBrains Mono via Google Fonts) |
+| --- | --- |
+| [`content.json`](content.json) | Fonte única dos textos PT-BR, EN e ES, incluindo hero, pipeline, cards, FAQ, skills e downloads |
+| [`app.js`](app.js) | Renderer estático: carrega o JSON, seleciona idioma pela rota e monta a página |
+| [`index.html`](index.html) | Shell PT-BR com autodetecção de idioma do navegador |
+| [`en/index.html`](en/index.html) | Shell EN |
+| [`es/index.html`](es/index.html) | Shell ES |
+| [`styles.css`](styles.css) | CSS compartilhado com tokens paulasilva-ms |
 
-## Como ativar GitHub Pages
+## Idioma automático
 
-> [!IMPORTANT]
-> Ativação manual única no repo. Depois disso o deploy é automático.
+A rota `/` usa o idioma do navegador para redirecionar automaticamente para `/en/` ou `/es/` quando apropriado. PT-BR continua sendo o padrão.
 
-1. Acesse https://github.com/paulanunes85/ai-maturity-client-kit/settings/pages
-2. **Source:** selecione **GitHub Actions** (não "Deploy from a branch")
-3. Faça push em qualquer arquivo de `docs/` → workflow [`.github/workflows/pages.yml`](../.github/workflows/pages.yml) roda automaticamente
-4. Site fica disponível em `https://paulanunes85.github.io/ai-maturity-client-kit/` em ~2 minutos
+O seletor PT · EN · ES grava a escolha em `localStorage`, então visitas futuras respeitam a última seleção.
 
-## Como customizar localmente
+## Como editar conteúdo
 
-Abra `index.html` direto no navegador (não precisa servidor) — o CSS e o Google Fonts carregam via CDN.
+Edite apenas [`content.json`](content.json) para alterar textos e traduções. Evite editar manualmente os três HTMLs, eles são apenas shells mínimos.
 
-Para preview em servidor local:
+Valide o JSON antes de publicar:
+
 ```bash
-cd docs && python3 -m http.server 8000
+python3 -m json.tool docs/content.json >/dev/null
+```
+
+## Preview local
+
+Como o site carrega `content.json` via `fetch`, use um servidor local:
+
+```bash
+cd docs
+python3 -m http.server 8000
 # abrir http://localhost:8000
 ```
+
+Abrir `index.html` diretamente via `file://` não é recomendado, porque navegadores bloqueiam `fetch()` de arquivos locais.
+
+## Downloads públicos com repo privado
+
+Sim, é possível manter o repositório privado e o site público, desde que o GitHub Pages esteja habilitado como público no plano/organização.
+
+O detalhe importante: assets de GitHub Releases em repositório privado exigem autenticação. Por isso o workflow de Pages gera os ZIPs e os publica dentro do próprio artefato do site:
+
+```text
+https://paulanunes85.github.io/ai-maturity-client-kit/downloads/ai-maturity-kit-pt.zip
+https://paulanunes85.github.io/ai-maturity-client-kit/downloads/ai-maturity-kit-en.zip
+https://paulanunes85.github.io/ai-maturity-client-kit/downloads/ai-maturity-kit-es.zip
+```
+
+Esses links continuam públicos junto com o site, mesmo se o repositório voltar a ser privado.
+
+## Deploy
+
+O workflow [`.github/workflows/pages.yml`](../.github/workflows/pages.yml):
+
+1. Faz checkout do repositório.
+2. Gera os três ZIPs em `docs/downloads/`.
+3. Faz upload da pasta `docs/` como artefato do GitHub Pages.
+4. Publica o site.
+
+Qualquer push que toque `docs/**` ou o workflow de Pages dispara novo deploy.
 
 ## Branding
 
 Tokens MS 4 cores aplicados via CSS variables:
-- `--c-blue: #00A4EF` (primário, links)
-- `--c-green: #7FBA00` (sucesso)
-- `--c-yellow: #FFB900` (atenção)
-- `--c-red: #F25022` (alerta)
 
-Logo SVG inline (sem dependência externa). Inter + JetBrains Mono via Google Fonts. Dark mode automático via `prefers-color-scheme`.
+- `--c-blue: #00A4EF`
+- `--c-green: #7FBA00`
+- `--c-yellow: #FFB900`
+- `--c-red: #F25022`
 
-## Botão de download
-
-O CTA "⬇ Baixar ZIP (main)" aponta para a URL nativa do GitHub:
-```
-https://github.com/paulanunes85/ai-maturity-client-kit/archive/refs/heads/main.zip
-```
-
-Não requer workflow extra — o ZIP é gerado on-demand pelo próprio GitHub a partir do estado atual de `main`.
+Logo SVG inline, Inter + JetBrains Mono via Google Fonts, e dark mode automático via `prefers-color-scheme`.

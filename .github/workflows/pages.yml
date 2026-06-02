@@ -6,9 +6,6 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'docs/**'
-      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +29,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Build public ZIP downloads
+        run: python3 scripts/build_language_kits.py --out docs/downloads --clean
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

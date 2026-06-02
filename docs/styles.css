@@ -57,6 +57,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.loading {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-2);
+}
+.loading h1 {
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 42px);
+}
+.loading code {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
 a {
   color: var(--c-blue);
   text-decoration: none;
@@ -75,8 +95,8 @@ code, pre {
   top: 0;
   z-index: 50;
   background: rgba(255,255,255,0.92);
-  backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--rule);
 }
 @media (prefers-color-scheme: dark) {
@@ -249,7 +269,10 @@ code, pre {
   width: 28px; height: 28px;
   display: grid; place-items: center;
   border-radius: 8px;
-  font-size: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0;
   background: var(--bg);
 }
 .hero__card-icon--blue   { background: var(--c-blue-50); }
@@ -261,12 +284,27 @@ code, pre {
   color: var(--ink-3);
   font-size: 12px;
 }
+.hero__card-copy {
+  color: var(--ink-3);
+  font-size: 12px;
+}
 
 /* ================================ Sections */
 section { padding: 72px 32px; }
 @media (max-width: 720px) { section { padding: 48px 20px; } }
 
+.section--paper {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section--faq {
+  border-bottom: 0;
+}
+
 .container { max-width: 1200px; margin: 0 auto; }
+.faq-container { max-width: 880px; }
 
 .section__eyebrow {
   font-family: var(--font-mono);
@@ -535,10 +573,17 @@ section { padding: 72px 32px; }
 
 .download__cta .btn--primary { background: var(--c-blue); }
 .download__cta .btn--primary:hover { background: var(--c-green); color: white; }
+.download__repo { margin-left: 10px; }
 .download__hint {
   margin-top: 16px;
   font-size: 13px;
   color: rgba(255,255,255,0.6);
+}
+.download__clone {
+  background: #ffffff;
+  color: #004f7a;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .download__panel {
@@ -600,3 +645,4 @@ section { padding: 72px 32px; }
 .footer__sig-role { font-size: 12px; color: var(--ink-3); font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
 .footer__contact { color: var(--ink-3); font-family: var(--font-mono); font-size: 12px; }
 .footer__contact a { color: var(--ink-2); }
+.footer__tagline { font-size: 11px; }
